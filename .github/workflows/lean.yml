@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: lean-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   lean:
@@ -41,6 +41,10 @@ jobs:
       - name: Install pinned elan and Lean toolchain
         run: |
           set -euo pipefail
+          # These SDKs are preinstalled on the disposable GitHub-hosted runner.
+          # Removing them makes room for Lean and the full pinned mathlib cache.
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h . | tee ci-results/disk-before-install.txt
           elan_dir="$(mktemp -d)"
           curl --fail --location --retry 3 \
             https://github.com/leanprover/elan/releases/download/v4.1.2/elan-x86_64-unknown-linux-gnu.tar.gz \
@@ -55,14 +59,26 @@ jobs:
       - name: Resolve pinned dependencies and fetch mathlib cache
         run: |
           set -euo pipefail
-          lake --keep-toolchain update 2>&1 | tee ci-results/dependencies.log
+          # Lake materializes this committed manifest; do not run lake update.
+          lake env lean --version 2>&1 | tee ci-results/dependencies.log
           python3 scripts/verify_sources.py --dependencies | tee ci-results/dependency-check.log
           lake exe cache get 2>&1 | tee ci-results/mathlib-cache.log
+          df -h . | tee ci-results/disk-after-cache.txt
 
       - name: Build all preserved project modules
         run: |
           set -euo pipefail
-          lake build 2>&1 | tee ci-results/build.log
+          # One new project module at a time bounds first-run memory usage.
+          # Lake reuses the preceding modules in this topological compile plan.
+          {
+            while IFS= read -r module_source; do
+              module_source="${module_source%$'\r'}"
+              printf 'BUILD_MODULE=%s\n' "$module_source"
+              lake build "$module_source"
+            done < compile-order.txt
+            # Cover the default globs and the aggregate audit after all modules.
+            lake build
+          } 2>&1 | tee ci-results/build.log
           if grep -E 'sorryAx|declaration uses .sorry' ci-results/build.log; then
             echo 'Admitted proof reported by compiler' >&2
             exit 1
