@@ -4,6 +4,7 @@ Two Lean constructions of the conditional implication **`H00 → RiemannHypothes
 
 The frozen source is `RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction`. Its Windows Lean 4.33.0 build and axiom audit passed according to the supplied native console excerpt. The original native logs and per-declaration axiom output were not independently supplied; the provenance record preserves that distinction.
 
+- [Paper candidates and theory introduction](Paper-Candidates/README.md)
 - [Mathematical preprint](docs/RH_H00_Two_Routes_Native_PASS_and_GitHub_CI.pdf)
 - [GitHub Actions runs](https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions)
 - [Native PASS checkpoint](evidence/NATIVE_PASS_CHECKPOINT.json)
