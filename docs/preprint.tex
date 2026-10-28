@@ -1,0 +1,709 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=29mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype,booktabs,longtable,enumitem,array}
+\usepackage[hidelinks,breaklinks=true]{hyperref}
+\usepackage{url}
+\hypersetup{pdftitle={Two routes from a zero-cancellation condition to the Riemann hypothesis},pdfsubject={Conditional equivalences and their Lean formalization}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{2pt}
+\setlist{itemsep=3pt,topsep=5pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\RH}{\mathrm{RH}}
+\newcommand{\Ree}{\operatorname{Re}}
+\newcommand{\Imm}{\operatorname{Im}}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\title{\bfseries Two routes from a zero-cancellation condition\\
+to the Riemann hypothesis}
+\author{}
+\date{Preprint\\28 October 2026}
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+\begin{abstract}
+We study a zero-cancellation condition for the Bernstein rows associated
+with the actual normalized logarithmic-derivative moments of the Riemann
+$\xi$-function. The condition, denoted $H_{00}$, asserts admissibility of
+the cutoff-zero, coefficient-zero cancellation budget. We present two
+constructions of the implication $H_{00}\Rightarrow\RH$. The first
+passes from constant row variation to an existing actual spectral
+criterion. The second constructs a Hausdorff probability measure, identifies
+its resolvent with the actual logarithmic derivative near the origin,
+and continues an analytic defect to exclude nonreal zeros. A retained
+converse gives $H_{00}\Longleftrightarrow\RH$ for each construction.
+The accompanying Lean development exports both implications with no
+additional mathematical hypothesis. The condition $H_{00}$ remains a
+universally quantified assertion: neither its unconditional validity nor
+a terminating finite certificate checker is established here.
+\end{abstract}
+\vspace{0.5em}
+\noindent\textbf{Keywords.} Riemann hypothesis; Hausdorff moments; Bernstein
+weights; logarithmic derivative; positive measure; formal proof.
+
+\section{Introduction}
+Moment positivity provides a natural meeting point between finite
+algebraic identities and the analytic location of zeros. In the present
+setting, the finite objects are Bernstein rows formed from a fixed,
+actual sequence of normalized logarithmic-derivative moments. Their
+total variation is at least one. Equality at every order forces all row
+weights to be nonnegative and is equivalent to the vanishing of a
+nonnegative cancellation quantity.
+
+This note records two ways to pass from that cancellation condition to
+the Riemann hypothesis. They share the actual moment sequence and the
+finite positivity argument, but use different forward analytic
+constructions. The first applies an already formalized spectral
+characterization of subexponential row variation. The second constructs
+a positive measure directly from the Bernstein rows and uses its
+resolvent to control the logarithmic derivative.
+
+The distinction between a finite description and a finite verification
+is central. The candidate budget consists of two natural numbers, namely
+$(0,0)$, but its admissibility quantifies over every row index. The
+equivalence proved here therefore does not supply an accepted finite
+certificate of RH. In particular, no proof of $H_{00}$ is claimed.
+
+The mathematical development below is accompanied by the Lean sources
+in~\cite{source}. We explicitly identify the previously formalized
+actual-function and spectral results used as inputs. The note does not
+reprove the full analytic infrastructure of that source development.
+Section~\ref{sec:formal} distinguishes the mathematical statements,
+reported native verification, and the separately configured GitHub CI
+target.
+
+\section{Actual analytic data}\label{sec:actual}
+Let $\xi$ be the actual entire Riemann $\xi$-function used in the
+accompanying development. Away from $s=0,1$, its normalization is
+\begin{equation}\label{eq:xi}
+ \xi(s)=\frac{s(s-1)}2\,\Lambda(s),
+\end{equation}
+where $\Lambda$ denotes the completed Riemann zeta function.
+More exactly, with Mathlib's entire pole-subtracted auxiliary function
+$\Lambda_0$ (\code{completedRiemannZeta}$_0$), the formal definition is
+\[
+ \xi(s)=\frac{1+s(s-1)\Lambda_0(s)}2.
+\]
+This specifies the values at the removable singularities as well. We use the retained equivalence between
+Mathlib's literal \code{RiemannHypothesis} and the assertion that every
+zero of this $\xi$ has real part $1/2$.
+
+The reflection identity $\xi(1-s)=\xi(s)$ makes
+$w\mapsto\xi(1/2+w)$ even. The actual function
+\[
+ \Theta(z)=\xi\bigl(\tfrac12+\sqrt z\bigr)
+\]
+is proved entire in the source, despite the square root used in its
+definition, and satisfies
+\begin{equation}\label{eq:centered-square}
+ \Theta(w^2)=\xi\bigl(\tfrac12+w\bigr)\qquad(w\in\mathbb C).
+\end{equation}
+The following actual-function facts are retained from that development:
+\begin{enumerate}[label=(\roman*)]
+ \item $\Theta(0)\ne0$, and $\Theta$ is entire;
+ \item the zero set of $\Theta$ is invariant under complex conjugation;
+ \item if $\xi(s)=0$, then $|\Imm s|>1$;
+ \item the moments defined below are real before taking real parts, and
+ their normalizing constant is strictly positive.
+\end{enumerate}
+These are supplied lemmas about the actual functions, not additional
+hypotheses of the final $H_{00}$ implications. Their source locations are
+listed in Appendix~\ref{app:source}. Only the nonvanishing of $\Imm s$,
+rather than the numerical strength of (iii), is needed in the final
+return from $\Theta$-zeros to $\xi$-zeros.
+
+On a neighborhood of zero define
+\begin{equation}\label{eq:moments}
+ R(z)=\frac{\Theta'(z)}{\Theta(z)},\qquad
+ m_n=\Ree\!\left(\frac{(-1)^n}{n!}R^{(n)}(0)\right),\qquad
+ \kappa=m_0>0,\qquad u_n=\frac{m_n}{\kappa^{n+1}}.
+\end{equation}
+Here $R^{(0)}=R$. In particular $u_0=1$. The retained reality result
+turns~\eqref{eq:moments} into the complex derivative identity
+\begin{equation}\label{eq:actual-derivatives}
+ R^{(n)}(0)=(-1)^n n!\,\kappa^{n+1}u_n.
+\end{equation}
+Throughout the paper, unless a general real sequence is explicitly
+introduced, $u$ denotes this actual normalized sequence.
+
+\section{Bernstein cancellation and the main statement}\label{sec:cancel}
+For a real sequence $u$, define its Bernstein weights by
+\begin{equation}\label{eq:weights}
+ w_{N,j}=\binom Nj\sum_{r=0}^{N-j}(-1)^r
+                 \binom{N-j}{r}u_{j+r}\qquad(0\le j\le N),
+ \qquad V_N=\sum_{j=0}^N|w_{N,j}|.
+\end{equation}
+The elementary row-mass and coarsening identities are
+\begin{align}
+ \sum_{j=0}^N w_{N,j}&=u_0,\label{eq:row-mass}\\
+ (n+1)w_{n,j}
+   &=(n+1-j)w_{n+1,j}+(j+1)w_{n+1,j+1}
+       \quad(0\le j\le n).\label{eq:coarsening}
+\end{align}
+For $0\le j\le n$ put
+$a_{n,j}=(n+1-j)w_{n+1,j}$ and
+$b_{n,j}=(j+1)w_{n+1,j+1}$. Define the row cancellation by
+\begin{equation}\label{eq:cancellation}
+ C_n=\sum_{j=0}^n
+ \bigl(|a_{n,j}|+|b_{n,j}|-|a_{n,j}+b_{n,j}|\bigr).
+\end{equation}
+The triangle inequality gives $C_n\ge0$. Summing the weighted terms and
+using~\eqref{eq:coarsening} yields
+\begin{equation}\label{eq:variation-increment}
+ C_n=(n+1)(V_{n+1}-V_n).
+\end{equation}
+
+\begin{definition}[The semantic zero budget]
+A cancellation budget is a pair $W=(N_0,b)\in\mathbb N^2$.
+For the actual sequence it is \emph{admissible} if
+\[
+ \forall n\ge N_0,\qquad C_n\le bV_n.
+\]
+The condition $H_{00}$ is admissibility of $W=(0,0)$.
+\end{definition}
+
+\begin{proposition}\label{prop:finite-equivalences}
+For the actual normalized sequence, the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+ \item $H_{00}$;
+ \item $C_n=0$ for every $n\ge0$;
+ \item $V_N=1$ for every $N\ge0$;
+ \item $w_{N,j}\ge0$ for every $0\le j\le N$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Since $C_n\ge0$, admissibility of $(0,0)$ is equivalent to $C_n=0$
+at every order. Equation~\eqref{eq:variation-increment} then says
+$V_{n+1}=V_n$. Since $V_0=|u_0|=1$, induction gives (iii).
+Conversely, (iii) forces the increment to vanish and hence gives (ii).
+
+By~\eqref{eq:row-mass}, each row has mass one. Therefore
+\[
+ V_N-1=\sum_{j=0}^N\bigl(|w_{N,j}|-w_{N,j}\bigr).
+\]
+Every summand is nonnegative, and it vanishes precisely when the
+corresponding weight is nonnegative. This proves the equivalence of
+(iii) and (iv).
+\end{proof}
+
+\begin{theorem}[Two forward constructions and a common converse]
+\label{thm:main}
+For the actual sequence~\eqref{eq:moments},
+\[
+ H_{00}\quad\Longleftrightarrow\quad\RH.
+\]
+The forward implication admits both the spectral construction of
+Section~\ref{sec:spectral} and the measure--resolvent construction of
+Sections~\ref{sec:measure}--\ref{sec:closure}. Each construction has
+$H_{00}$ as its only mathematical hypothesis. The two equivalences use
+the same retained converse.
+\end{theorem}
+The proof is completed below. The theorem is an equivalence of
+mathematical assertions. It does not assert that either assertion holds
+unconditionally.
+
+\section{The spectral route and the converse}\label{sec:spectral}
+Call a nonnegative sequence $V$ \emph{subexponential} if
+\begin{equation}\label{eq:subexponential}
+ \forall\varepsilon>0\ \exists A>0\ \forall n\ge0,\qquad
+ V_n\le A e^{\varepsilon n}.
+\end{equation}
+The earlier actual spectral development supplies the following
+characterization for the specific $V$ in~\eqref{eq:weights}:
+\begin{equation}\label{eq:retained-spectral}
+ V\text{ is subexponential}\quad\Longleftrightarrow\quad\RH.
+\end{equation}
+This characterization is supplied by the actual spectral theorem
+in~\cite{source}; the exact declaration is listed in
+Appendix~\ref{app:source}. Its analytic inputs are constructed in that
+development rather than assumed at the present endpoints.
+
+More precisely, the canonical actual divisor gives complex nodes
+$(q_i)_{i\in J}$, with zero multiplicities retained, satisfying
+\begin{equation}\label{eq:spectral-calibration}
+ q_i\ne0,\qquad \sum_i|q_i|<\infty,\qquad
+ u_n=\sum_i q_i^{n+1},\qquad
+ \alpha_i=-\frac{1}{\kappa q_i}.
+\end{equation}
+Every $\alpha_i$ is a zero of $\Theta$, and every zero occurs in this
+family. Put
+\[
+ \rho=\sup\bigl(\{1\}\cup\{|q_i|+|1-q_i|:i\in J\}\bigr).
+\]
+The retained extraction theorem, applied to the constructed calibration,
+proves the ordinary limit
+\begin{equation}\label{eq:spectral-limit}
+ \lim_{N\to\infty}V_N^{1/N}=\rho.
+\end{equation}
+Its proof separates a finite dominant exponential part from a tail
+with strictly smaller growth; the full extraction argument is in the
+accompanying source. Since $|q|+|1-q|\ge1$, with equality precisely for
+$q\in[0,1]$, the case $\rho=1$ is equivalent to all nodes lying in that
+segment. The actual calibration identifies this case with RH and yields
+~\eqref{eq:retained-spectral}. We use that already constructed spectral
+result here, without reproducing its full proof.
+
+\begin{proof}[Proof of the first forward implication]
+Assume $H_{00}$. Proposition~\ref{prop:finite-equivalences} gives
+$V_n=1$ for every $n$. For every $\varepsilon>0$, take $A=1$ in
+~\eqref{eq:subexponential}, since
+$1\le e^{\varepsilon n}$ for $n\ge0$. The forward direction of
+~\eqref{eq:retained-spectral} proves $\RH$.
+\end{proof}
+
+For the common converse, the actual calibration under RH has every
+$q_i\in[0,1]$. Substitution into the finite Bernstein formula gives
+\[
+ w_{N,j}=\binom Nj\sum_i q_i^{j+1}(1-q_i)^{N-j}\ge0.
+\]
+The interchange with the finite sum is justified by the retained
+absolute summability. Proposition~\ref{prop:finite-equivalences} now
+gives $H_{00}$. This is the source's retained RH-to-zero-budget
+construction, exposed to both routes as \code{H00\_of\_nativeRH}, and
+supplies the reverse implication of Theorem~\ref{thm:main}. The remainder of the paper gives a
+different forward proof. It uses Proposition~\ref{prop:finite-equivalences}
+but does not invoke~\eqref{eq:retained-spectral} or the first forward
+RH endpoint.
+
+\section{From positive Bernstein rows to a probability measure}\label{sec:measure}
+
+Write $I=[0,1]$.  For the moment, let $u=(u_n)_{n\geq0}$ be an arbitrary
+real sequence and put
+\[
+ w^u_{N,j}=\binom Nj\sum_{r=0}^{N-j}(-1)^r\binom{N-j}{r}u_{j+r},
+ \qquad 0\leq j\leq N.
+\]
+Define $q_{N,j}=j/N$ when $N>0$, and define $q_{0,0}=0$.
+The finite Bernstein average is
+\begin{equation}\label{eq:finite-average}
+ A_N^u(f)=\sum_{j=0}^{N}w^u_{N,j}f(q_{N,j}).
+\end{equation}
+In particular, $A_0^u(f)=u_0f(0)$.  This degree-zero convention has no effect on limits as $N\to\infty$.
+
+\begin{lemma}[Finite moment convergence]\label{lem:finite-moment-limit}
+For every real sequence $u$ and every integer $k\geq0$,
+\[
+ \lim_{N\to\infty} A_N^u(q\mapsto q^k)=u_k.
+\]
+No positivity or representing-measure assumption is required.
+\end{lemma}
+\begin{proof}
+Let $u^+_j=u_{j+1}$.  The elementary binomial identity
+$(j+1)\binom{N+1}{j+1}=(N+1)\binom Nj$ gives the exact shifted-row relation
+\[
+ (j+1)w^u_{N+1,j+1}=(N+1)w^{u^+}_{N,j}.
+\]
+The term at $j=0$ contributes zero to a positive-degree monomial.  Hence
+\[
+ A_{N+1}^u(q^{k+1})=
+ \sum_{j=0}^Nw^{u^+}_{N,j}\left(\frac{j+1}{N+1}\right)^k.
+\]
+For $N\geq1$, expand
+\[
+ \frac{j+1}{N+1}=\frac{N}{N+1}\frac jN+\frac1{N+1}
+\]
+by the binomial theorem.  Interchanging two finite sums yields
+\begin{equation}\label{eq:moment-transition}
+ A_{N+1}^u(q^{k+1})=
+ \sum_{i=0}^k T_{N,k,i} A_N^{u^+}(q^i),\qquad
+ T_{N,k,i}=\binom ki\left(\frac{N}{N+1}\right)^i
+                   \left(\frac1{N+1}\right)^{k-i}.
+\end{equation}
+For $0\leq i\leq k$, $T_{N,k,i}\to\mathbf{1}_{i=k}$.
+The row-mass identity $\sum_jw^u_{N,j}=u_0$ proves the degree-zero case.
+Strong induction on the degree, applied to the shifted sequence $u^+$
+in \eqref{eq:moment-transition}, now gives the required limit.
+\end{proof}
+
+Assume henceforth that $u_0=1$ and that every Bernstein weight is
+nonnegative.  The row-mass identity makes each $A_N^u$ a positive,
+unital linear functional on $C(I,\mathbb R)$, and
+\begin{equation}\label{eq:average-bound}
+ |A_N^u(f)|\leq\|f\|_\infty.
+\end{equation}
+Only values on the finite grid enter these averages.
+
+\begin{proposition}[A constructed Hausdorff measure]\label{prop:hausdorff}
+If $u_0=1$ and $w^u_{N,j}\geq0$ for all $0\leq j\leq N$, there is a
+Borel probability measure $\sigma$ on $I$ such that
+\begin{equation}\label{eq:hausdorff-moments}
+ \int_I q^k\,d\sigma(q)=u_k\qquad(k\geq0).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Fix one free ultrafilter $\mathcal U$ on $\mathbb N$ refining the
+cofinite filter.  By \eqref{eq:average-bound}, the sequence $A_N^u(f)$
+lies in the compact interval $[-\|f\|_\infty,\|f\|_\infty]$.  Its
+$\mathcal U$-limit therefore exists for every $f\in C(I,\mathbb R)$.
+Set
+\[
+ L(f)=\lim_{N\to\mathcal U}A_N^u(f).
+\]
+The same ultrafilter is used for every $f$.  Uniqueness of limits and the
+finite linear identities imply linearity of $L$.  Order passes to the
+limit, so $L$ is positive; moreover, $L(1)=1$ and
+$|L(f)|\leq\|f\|_\infty$.  The Riesz--Markov--Kakutani representation
+theorem on the compact space $I$ supplies a positive measure $\sigma$
+with $L(f)=\int_I f\,d\sigma$.  Taking $f=1$ gives $\sigma(I)=1$.
+Finally, ordinary convergence in Lemma~\ref{lem:finite-moment-limit}
+implies convergence to the same value along $\mathcal U$, giving
+\eqref{eq:hausdorff-moments}.
+\end{proof}
+
+For the actual normalized moment sequence, $u_0=1$ is a retained
+unconditional identity and $H_{00}$ implies all the required Bernstein
+signs.  Thus Proposition~\ref{prop:hausdorff} constructs the measure
+from $H_{00}$; measure existence is not an extra premise.  This classical
+construction uses the fixed free ultrafilter and the Riesz representation
+theorem, and should not be interpreted as a terminating finite checker.
+
+\section{The analytic resolvent and its actual germ}
+
+Let $\kappa>0$ be the actual normalizing constant and let $\sigma$ be
+the probability measure just constructed.  Define
+\begin{equation}\label{eq:resolvent}
+ S(z)=\kappa\int_I\frac{d\sigma(q)}{1+\kappa qz},\qquad
+ D_\kappa=\{z\in\mathbb C:\ 1+\kappa qz\ne0\ \text{for all }q\in I\}.
+\end{equation}
+Certainly $0\in D_\kappa$.  Also $\mathbb H=\{z:\operatorname{Im}z>0\}$
+ is contained in $D_\kappa$: for $q>0$ the denominator has positive
+imaginary part, while at $q=0$ it is $1$.
+
+\begin{lemma}[Kernel differentiation]\label{lem:resolvent-derivatives}
+The function $S$ is analytic on $D_\kappa$, and for every $n\geq0$,
+\begin{equation}\label{eq:resolvent-derivatives}
+ S^{(n)}(z)=(-1)^n n!\,\kappa^{n+1}
+ \int_I\frac{q^n}{(1+\kappa qz)^{n+1}}\,d\sigma(q)
+ \qquad(z\in D_\kappa).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix $z_0\in D_\kappa$.  Compactness of $I$ gives
+$a=\min_{q\in I}|1+\kappa qz_0|>0$.  If
+$|z-z_0|<a/(2\kappa)$, the reverse triangle inequality gives
+$|1+\kappa qz|\geq a/2$ uniformly in $q$.  This also proves that
+$D_\kappa$ is open.  For
+\[
+ K_n(z,q)=\frac{q^n}{(1+\kappa qz)^{n+1}},
+\]
+one has $\partial_z K_n=-(n+1)\kappa K_{n+1}$ and, on the indicated
+neighborhood, $|K_n(z,q)|\leq(a/2)^{-n-1}$.  The derivative is likewise
+bounded by a constant independent of $q$.  Since $\sigma$ is finite,
+these constants are integrable majorants.  Differentiation under the
+integral is therefore valid.  It proves complex differentiability locally
+throughout $D_\kappa$, hence analyticity, and induction yields
+\eqref{eq:resolvent-derivatives}.
+\end{proof}
+
+For $z\in\mathbb H$, the elementary kernel identity gives
+\begin{equation}\label{eq:resolvent-sign}
+ \operatorname{Im}S(z)
+ =-\kappa^2\operatorname{Im}z
+   \int_I\frac{q}{|1+\kappa qz|^2}\,d\sigma(q)\leq0.
+\end{equation}
+Positivity of the measure is essential here.
+
+Let $R=\Theta'/\Theta$ be the actual logarithmic derivative.  The
+retained nonvanishing theorem $\Theta(0)\ne0$ makes $R$ analytic near
+zero.  The definition of the actual normalized moments, together with
+the retained reality theorem for the complex moments, gives
+\[
+ R^{(n)}(0)=(-1)^n n!\,\kappa^{n+1}u_n.
+\]
+On the other hand, evaluating \eqref{eq:resolvent-derivatives} at zero
+and using \eqref{eq:hausdorff-moments} gives the same expression for
+$S^{(n)}(0)$.  Both functions are analytic there; their convergent Taylor
+expansions consequently agree on a neighborhood of zero:
+\begin{equation}\label{eq:actual-germ}
+ R(z)=S(z)\quad\text{for all sufficiently small }|z|.
+\end{equation}
+This is equality of analytic germs, not merely equality of formal
+coefficient lists.  No global zero-free assertion about $\Theta$ was
+used.  The germ \eqref{eq:actual-germ}, analyticity on $\mathbb H$, and
+the sign \eqref{eq:resolvent-sign} are the inputs to the analytic-defect
+continuation and pole-exclusion argument.
+
+\section{Continuation and exclusion of nonreal zeros}\label{sec:closure}
+\subsection{Continuation of the analytic defect}
+Write $\mathbb H=\{z\in\mathbb C:\operatorname{Im}z>0\}$. The measure construction provides a function $S$ holomorphic on $\mathbb H$ and on a neighborhood of the origin, with
+\[
+ \operatorname{Im}S(z)\leq 0\quad(z\in\mathbb H),
+ \qquad S(z)=R(z)\quad\hbox{for all sufficiently small }z,
+\]
+where $R=\Theta'/\Theta$ is used only at points where $\Theta\ne0$. The latter germ is well-defined because the retained actual-function development proves $\Theta(0)\ne0$. We now extend the germ in a form that is holomorphic even at possible zeros of $\Theta$.
+
+\begin{lemma}[Analytic-defect continuation]
+Let $F$ be entire and let $S$ be holomorphic on $\mathbb H$. If there exists $\varepsilon>0$ such that $F'=SF$ on $\mathbb H\cap B(0,\varepsilon)$, then $F'=SF$ throughout $\mathbb H$.
+\end{lemma}
+\begin{proof}
+The function $D=F'-SF$ is holomorphic on $\mathbb H$. Choose $\varepsilon>0$ as in the hypothesis, so $D=0$ on $\mathbb H\cap B(0,\varepsilon)$. Although $0$ lies on the boundary of $\mathbb H$, the point $z_*=i\varepsilon/2$ lies in both $\mathbb H$ and $B(0,\varepsilon)$. Hence $D$ vanishes on a neighborhood of $z_*$ contained in $\mathbb H$. The upper half-plane is convex and therefore connected. The identity theorem gives $D\equiv0$ on $\mathbb H$.
+\end{proof}
+
+Apply the lemma with $F=\Theta$. Continuity and $\Theta(0)\ne0$ give an origin neighborhood on which $\Theta$ does not vanish. The equality of germs $R=S$ therefore implies $\Theta'=S\Theta$ there, and analytic-defect continuation yields
+\begin{equation}
+ \Theta'(z)=S(z)\Theta(z)\qquad(z\in\mathbb H).
+ \label{eq:theta-ode}
+\end{equation}
+In particular,
+\begin{equation}
+ \frac{\Theta'(z)}{\Theta(z)}=S(z),\qquad
+ \operatorname{Im}\frac{\Theta'(z)}{\Theta(z)}\leq0
+ \quad(z\in\mathbb H,\ \Theta(z)\ne0).
+ \label{eq:logderiv-sign}
+\end{equation}
+The continuation argument requires no assertion that $\Theta$ is already zero-free: it is applied to $D$, not to a quotient across its possible poles.
+
+\subsection{The sign condition excludes nonreal zeros}
+\begin{lemma}[Upper-half-plane pole obstruction]
+Let $F$ be a nonzero entire function. Suppose
+\[
+ \operatorname{Im}\frac{F'(z)}{F(z)}\leq0
+ \qquad(z\in\mathbb H,\ F(z)\ne0).
+\]
+Then $F$ has no zero in $\mathbb H$.
+\end{lemma}
+\begin{proof}
+Assume that $F(\rho)=0$ with $\operatorname{Im}\rho>0$. Since $F$ is entire and not identically zero, its zero at $\rho$ has a finite multiplicity $m\geq1$. On a neighborhood of $\rho$ we have
+\[
+ F(z)=(z-\rho)^m g(z),\qquad g(\rho)\ne0,
+\]
+with $g$ holomorphic. Shrinking the neighborhood makes $g$ nonvanishing there. Thus, for $z\ne\rho$ in that neighborhood,
+\begin{equation}
+ \frac{F'(z)}{F(z)}=\frac{m}{z-\rho}+\frac{g'(z)}{g(z)}.
+ \label{eq:local-logarithmic-pole}
+\end{equation}
+Set $B=g'/g$. Continuity provides $K>0$ and $\varepsilon_0>0$, with $\varepsilon_0<\operatorname{Im}\rho$, such that
+\[
+ \bigl|\operatorname{Im}B(\rho-i\varepsilon)\bigr|\leq K
+ \qquad(0<\varepsilon<\varepsilon_0).
+\]
+The same choice ensures that $F(\rho-i\varepsilon)\ne0$. Choose
+\[
+ 0<\varepsilon<\min\{\varepsilon_0,m/K\}.
+\]
+Then $z_\varepsilon=\rho-i\varepsilon$ remains in $\mathbb H$, while \eqref{eq:local-logarithmic-pole} gives
+\[
+ \operatorname{Im}\frac{F'(z_\varepsilon)}{F(z_\varepsilon)}
+ =\frac{m}{\varepsilon}+\operatorname{Im}B(z_\varepsilon)
+ \geq\frac{m}{\varepsilon}-K>0.
+\]
+This contradicts the assumed sign condition.
+\end{proof}
+
+For the actual function $\Theta$, nontriviality follows from $\Theta(0)\ne0$. Applying the lemma to \eqref{eq:logderiv-sign} excludes all upper-half-plane zeros. The retained conjugate-zero symmetry
+\[
+ \Theta(z)=0\quad\Longrightarrow\quad\Theta(\overline z)=0
+\]
+then excludes lower-half-plane zeros as well. Consequently every zero of $\Theta$ is real. Only symmetry of the zero set is needed at this step; a separate global Schwarz-reflection hypothesis is not added to the endpoint.
+
+\subsection{Return to the Riemann hypothesis}
+The actual-function development supplies the centered-square identity
+\[
+ \Theta\bigl((s-\tfrac12)^2\bigr)=\xi(s)
+\]
+and the unconditional bound $|\operatorname{Im}s|>1$ whenever $\xi(s)=0$. Let $s=\sigma+it$ be such a zero. The centered-square identity and the reality of every $\Theta$-zero imply
+\[
+ 0=\operatorname{Im}\bigl((s-\tfrac12)^2\bigr)
+   =2(\sigma-\tfrac12)t.
+\]
+The height bound implies $t\ne0$, so $\sigma=1/2$. The retained equivalence between this statement about the actual $\xi$-zeros and Mathlib's \texttt{RiemannHypothesis} completes the second implication.
+
+All analytic hypotheses used above are supplied for the actual objects by the preceding construction and the retained actual-function lemmas. In particular, no local-pole existence assumption, global zero-free assumption, or additional moment-identification premise remains in the final theorem. The forward proof does not invoke the first route's RH conclusion, although the two developments share the definition of $H_{00}$ and the finite positivity lemmas. Both equivalences use the same retained converse $\mathrm{RH}\Rightarrow H_{00}$.
+
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+Starting from $H_{00}$, Proposition~\ref{prop:finite-equivalences} supplies positive normalized Bernstein rows. Proposition~\ref{prop:hausdorff} constructs their probability measure; Lemma~\ref{lem:resolvent-derivatives} and equation~\eqref{eq:actual-germ} identify the actual resolvent germ. The continuation and pole arguments above give $\RH$. Together with the spectral forward proof and the common converse in Section~\ref{sec:spectral}, this proves the claimed equivalences.
+\end{proof}
+
+\section{Formalization and remaining obligations}\label{sec:formal}
+The accompanying development uses Lean~4~\cite{lean4} and
+Mathlib~\cite{mathlib}. Its two forward endpoint types are exactly
+$H00\to\code{RiemannHypothesis}$; both equivalence declarations have
+type $H00\leftrightarrow\code{RiemannHypothesis}$. Appendix~\ref{app:source}
+records their precise names and the principal source correspondences.
+
+The forward constructions have shared foundations. In particular, the
+second route imports the definition of $H00$ and the direct finite
+positivity lemmas from the first route's module. Its forward proof does
+not call the first route's RH conclusion. The assertion of two routes
+refers to these two forward mathematical constructions, not to disjoint
+import trees.
+
+\subsection{Verification record}
+The frozen source package is version 0.2.3. The supplied native Windows
+Lean~4.33.0 console excerpt reports
+\code{PROJECT\_BUILD=PASS} and \code{RUN=PASS}, with three compiled
+tasks and 115 reused tasks. The preserved plan contains 117 project
+modules and a final audit source, hence 118 Lean files. The final audit
+selects 641 declarations, including all four endpoints.
+
+This native result is recorded as a \emph{reported} compiler-and-audit
+pass: the original complete native logs and the individual axiom lists
+were not independently supplied with that checkpoint. Inspection of the
+preserved audit plan and runner confirms the intended coverage and the
+allowed axiom set
+\[
+ \{\code{propext},\ \code{Classical.choice},\ \code{Quot.sound}\}.
+\]
+The source is preserved without changing its theorem statements or proof
+bodies. Its historical preparation comments predate the later native
+PASS record.
+
+GitHub CI is a separate verification target. It pins Lean~4.33.0 and
+Mathlib commit
+\begin{center}\small\ttfamily
+db584cd6d46c92f209a44c0f1c829460d327499d
+\end{center}
+and preserves the transitive dependency lock. The native Mathlib
+revision was not supplied, so equality of native and CI dependency
+revisions is not assumed. The workflow verifies source hashes, builds
+the preserved modules, checks the exact endpoint types, and reruns the
+complete axiom audit. Missing or duplicated declarations and axioms
+outside the stated set cause failure.
+
+On 28 October 2026, GitHub run 40712534224 completed successfully at
+source revision \code{c6b95fd9e3d792270026da083bddddbc72bacb22}.
+The job result and full log were independently read: the project build,
+all four endpoint type checks, and the complete 641-declaration axiom
+audit passed. Each of the four principal endpoints reported exactly
+\code{propext}, \code{Classical.choice}, and \code{Quot.sound}.
+The final source-identity check also passed for all 118 preserved Lean
+files. The run and retained evidence are linked in~\cite{cirun}.
+This observed CI result is separate from the earlier reported native
+PASS. No local Lean or Lake execution was used to prepare this manuscript.
+
+\subsection{What is not proved}
+The condition $H_{00}$ is still open as an unconditional assertion about
+the actual sequence. Establishing finitely many rows does not prove its
+universal quantifier. A separate propagation theorem or a sound
+terminating certificate checker would be required to discharge it by
+finite data.
+
+In particular, for a proposed type of finite raw witnesses and a
+terminating Boolean checker, the desired statement
+\[
+ \bigl(\exists W:\mathrm{FiniteWitness},\ 
+                 \mathrm{check}(W)=\mathrm{true}\bigr)
+       \quad\Longleftrightarrow\quad\RH
+\]
+has not been obtained from the constructions in this note. Soundness
+must connect acceptance to the actual mathematical condition, and
+completeness is needed for the reverse existence implication. No
+accepted finite witness is exhibited here.
+
+The second route presented above is the measure--resolvent variant.
+The original longer Widder/angular-PDE construction is a distinct
+unfinished formalization. The analytic germ and continuation arguments
+proved here do not certify that separate chain.
+
+\appendix
+\section{Formal statements and source correspondence}\label{app:source}
+All four principal declarations belong to
+\code{RH\_HilbertLimit.TwoRoutes}. Their short names and types are:
+\begin{quote}\small\ttfamily
+nativeRH\_of\_H00\_route\_one :\\
+\hspace*{1em}H00 $\to$ \_root\_.RiemannHypothesis\\[4pt]
+H00\_iff\_nativeRH\_route\_one :\\
+\hspace*{1em}H00 $\leftrightarrow$ \_root\_.RiemannHypothesis\\[4pt]
+nativeRH\_of\_H00\_route\_two :\\
+\hspace*{1em}H00 $\to$ \_root\_.RiemannHypothesis\\[4pt]
+H00\_iff\_nativeRH\_route\_two :\\
+\hspace*{1em}H00 $\leftrightarrow$ \_root\_.RiemannHypothesis
+\end{quote}
+The defining equation is
+\[
+ \code{H00 := zeroBudgetCandidate.Admissible}.
+\]
+The spectral characterization is
+\begin{center}\small\ttfamily
+canonical\_actual\_subexponential\_iff\_nativeRH,
+\end{center}
+and the ordinary root-limit theorem is
+\begin{center}\small\ttfamily
+canonical\_actual\_root\_tendsto\_constructed.
+\end{center}
+Both are in \path{RH_HilbertLimit/AnalyticClosure.lean}.
+The repository paths below refer to the fixed source revision
+in~\cite{source}. All paths beginning with \code{TwoRoutes/} are
+relative to \code{RH\_HilbertLimit/}.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.66\textwidth}@{}}
+\toprule
+Mathematical component & Source modules\\
+\midrule\endhead
+Actual $\xi$, centered-square identity, entire $\Theta$
+ & \path{AWPIRH/XiCore.lean}; \path{AWPIRH/ThetaEntire.lean}\\[5pt]
+Conjugate zeros and nonzero zero heights
+ & \path{AngularMaster/ZeroGeometry.lean}; \path{AngularMaster/ZeroFreeSeed.lean}\\[5pt]
+Actual moments and literal RH binding
+ & \path{RH_HilbertLimit/ActualXi.lean}\\[5pt]
+Cancellation condition and spectral endpoint
+ & \path{RH_HilbertLimit/ActualCancellationWitness.lean};
+   \path{RH_HilbertLimit/ZeroBudgetCandidate.lean};
+   \path{TwoRoutes/RouteOne.lean}\\[5pt]
+Finite monomial convergence
+ & \path{TwoRoutes/BernsteinMomentLimit.lean}\\[5pt]
+Positive functional and exact Hausdorff moments
+ & \path{TwoRoutes/HausdorffMeasure.lean}\\[5pt]
+Integral differentiation, sign, actual germ
+ & \path{TwoRoutes/ResolventAnalytic.lean};
+   \path{TwoRoutes/MeasureResolvent.lean}\\[5pt]
+Analytic-defect continuation and actual pole closure
+ & \path{TwoRoutes/ActualResolventContinuation.lean};
+   \path{TwoRoutes/ActualHerglotzClosure.lean};
+   \path{TwoRoutes/RouteTwo.lean}\\[5pt]
+Full declaration audit
+ & \path{TwoRoutesAudit.lean}; \path{audit-targets.tsv}\\
+\bottomrule
+\end{longtable}
+
+The frozen chronological project anchor is
+\code{ZETA\_HYPERBOLIC\_ANCHOR\_5}. The native package
+\code{RH\_H00\_TWO\_ROUTES\_LEAN\_v0\_2\_3\_construction.zip}
+has SHA-256:
+\begin{center}\small\ttfamily
+578cc8ad072c79dc7838fcf65a27b9eed\\
+707fcc98e0fdf6a4b3601aa20e8c51a
+\end{center}
+The line break in this display is typographical; the digest is the
+concatenation of both lines. The native checkpoint is retained as
+\path{evidence/NATIVE_PASS_CHECKPOINT.json}.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{source}
+Hilber-Vector-Resolvent-Theory project,
+\emph{Two-route Lean source development}, version 0.2.3.
+Repository revision
+\code{c6b95fd9e3d792270026da083bddddbc72bacb22}, 2026.
+\url{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/tree/c6b95fd9e3d792270026da083bddddbc72bacb22}.
+
+\bibitem{lean4}
+L.~de Moura and S.~Ullrich,
+The Lean 4 theorem prover and programming language.
+In \emph{Automated Deduction---CADE 28},
+Lecture Notes in Computer Science 12699, Springer, 2021, pp.~625--635.
+\url{https://doi.org/10.1007/978-3-030-79876-5_37}.
+
+\bibitem{mathlib}
+The mathlib Community,
+The Lean mathematical library.
+In \emph{Proceedings of the 9th ACM SIGPLAN International Conference on
+Certified Programs and Proofs (CPP 2020)}, ACM, 2020, pp.~367--381.
+\url{https://doi.org/10.1145/3372885.3373824}.
+
+\bibitem{cirun}
+Hilber-Vector-Resolvent-Theory project,
+\emph{GitHub Actions: Lean build and axiom audit},
+run 40712534224, source revision as in~\cite{source}.
+\url{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions/runs/40712534224}.
+\end{thebibliography}
+\end{document}

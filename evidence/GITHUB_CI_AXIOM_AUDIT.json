@@ -1,0 +1,3197 @@
+{
+  "target": "GITHUB_CI",
+  "status": "PASS",
+  "declarations_audited": 641,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "log_sha256": "a5d7664435216387dd977d488090f06e013be8bef9ff2c1aae46baccd571faf5",
+  "targets_sha256": "599ade2faafc676df7a51a1be8fac6fc1da4d99fda94ddf44b07a682386297ff",
+  "axioms_by_declaration": {
+    "AWPIRH.xi_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.xi_reflection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.centeredXi_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.centeredXi_even": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.nontrivialZero_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.gammaR_ne_zero_of_nontrivialZero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.completedZeta_zero_of_nontrivialZero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.xi_eq_completed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.xi_zero_of_nontrivialZero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.xi_ne_zero_of_one_le_re": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.complex_sqrt_sq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_square": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_one_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_zero_of_nontrivialZero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.sqrt_differentiableAt_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.sqrt_continuousAt_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.normalizedSqrt_sq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.normalizedSqrt_differentiableAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_eq_normalizedSqrt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_differentiableAt_of_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_continuousAt_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_analyticAt_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_differentiable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_analyticAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_entire": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AWPIRH.theta_continuous": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.one_le_ellipseRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ellipseRadius_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ellipseRadius_le_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.one_lt_ellipseRadius_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralBounded_of_norm_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.one_le_spectralRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ellipseRadius_le_spectralRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralRadius_eq_sSup_range": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralRadius_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.one_lt_spectralRadius_of_node": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_affine_le_ellipseRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rootOfNode_nonpositive_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.square_nonpositive_iff_re_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.momentFunctional_monomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.momentFunctional_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.momentFunctional_C_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.bernsteinPolynomial_expansion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.momentFunctional_bernsteinPolynomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.polynomial_moment_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.bernsteinWeight_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.bernsteinWeight_zero_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowVariation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.sum_bernsteinWeight_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.sum_bernsteinWeight_eq_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowVariation_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.one_le_rowVariation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowVariation_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.bernsteinWeight_coarsening": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowVariation_le_succ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowVariation_monotone": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.all_rowVariation_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.xi_zero_iff_nontrivialZero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_iff_xiZerosCritical": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_iff_thetaZerosNonpositive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualNormalizedMoment_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.complexMoment_eq_real": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.mass_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.re_mass_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.norm_node_le_total": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.bounded": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.nodes_nonnegative_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.nodes_segment_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.radius_one_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.entire_eq_zero_of_zero_arc": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.circlePoint_norm_re_div": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.differentiable_eq_affine_of_subquadraticNormGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.eq_exp_affine_of_subquadraticLogNormGrowthAtInfinity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.hasSubquadraticProximityGrowthAtInfinity_of_characteristic_factors": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.AntiHerglotzUHP.of_eventual_pointwise_tendsto_UHP": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.summable_of_nonneg_fiber_tsum_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.arctan_div_lower_rational": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.hadamardGenus1Factor_self_eq_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.infiniteHadamardProduct_eq_zero_at_zeroLoc": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.HadamardZeroInvSqSummability.infiniteProduct_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.monomial_hasSubquadraticLogNormGrowthAtInfinity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.HadamardZeroDyadicCumulativeCountData.toHadamardZeroInvSqSummability": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.HadamardZeroDyadicCumulativeCountData.log_norm_infiniteHadamardProduct_le_logSq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.infiniteHadamardProduct_even_of_neg_equiv": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.HadamardZeroDyadicCumulativeCountData.log_norm_pairedQuadraticProduct_le_rLogR": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.logDerivativeResponse_infiniteHadamardProduct_eq_tsum_indexed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.hadamardRegularizedLogDerivSeries_im_neg_of_real_indexed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.continuousAt_implies_probe_nonzero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.complex_star_im": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.AntiHerglotzReflectionData.zeros_real": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entire_function_roots_real_of_analytic_nontrivial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.CompletedLFunctionHadamardData.onlyRealZeros_iff_strictAntiHerglotz": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.critical_shift_star": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXi.schwarzReflection_holds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullback_logDeriv_chain_rule": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullback.zeros_real_of_sign": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackZeroOccurrenceLoc_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackZeroOccurrenceLoc_is_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackZeroOccurrenceLoc_exhaustive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.exists_entireXiPullbackZeroOccurrenceLoc_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullbackCanonicalZeroDistribution.toHadamardZeroInvSqSummability": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalProduct_analyticOrderAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalProduct_characteristic_subquadraticAtInfinity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.analyticOrderNatAt_zero_even_of_even": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.exists_differentiable_log_entireQuotientCompletion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullbackBacklundTuringShellBound.toCanonicalZeroDistribution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.gammaPoleAvoidingNeighborhoodSource": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.xi_completedZeta_correction_algebra": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.rawCompletedXiCorrectness": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_zero_im_abs_lt_half": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXiPullback_zeros_real": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_of_entireXi_leftHalfPlaneLogDerivSign": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackZeroOccurrence_fiber_natCard_eq_riemannZeta_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.zeroDensityRho_10_ge_259_div_3586": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.zetaWeightedZeroCountUpToHeight_eq_zero_of_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.ZetaBacklundTuringRemainderBound.toCanonicalZeroDistribution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullbackDyadicCumulativeCountData.toCanonicalZeroDistribution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.expAffineHadamardPullbackZeroContribution_eq_expanded": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.NatHadamardZeroInvSqData.toHadamardZeroInvSqSummability": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.infiniteHadamardProduct_strictAntiHerglotz_iff_zero_sequence_real": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.expAffineGenusOneProduct_strictAntiHerglotz_iff_zeros_real_of_schwarz": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.expAffineGenusOneProductWithOriginMultiplicity_strictAntiHerglotz_iff_zeros_real_of_schwarz": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullbackCanonicalHadamardLogDerivativeData.b_eq_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.EntireXiPullbackCanonicalHadamardLogDerivativeData.support_nonempty": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity_of_canonicalRemainderData": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity_of_dyadicCount_explicitLogGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalQuotientLog_neg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity_of_dyadicCount_and_quotientMaxGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_lagarias_of_dyadicCount_xiLogNorm_productCharacteristic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.MellinTwoSidedExponentialDecay.norm_mellin_le_factorial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.hurwitzThetaMellinKernel_convergent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.exists_factorialDyadic_orderOne_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity_of_subquadraticBoundaryLog_explicit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.norm_entireXiPullback_le_factorial_of_norm_le_nat": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackThetaDyadicBoundaryGrowthData": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalZeroDistributionFromTheta": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_hasSubquadraticLogNormGrowthAtInfinity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_exists_constant_factorization_of_theta_productCharacteristic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalQuotientLogNormGrowthDataUnconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackCanonicalHadamardLogDerivativeDataUnconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_exists_constant_factorization_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_logDerivative_canonicalExpansion_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.riemannHypothesis_iff_entireXi_lagariasPositivity_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullback_onlyRealZeros_iff_strictAntiHerglotz_generic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackZeroOccurrenceNegationPairingData": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackInfiniteHadamardProduct_eq_pairedQuadraticProduct": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "OverflowResidueRH.entireXiPullbackNonzeroCanonicalProduct_norm_le_exp_rLogR": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.external_entireRiemannXi_eq_actual_xi": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_eq_external_pullback": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.external_pullback_eq_actual_theta": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.transformed_quadratic_factor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.transformed_root_norm_sq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualPairZero_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualZeroScale_inv_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.circlePoint_norm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualComplexScale_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.norm_actualComplexScale": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualComplexScale_inv_norm_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualComplexScale_norm_inv_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_complexScaleProduct_multipliable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_complex_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_neg_complexScale_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_xi_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_norm_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_normSq_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.theta_zero_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.hurwitzThetaMellinKernel_explicit_upper_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.norm_mul_sub_one_le_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_xi_ne_zero_of_low_height": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_xi_zero_one_lt_abs_im": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.affineProduct_hasProdLocallyUniformlyOn_origin": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.logDeriv_affineProduct_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_zero_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_originMultiplicity_eq_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_normalized_complex_factorization": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_origin_logDeriv_eq_tsum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualComplexScale_inv_re_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actual_theta_origin_real_trace": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.QQRH_of_theta_sector_nonvanishing": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.square_angle_le_cutoff_of_le_abs_im": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.theta_zero_angle_le_neg_three_fifths_of_height": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "AngularMaster.actualComplexScale_sector_of_zero_height": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_zero_eq_canonical_trace": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualKappa_eq_canonical_trace": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualPairIndex_nonempty": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualInverseScale_re_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualKappa_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualTheta_zero_has_canonical_scale": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_eq_inverseScale_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_norm_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_root_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_root_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_covers": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalCalibration_of_moment_identities": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.deriv_conj_of_schwarz": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.iteratedDeriv_conj_of_schwarz": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualLogDerivative_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualLogDerivative_iteratedDeriv_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_conj": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_im_eq_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_eq_ofReal_actualMoment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_spectralTerm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.sum_norm_spectralTerm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_spectralTerm_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralTerm_re_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_rowGenerating_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.weight_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.variation_one_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.variation_monotone": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.term_norm_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.variation_upper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.total_norm_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.weights_nonneg_of_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.variation_eq_one_of_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.variation_eq_one_of_radius_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rootScale_eq_exp_logScale": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.log_rootScale_eq_logScale": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.logScale_tendsto_iff_rootScale_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.logScale_zero_iff_rootScale_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.eventually_pos_of_geometric_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.geometric_sandwich_log_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.geometric_sandwich_root_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.block_lower_to_eventual_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.root_tendsto_of_monotone_block_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_eventual_exp_upper": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_logScale_tendsto_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.log_limit_nonpos_of_subexponential": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.logScale_tendsto_zero_of_subexponential": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_iff_logScale_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_iff_rootScale_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rate_le_one_of_subexponential": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.geometric_rate_eq_one_iff_subexponential": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.geometric_root_one_iff_rate_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.geometric_root_one_iff_subexponential": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.inverseRowControl_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.recoveryConstant_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finiteBlockMatrix_det_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finiteExponential_block_mulVec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finite_exponential_recovery": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.coefficient_norm_le_block_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.recoveryConstant_mul_pow_le_block_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finite_exponential_shifted_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.absorb_subdominant_tail": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finite_tail_preliminary_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.finite_tail_block_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.root_tendsto_of_finite_dominant_tail": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.DominantTailData.envelope": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_root_tendsto_of_dominant_tail": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_root_tendsto_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.exists_actual_root_limit_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_root_one_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_subexponential_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_logScale_zero_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_all_variation_one_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_weights_nonnegative_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_bounded_variation_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_of_actual_subexponential_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.NaturalGrowthStep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.exp_bound_of_eventual_mul_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_eventual_mul_steps": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_natural_growth_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_growth_step_zero_of_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_exists_natural_growth_step_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_exists_natural_bound_iff_nativeRH_of_analytic_inputs": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.norm_lt_outside_finite": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.ellipse_lt_outside_finite": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.finite_ellipse_superlevel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.affine_power_bound_outside_finite": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.finite_tail_below_radius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralTail.spectralRadius_attained": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.finite_tail_below_radius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.spectralRadius_attained": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_mass_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_power_sum_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSums": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalCalibration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_root_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_natural_growth_step_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_natural_bound_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.massBound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.resolventDomain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.resolventSeries": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.one_le_massBound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.norm_le_massBound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.isOpen_resolventDomain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.zero_mem_resolventDomain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.norm_mul_lt_half": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.half_lt_norm_denominator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.denominator_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.norm_resolvent_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.norm_resolvent_pow_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.summable_resolvent_pow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.logDeriv_affineProduct_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.hasDerivAt_resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.hasDerivAt_resolvent_pow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.deriv_resolventSeries": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.iteratedDeriv_resolventSeries": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.iteratedDeriv_logDeriv_affineProduct_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CanonicalPowerSumAnalysis.summable_positive_powers": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualLogDerivative_eq_canonical_product_logDeriv": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualLogDerivative_resolvent_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_eq_canonical_powerSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualComplexMoment_hasSum_canonical_powers": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalNode_power_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonicalPowerSums": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.exists_unit_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.phase_ne_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.affine_injective": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.affine_eq_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.norm_affine_lt_of_radius_lt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.norm_affine_lt_ellipseRadius_of_norm_lt_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralPhase.exists_dominant_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.exists_dominant_phase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.sum_spectralTerm_mul_pow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowGenerating_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowGenerating_eq_tsum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralRemainder": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowGenerating_eq_sum_add_remainder": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_node_affine_pow_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralRemainder_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.spectralRemainder_norm_summable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_spectralRemainder_le_tailMass": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.norm_spectralRemainder_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.rowGenerating_hasSum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.rowGenerating_eq_tsum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.rowGenerating_eq_sum_add_remainder": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.norm_remainder_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.exists_uniform_finite_remainder_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.exists_common_strict_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.groupedCoefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.groupedCoefficient_eq_card_mul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.groupedCoefficient_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.grouped_exponential_sum": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.SpectralExtraction.finite_dominant_indices": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.ActualSpectralCalibration.dominantExtraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualCanonicalCalibration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualCanonicalDominantExtraction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_root_tendsto_constructed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_root_limit_exists": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_root_one_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_subexponential_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_all_variation_one_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_weights_nonnegative_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_natural_growth_step_iff_nativeRH_constructed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.canonical_actual_natural_bound_iff_nativeRH_constructed": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.cancellationDefect": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.bernsteinWeight_coarsening_scaled": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.cancellationDefect_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_eq_zero_of_rowVariation_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_eq_zero_of_rowVariation_constant": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_le_of_local_flux": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.EventualNaturalGrowthStep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_eventual_natural_growth_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.subexponential_of_exists_eventual_natural_growth_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CancellationBudget": [],
+    "RH_HilbertLimit.CancellationBudget.Admissible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.cancellationBudget_admissible_iff_eventual_growth_step": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_subexponential_of_admissible_cancellationBudget": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_of_admissible_cancellationBudget": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_of_exists_admissible_cancellationBudget": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.zero_cancellationBudget_admissible_of_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.exists_admissible_cancellationBudget_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_of_exists_eventual_cancellation_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.CancellationBudget.LocalFlux": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.cancellationBudget_admissible_of_local_flux": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.nativeRH_of_exists_local_cancellation_flux": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.zeroBudgetCandidate": [],
+    "RH_HilbertLimit.actualNormalizedMoment_zero_unconditional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_zero_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualVariation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_one_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_one_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualVariation_one_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.rowCancellation_eq_zero_iff_rowVariation_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_rowCancellation_zero_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_rowCancellation_zero_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualVariation_one_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_two_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_two_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualWeight_two_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actualVariation_two_eq_one_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.actual_rowCancellation_one_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.zeroBudgetCandidate_admissible_iff_all_cancellation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.zeroBudgetCandidate_admissible_iff_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.zeroBudgetCandidate_admissible_iff_seed_and_propagation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_all_cancellation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_cancellation_zero_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_variation_succ_eq_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_variation_one_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_of_all_variation_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_all_variation_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_weights_nonnegative_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_of_actual_weights_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_actual_weights_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_subexponential_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_of_nativeRH": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_nativeRH_route_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.BernsteinPositive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinGrid_mem_Icc": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_const": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_smul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_abs_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.momentFunctional_nonneg_bernstein_combination": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelMultiplier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelMultiplier_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelMultiplier_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelWeight": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelWeight_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.kernelMultiplier_pow_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_kernel_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_bernsteinPositive_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_actual_bernsteinPositive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualBernsteinAverage": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualBernsteinAverage_const": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualBernsteinAverage_nonneg": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualBernsteinAverage_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualBernsteinAverage_abs_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation_bounds": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation_abs_le_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_kernelWeight_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation_zero_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualKernelApproximation_uniform_abs_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.ScalarProductGeometry": [],
+    "NativeSolobolo.GPObservable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.PositiveAnchor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.InteriorRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredXiGeometry": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.RiemannHypothesis": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredXiGeometry.anchor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredXiGeometry.radius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredXiGeometry.cayleyQ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CayleyMomentCodec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPTransferMomentModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.BKQRCayleyModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPBKQRCommonMomentIdentity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPCayleyTransferMatch": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.GPBKQRCommonMomentFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.GPBKQRCayleyTransferFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.logScaleCurvature": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.widderStep": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.widderTower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.widderTower_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.widderTower_succ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPWidderGeneratedModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPWidderGeneratedModel.toTransferMomentModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.BKQRWidderGeneratedModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.BKQRWidderGeneratedModel.toCayleyModel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPBKQRFreeEnergyCurvature": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.GPBKQRFreeEnergyWitness": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.GPBKQRFreeEnergyCurvatureFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.RealGramGeometry": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.orbitIter": [],
+    "NativeSolobolo.orbitIter_zero": [],
+    "NativeSolobolo.orbitIter_succ": [],
+    "NativeSolobolo.BKQRContractiveOrbit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.BKQRContractiveOrbitFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.BKQRWidderContractiveOrbitFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredXiGeometry.thetaZeroPoint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.CenteredThetaData": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.cayleyImagMagnitude": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.cayleyPointPlus": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.cayleyPointMinus": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.actualThetaCayleyObservable": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.cayleyRadiusAtMetricDepth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.metricDepthOfCayleyRadius": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.ActualCayleyMetricRegularAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.UniformEnergyAdmissible": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.DownwardClosedOnNonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.MetricPi": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.BKQRPiApprox": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.MetricSequenceBelowPi": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.EnergyMonotoneInDepth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.BKQRPiEnergyFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.MetricPiEnergy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.BKQRToActualMetricBridge": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.ActualMetricPiObstruction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.StrictBKQRPiApprox": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.BKQRDeeperEnergyToActualCayleyBridge": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.WeightedCayleyCoeffBoundAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.AbsoluteCayleySeriesRegularAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.StrictBKQRPiCoeffFrontier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Frontier.ActualCayleyJetBridge": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.orbitVec": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.orbitBaseEnergy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.orbitDepthEnergy": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.orbitCoefficient": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.hopfDefect": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.gramDefect": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.defectGramVector": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.pairNormSq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.ORBIT_DEPTH_ENERGY_LE_BASE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.HOPF_DEFECT_NONNEGATIVE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.GRAM_DEFECT_NONNEGATIVE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.MOMENT_DEFECT_IS_BKQR_PAIR_SQUARE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.MOMENT_DEFECT_NONNEGATIVE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.MOMENT_SQ_LE_BASE_SQ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.WIDDER_DEFECT_IS_BKQR_PAIR_SQUARE": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CAYLEY_RADIUS_AT_METRIC_DEPTH_NONNEG": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CAYLEY_RADIUS_STRICT_MONO_SUBPI": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CAYLEY_RADIUS_POS_OF_POS_SUBPI": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CAYLEY_RADIUS_LE_ONE_SUBPI": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.WEIGHTED_COEFF_BOUND_IMPLIES_SUMMABLE_AT_SMALLER_RADIUS": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.DEEPER_WEIGHTED_COEFF_BOUND_IMPLIES_ABSOLUTE_CAYLEY_SERIES": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.BKQR_PI_COEFF_IMPLIES_ALL_SUBPI_ABSOLUTE_CAYLEY_SERIES": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CONTRACTIVE_ORBIT_GIVES_WEIGHTED_CAYLEY_COEFF_BOUND": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "NativeSolobolo.Derivations.BKQR.CONTRACTIVE_ORBIT_FRONTIER_IMPLIES_STRICT_BKQR_PI_COEFF": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.contractiveOrbit_base_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.contractiveOrbit_abs_le_base": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.contractiveOrbit_absolute_summability": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedWeight": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedMultiplier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedMultiplier_eq_mul_weight": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedWeight_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedMultiplier_nonnegative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedMultiplier_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedKernel_between_zero_and_base": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedWeight_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.normalizedKernel_zero_succ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualRealLogDerivative": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderBase": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment_succ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.ActualApproximationConvergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment_bounds_of_convergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment_abs_le_base_of_convergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualWidderMoment_summable_of_convergence": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.angularZeroCoordinate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.norm_pos_of_im_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.abs_re_lt_norm_of_im_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.angularZeroCoordinate_mem_Ioo": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.norm_mul_angle_of_im_ne_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.complex_point_quadratic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.angular_quadratic_at_nonreal_point": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.simplePole_residue_eq_zero_of_continuousAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.simplePole_no_continuous_extension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.simplePole_no_analytic_extension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.shiftedMoments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinWeight_shift": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_monomial_succ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinMomentTransition": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinGrid_affine_pow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_monomial_recursion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinMomentTransition_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_monomial_tendsto": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.HausdorffInterval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.intervalExtension": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.intervalExtension_apply": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.bernsteinAverage_congr_on_interval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_smul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_const": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_abs_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_exists_ultralimit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.tendsto_hausdorffValue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_smul": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_const": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_mono": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_abs_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffPositiveFunctional": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffMeasure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffMeasure_integral": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffMeasure_univ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffMeasure_isProbabilityMeasure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.intervalMonomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.continuousBernsteinAverage_monomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffValue_monomial": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.hausdorffMeasure_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.exists_probabilityMeasure_of_bernsteinPositive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualHausdorffMeasure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualHausdorffMeasure_isProbabilityMeasure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualHausdorffMeasure_moment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_positive_measure_of_H00": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.UnitInterval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.denominator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.transform": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.domain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.norm_coe_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.continuous_denominator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.continuous_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.exists_local_lower_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.isOpen_domain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.kernel_norm_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.hasDerivAt_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.integrable_kernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.hasDerivAt_transform": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.deriv_transform": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.analyticAt_transform": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.analyticOnNhd_transform": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.zero_mem_domain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.upperHalfPlane_subset_domain": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.positiveResolventKernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.positiveResolventKernel_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualResolventApproximation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actualResolventApproximation_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_theta_no_upper_zeros_of_logDerivative_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_theta_zero_real_of_logDerivative_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_actual_logDerivative_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_logDerivative_im_nonpos_of_resolvent_limit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.resolventUpperHalfPlane": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.resolventUpperHalfPlane_convex": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.resolventUpperHalfPlane_preconnected": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.entire_ode_on_upperHalfPlane_of_origin_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_logDerivative_eq_of_analytic_resolvent_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_analytic_positive_resolvent_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.transform_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.iteratedDeriv_resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.analyticAt_resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.resolvent_eq_integral_positiveKernel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.MeasureResolvent.resolvent_im_nonpos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_iteratedDeriv_logDerivative_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.analytic_eventuallyEq_of_iteratedDeriv_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.actual_logDerivative_resolvent_germ": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_actual_hausdorff_moments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_via_measure_resolvent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "RH_HilbertLimit.TwoRoutes.H00_iff_nativeRH_route_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "H00_admissibility": "OPEN",
+  "unconditional_RH": "NOT_ESTABLISHED"
+}

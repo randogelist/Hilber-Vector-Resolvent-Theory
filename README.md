@@ -4,7 +4,7 @@ Two Lean constructions of the conditional implication **`H00 → RiemannHypothes
 
 The frozen source is `RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction`. Its Windows Lean 4.33.0 build and axiom audit passed according to the supplied native console excerpt. The original native logs and per-declaration axiom output were not independently supplied; the provenance record preserves that distinction.
 
-- [Technical PDF](docs/RH_H00_Two_Routes_Native_PASS_and_GitHub_CI.pdf)
+- [Mathematical preprint](docs/RH_H00_Two_Routes_Native_PASS_and_GitHub_CI.pdf)
 - [GitHub Actions runs](https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions)
 - [Native PASS checkpoint](evidence/NATIVE_PASS_CHECKPOINT.json)
 - [CI workflow](.github/workflows/lean.yml)
@@ -31,7 +31,7 @@ Route 2 shares `H00` and direct positivity lemmas with Route 1, but its forward 
 
 ## GitHub CI
 
-The active verification target is `GITHUB_CI`, explicitly requested after the native checkpoint. Native evidence and CI evidence remain separate. See the live Actions run for the current CI result; configuration alone is not a CI PASS.
+The active verification target is `GITHUB_CI`, explicitly requested after the native checkpoint. Native evidence and CI evidence remain separate. [Run 40712534224](https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions/runs/40712534224) passed at commit `c6b95fd9e3d792270026da083bddddbc72bacb22`: source identity, the full build, all four endpoint types, and all 641 axiom checks. The job log was independently read; see [CI PASS checkpoint](evidence/GITHUB_CI_PASS_CHECKPOINT.json) and [per-declaration axiom results](evidence/GITHUB_CI_AXIOM_AUDIT.json).
 
 - Lean: `leanprover/lean4:v4.33.0`.
 - Mathlib: commit `db584cd6d46c92f209a44c0f1c829460d327499d` (verified `v4.33.0` release tag). The original native mathlib commit was not supplied, so cross-target equivalence of dependency revisions is not assumed.
