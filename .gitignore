@@ -1,0 +1,12 @@
+.lake/
+.elan/
+__pycache__/
+*.pyc
+.ci-logs/
+ci-logs/
+ci-results/
+tmp/
+*.olean
+*.ilean
+*.olean.private
+*.olean.server

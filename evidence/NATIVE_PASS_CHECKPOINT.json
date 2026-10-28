@@ -1,0 +1,76 @@
+{
+  "record_type": "NATIVE_PASS_COMPANION_CHECKPOINT_NOT_INIT",
+  "package": "RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction",
+  "mode": "A_TIER_LEAN",
+  "target": "LOCAL_COMPILER",
+  "recorded_for_date": "2026-10-28",
+  "date_timezone": "Europe/Berlin",
+  "native_run_timestamp": "NOT_SUPPLIED",
+  "evidence_basis": "USER_SUPPLIED_NATIVE_PASS_EXCERPT_PLUS_LOCAL_AUDIT_PLAN_AND_RUNNER_INSPECTION",
+  "native_logs_and_receipts_independently_read": false,
+  "package_identity": {
+    "zip_filename": "RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction.zip",
+    "zip_sha256": "578cc8ad072c79dc7838fcf65a27b9eed707fcc98e0fdf6a4b3601aa20e8c51a",
+    "library_file_id": "libfile_5adaf63e78788191b08b1252fdcd5beb",
+    "runner_sha256": "d50efeed6060818bd80d66587dc8beb2f03eca3da60a2daec9914e87e98b7191",
+    "audit_plan_sha256": "599ade2faafc676df7a51a1be8fac6fc1da4d99fda94ddf44b07a682386297ff",
+    "final_audit_source_sha256": "992c0547cb17f28211e351a73282a86f7972c0267dd1ec1d6d07663988067495",
+    "source_manifest_sha256": "e2c986f457087d7560a272a81a312ef1d25fb7829266a963c1f345277e91a859"
+  },
+  "reported_run": {
+    "project_build": "PASS",
+    "run": "PASS",
+    "compiled_modules": 3,
+    "frozen_reused_modules": 115,
+    "audit_only_modules": 0,
+    "legacy_migrated_modules": 0,
+    "compact_anchors_saved": 3,
+    "source_modules_in_plan": 117,
+    "selected_audit_declarations": 641,
+    "storage_root": "E:\\RH-SLOW",
+    "native_lean_version": "4.33.0"
+  },
+  "formal_result": {
+    "common_hypothesis": "H00 := zeroBudgetCandidate.Admissible",
+    "native_conclusion": "_root_.RiemannHypothesis",
+    "route_one": "H00 -> RH via retained spectral closure",
+    "route_two": "H00 -> RH via constructed Hausdorff measure and analytic resolvent",
+    "equivalences": "H00 <-> RH; both forward constructions use the common retained RH -> H00 converse",
+    "declarations": [
+      "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_one",
+      "RH_HilbertLimit.TwoRoutes.H00_iff_nativeRH_route_one",
+      "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_two",
+      "RH_HilbertLimit.TwoRoutes.H00_iff_nativeRH_route_two"
+    ],
+    "status": "NATIVE_COMPILED_AND_AXIOM_AUDITED_AS_REPORTED_BY_USER",
+    "audit_coverage_independently_checked_in_package": true,
+    "runner_success_requires_final_audit": true,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "actual_per_declaration_axiom_lists": "NOT_INCLUDED_IN_THE_SUPPLIED_EXCERPT",
+    "route_two_does_not_call_route_one_RH_endpoint": true
+  },
+  "remaining_open": {
+    "H00_admissibility": true,
+    "zero_budget_universal_propagation": true,
+    "terminating_finite_checker_soundness": true,
+    "terminating_finite_checker_completeness": true,
+    "exists_finite_accepted_witness_iff_RH": true,
+    "finite_accepted_witness_established": false,
+    "unconditional_RH_established": false,
+    "original_longer_Widder_angular_PDE_chain_complete": false
+  },
+  "formal_closure_open_interpretation": "The broader finite Boolean checker/witness goal remains open; the two semantic H00 implications are covered by the passing audit.",
+  "preservation": {
+    "original_v023_zip_unchanged": true,
+    "source_files_changed": 0,
+    "native_runner_changed": false,
+    "prior_native_partial_passes_retained": true,
+    "no_automatic_init": true,
+    "local_lean_lake_compiler_or_CI_executed": false
+  },
+  "supplied_console_excerpt": "SEMANTIC_CANCELLATION_WITNESS_FORWARD=DECLARATION_AUDITED\nSEMANTIC_CANCELLATION_WITNESS_EQUIVALENCE=DECLARATION_AUDITED\nWITNESS_ADMISSIBILITY=UNIVERSAL_AFTER_FINITE_CUTOFF_NOT_A_BOOL_CHECK\nZERO_BUDGET_CANDIDATE=CUTOFF_0_COEFFICIENT_0\nZERO_BUDGET_UNIVERSAL_PROPAGATION=OPEN\nZERO_BUDGET_ADMISSIBILITY=OPEN\nFINITE_CHECKER_SOUNDNESS=OPEN\nUNCONDITIONAL_RH=NOT_ESTABLISHED\nFINITE_ACCEPTED_WITNESS=NOT_ESTABLISHED\nFINITE_CHECKER_EQUIVALENCE=OPEN\nFORMAL_CLOSURE=OPEN\nCOMPILED_MODULES=3\nFROZEN_REUSED_MODULES=115\nAUDIT_ONLY_MODULES=0\nLEGACY_MIGRATED_MODULES=0\nPROJECT_BUILD=PASS\nRUN=PASS\nWORKING_ARTIFACT_MODULES_RETAINED=0\nRESTORED_ARTIFACT_FILES=115\nANCHOR_HISTORY_SCANS=3\nCOMPACT_ANCHORS_SAVED=3\nCOMBINED_WORKING_DIGESTS_CONSUMED=0\nLOGICAL_TOOL_LAUNCHES={\"certutil\":513,\"csc\":0,\"helper\":2,\"lean\":7,\"other\":0,\"ram_warm\":0,\"total\":522}\nHASH_PHASE_TOTALS={\"batch_sets\":1,\"certutil_sets\":239,\"elapsed_ms\":76368,\"failed_sets\":0,\"files\":79231,\"sets\":240}\nLogs: E:\\RH-SLOW\\workspaces\\RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction\\run-build.log and E:\\RH-SLOW\\workspaces\\RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction\\run-audit.log\n\nC:\\Users\\Simon\\Downloads>"
+}

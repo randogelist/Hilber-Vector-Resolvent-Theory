@@ -1,0 +1,142 @@
+{
+  "package": "RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction",
+  "mode": "A_TIER_LEAN",
+  "target": "LOCAL_COMPILER",
+  "init_performed": false,
+  "goal": {
+    "route_one": "H00 -> _root_.RiemannHypothesis via actual spectral closure",
+    "route_two": "H00 -> _root_.RiemannHypothesis via Hausdorff measure and analytic resolvent"
+  },
+  "common_hypothesis": "RH_HilbertLimit.TwoRoutes.H00 = zeroBudgetCandidate.Admissible",
+  "route_one": {
+    "status": "SOURCE_COMPLETE_NATIVE_COMPILE_AND_AXIOM_AUDIT_PENDING",
+    "declaration": "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_one",
+    "extra_analytic_premises": []
+  },
+  "route_two": {
+    "status": "SOURCE_REPAIRED_NATIVE_COMPILE_AND_AXIOM_AUDIT_PENDING",
+    "declaration": "RH_HilbertLimit.TwoRoutes.nativeRH_of_H00_route_two",
+    "equivalence": "RH_HilbertLimit.TwoRoutes.H00_iff_nativeRH_route_two",
+    "extra_analytic_premises": [],
+    "construction": [
+      "H00 -> positive Bernstein rows",
+      "positive Bernstein rows -> Hausdorff probability measure with actual moments",
+      "actual moments -> analytic resolvent with actual logarithmic-derivative germ",
+      "analytic defect continuation -> anti-Herglotz logarithmic derivative",
+      "constructed local pole exclusion and conjugation -> literal Mathlib RH"
+    ],
+    "route_one_forward_endpoint_invoked": false,
+    "native_closed": null
+  },
+  "original_angular_widder_route": {
+    "status": "RETAINED_PARTIAL_SOURCE_NOT_FINALIZED",
+    "open": [
+      "ActualApproximationConvergence for the original Widder tower",
+      "actual angular germ identity and disk-extension/pole binding"
+    ],
+    "required_by_measure_resolvent_endpoint": false
+  },
+  "native_execution": false,
+  "lean_execution": false,
+  "lake_execution": false,
+  "ci_execution": false,
+  "new_verified_theorems": 0,
+  "new_declarations_status": "SOURCE_ONLY_NOT_P",
+  "H00_proved_unconditionally": false,
+  "accepted_finite_witness": null,
+  "finite_checker_soundness": "OPEN",
+  "finite_checker_completeness": "OPEN",
+  "parent_results": "RETAINED_AS_RECORDED_NOT_REVERIFIED_OR_DOWNGRADED",
+  "original_packages_modified": false,
+  "previous_seven_modules": "UNCHANGED_FROM_V0_2_2; EARLIER_REPAIRS_RETAINED",
+  "first_five_refinement_batch": "NOT_PART_OF_THIS_BUILD",
+  "new_modules": [],
+  "source_modules": 117,
+  "audit_declarations": 641,
+  "paper_anchor": "RH_Two_Routes_B_Tier_Anchor_v1.pdf; source proof is not native verification",
+  "runner_patch": {
+    "status": "LAKE_MAPPING_RETAINED_STORAGE_ROOT_CHANGED_NATIVE_RERUN_PENDING",
+    "scope": "v0.2.1 Lake mapping retained; storage constant and package/version identifiers changed",
+    "source_root": "<prefix>\\src\\lean\\lake",
+    "artifact_root": "<prefix>\\lib\\lean",
+    "source_hashing_skipped": false,
+    "cache_audit_policy_changed": false,
+    "user_reported_previous_attempt": {
+      "source": "USER_PASTED_NATIVE_CONSOLE_LOG",
+      "package": "RH_H00_TWO_ROUTES_LEAN_v0_2_0_construction",
+      "target": "LOCAL_COMPILER",
+      "compiler_version_reported": "4.33.0",
+      "compiler_commit_reported": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+      "mathlib_cache_reported": "READY",
+      "failed_stage": "DEPENDENCY_GRAPH",
+      "elapsed_ms": 89377,
+      "last_module": "Lake.Util.Casing",
+      "reason": "Source needed to fingerprint cached dependency imports is missing",
+      "attempted_source_suffix": "src\\lean\\Lake\\Util\\Casing.lean",
+      "project_proof_compilation_reached": false,
+      "failed_module_diagnostics_count": 0,
+      "worker_inventory_recheck": "CLEAR",
+      "theorem_status_promoted": false,
+      "note": "Structured excerpt of supplied evidence; not a generated native PASS or a full log."
+    }
+  },
+  "compile_repair": {
+    "module": "RH_HilbertLimit.TwoRoutes.MeasureResolvent",
+    "proof_body_edits": 3,
+    "changes": [
+      "Remove an unreachable trailing tactic",
+      "Explicit RCLike.im-to-Complex.im integral identity",
+      "Explicit real-to-complex moment transport"
+    ],
+    "statement_changes": 0,
+    "added_assumptions": 0,
+    "native_rerun": "PENDING"
+  },
+  "storage": {
+    "root": "E:\\RH-SLOW",
+    "workspaces": "E:\\RH-SLOW\\workspaces",
+    "anchor_writes": "E:\\RH-SLOW\\anchors",
+    "optional_checked_read_import": "E:\\RH-FAST\\anchors",
+    "old_storage_deleted_or_moved": false,
+    "toolchain_and_mathlib_locations": "UNCHANGED"
+  },
+  "latest_native_evidence": {
+    "source": "USER_PASTED_NATIVE_CONSOLE_EXCERPT",
+    "package": "RH_H00_TWO_ROUTES_LEAN_v0_2_2_construction",
+    "run": "FAIL",
+    "failed_stage": "PROJECT_MODULES",
+    "replayed_compile_failures": [
+      "RH_HilbertLimit.TwoRoutes.MeasureResolvent"
+    ],
+    "reported_errors": [
+      {
+        "line": 41,
+        "message": "No goals to be solved"
+      },
+      {
+        "line": 104,
+        "message": "integral_im rewrite does not match Complex.im"
+      },
+      {
+        "line": 187,
+        "message": "Real moment rewrite does not match complex integral"
+      }
+    ],
+    "explicit_module_passes": {
+      "RH_HilbertLimit.TwoRoutes.ActualLimitBridge": {
+        "status": "COMPILE_AND_AXIOM_AUDIT_PASS",
+        "elapsed_ms": 28546,
+        "receipt": "E:\\RH-SLOW\\anchors\\RH_HILBERT_LIMIT\\LOCAL_COMPILER\\lean-4.33.0\\c\\9b3486ff12781f9c\\e9956354e39a35985b087e7ecb411a79\\01a182e9bff12af0\\receipt.txt"
+      },
+      "RH_HilbertLimit.TwoRoutes.AngularGeometry": {
+        "status": "COMPILE_AND_AXIOM_AUDIT_PASS",
+        "elapsed_ms": 109536,
+        "receipt": "E:\\RH-SLOW\\anchors\\RH_HILBERT_LIMIT\\LOCAL_COMPILER\\lean-4.33.0\\c\\f91a5ece7ba76f06\\537f780e387b9fff8d2a0f9bc4a31194\\01a182e9e9127b30\\receipt.txt"
+      }
+    },
+    "scope": "Pass markers and receipt paths are recorded from supplied console text; receipt contents were not separately accessed",
+    "unreported_module_statuses": "NOT_INFERRED",
+    "final_endpoint_pass": false,
+    "worker_inventory_recheck": "CLEAR"
+  }
+}

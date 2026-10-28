@@ -1,0 +1,17 @@
+{
+  "checks": "STATIC_SOURCE_DIFF_ONLY_NOT_LEAN",
+  "changed_lean_files": [
+    "RH_HilbertLimit/TwoRoutes/MeasureResolvent.lean"
+  ],
+  "unchanged_lean_files_count": 117,
+  "declaration_headers_and_hypotheses": "UNCHANGED",
+  "reported_passed_modules": "BYTE_PRESERVED",
+  "audit_targets": 641,
+  "source_modules": 117,
+  "compile_order_and_audit_plan": "BYTE_PRESERVED",
+  "prohibited_proof_tokens": "NONE_ADDED",
+  "runner_algorithms": "BYTE_PRESERVED_EXCEPT_PACKAGE_AND_VERSION_LABELS",
+  "storage_root": "E:\\RH-SLOW",
+  "native_verification_of_repair": "PENDING",
+  "local_lean_lake_compiler_ci_executed": false
+}

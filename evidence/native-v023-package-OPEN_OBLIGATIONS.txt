@@ -1,0 +1,37 @@
+Goal: two independently assembled implications H00 -> literal Mathlib RH.
+
+Both forward endpoints and their H00 equivalences are supplied as Lean source.
+Native Lean 4.33.0 compilation and the exact standard-axiom audit remain pending.
+Source-complete does not mean elaborated, kernel-checked, or axiom-audited.
+
+Route two is finalized in source by the positive-measure/resolvent variant:
+Bernstein positivity -> Hausdorff probability measure -> actual resolvent germ
+-> analytic continuation of theta' - S theta -> anti-Herglotz pole exclusion.
+It does not invoke the route-one forward RH endpoint or spectral extraction.
+
+The original angular/Widder branch remains partial: its
+ActualApproximationConvergence and actual angular germ/disk-extension bindings
+are not claimed proved. Its seven previous modules are retained unchanged.
+Those unresolved premises are not hypotheses of the new resolvent endpoint.
+
+H00 is still an assumed semantic admissibility statement. This package does
+not prove H00, provide an accepted finite certificate, or establish terminating
+finite-checker soundness or completeness. It is not an unconditional proof of RH.
+
+A fresh native PASS validates only the assembled declarations and their allowed
+axiom dependencies. The runner leaves route-two verification pending otherwise.
+
+Runner v0.2.1 repair: the user-reported v0.2.0 attempt stopped in dependency
+fingerprinting at a wrong Lake source path. Source lookup is now corrected to
+the nested installed Lake source directory. Native rerun remains required.
+No proof source or theorem status was changed by this runner-only patch.
+
+v0.2.2: the five reported module failures have targeted source repairs, with
+unchanged statements/premises. New writes use E:\RH-SLOW; prior anchors may
+be read and verified from E:\RH-FAST. Native recompilation and exact axiom
+audit remain pending. The repair itself proves no new theorem.
+
+v0.2.3: source-only repair of MeasureResolvent's three reported errors.
+ActualLimitBridge and AngularGeometry are preserved with the user's explicit
+compile-and-axiom-audit PASS evidence. The aggregate route-two endpoint and
+final audit remain unverified. No mathematical premise was added or removed.

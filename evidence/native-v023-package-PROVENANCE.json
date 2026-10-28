@@ -1,0 +1,17 @@
+{
+  "package": "RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction",
+  "parent": "RH_H00_TWO_ROUTES_LEAN_v0_2_2_construction",
+  "prepared_at": "2026-10-28T14:35:07.282815+00:00",
+  "parent_zip_sha256": "70d4247a7ac7e792a97f094c52ee4a82274795e519e577ca0ac4b4b9b68290cd",
+  "source_change": {
+    "path": "RH_HilbertLimit/TwoRoutes/MeasureResolvent.lean",
+    "before": "d99f1c10d14b124f942c0ed5f05fbdcd2342cdb6a2ce51dda3876c902df7edde",
+    "after": "5aa79706ad565127dded326b3194da332a19e011e8c460a41a8a3212a9cced13"
+  },
+  "runner_before_sha256": "34a7c82920282b6e5cf6d38f829bf0dc3f15ebb1827b016f2784974c3ebbefde",
+  "runner_after_sha256": "d50efeed6060818bd80d66587dc8beb2f03eca3da60a2daec9914e87e98b7191",
+  "runner_change_scope": "PACKAGE_AND_VERSION_LABELS_ONLY",
+  "parent_metadata": "evidence/v0_2_3_measure_fix/PARENT_v0_2_2_PROVENANCE.json",
+  "proof_statements_changed": false,
+  "native_execution_during_preparation": false
+}

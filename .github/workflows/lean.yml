@@ -1,0 +1,108 @@
+name: Lean build and axiom audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  lean:
+    name: Lean 4.33.0 / all 641 audit targets
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      LEAN_NUM_THREADS: 2
+      TARGET: GITHUB_CI
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Preserve run identity and validate source snapshot
+        run: |
+          set -euo pipefail
+          mkdir -p ci-results
+          git rev-parse HEAD > ci-results/commit.txt
+          printf '%s\n' "$GITHUB_RUN_ID" > ci-results/run-id.txt
+          cp lean-toolchain lake-manifest.json ci/source-integrity.json ci/dependency-pins.json ci-results/
+          python3 scripts/verify_sources.py | tee ci-results/source-check.log
+          python3 -m unittest discover -s scripts -p 'test_*.py' -v 2>&1 | tee ci-results/parser-tests.log
+
+      - name: Install pinned elan and Lean toolchain
+        run: |
+          set -euo pipefail
+          elan_dir="$(mktemp -d)"
+          curl --fail --location --retry 3 \
+            https://github.com/leanprover/elan/releases/download/v4.1.2/elan-x86_64-unknown-linux-gnu.tar.gz \
+            --output "$elan_dir/elan.tar.gz"
+          tar -xzf "$elan_dir/elan.tar.gz" -C "$elan_dir"
+          "$elan_dir/elan-init" -y --default-toolchain none --no-modify-path
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version | tee ci-results/lean-version.txt
+
+      - name: Resolve pinned dependencies and fetch mathlib cache
+        run: |
+          set -euo pipefail
+          lake --keep-toolchain update 2>&1 | tee ci-results/dependencies.log
+          python3 scripts/verify_sources.py --dependencies | tee ci-results/dependency-check.log
+          lake exe cache get 2>&1 | tee ci-results/mathlib-cache.log
+
+      - name: Build all preserved project modules
+        run: |
+          set -euo pipefail
+          lake build 2>&1 | tee ci-results/build.log
+          if grep -E 'sorryAx|declaration uses .sorry' ci-results/build.log; then
+            echo 'Admitted proof reported by compiler' >&2
+            exit 1
+          fi
+
+      - name: Check exact endpoint types
+        run: |
+          set -euo pipefail
+          lake env lean ci/EndpointTypes.lean 2>&1 | tee ci-results/endpoint-types.log
+
+      - name: Fresh full axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean TwoRoutesAudit.lean 2>&1 | tee ci-results/axioms.log
+          python3 scripts/check_axioms.py | tee ci-results/audit-result.log
+          python3 scripts/verify_sources.py --dependencies | tee ci-results/final-identity-check.log
+          printf '%s\n' 'PROJECT_BUILD=PASS' 'AXIOM_AUDIT=PASS' 'TARGET=GITHUB_CI' \
+            'H00_ADMISSIBILITY=OPEN' 'UNCONDITIONAL_RH=NOT_ESTABLISHED' > ci-results/result.txt
+
+      - name: Write run summary
+        if: always()
+        run: |
+          {
+            echo '## H00 two-route verification'
+            echo "- Target: GITHUB_CI; commit: $GITHUB_SHA"
+            if test -f ci-results/result.txt; then
+              echo '- Build, endpoint type checks and 641-declaration axiom audit: PASS'
+            else
+              echo '- Verification is incomplete or failed; inspect the job logs and artifact.'
+            fi
+            echo '- Allowed axioms: propext, Classical.choice, Quot.sound.'
+            echo '- H00 admissibility remains open. Unconditional RH is not established.'
+            echo '- Native PASS evidence is separate from this GitHub run.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain build and audit evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: lean-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: ci-results/
+          if-no-files-found: error
+          retention-days: 90
