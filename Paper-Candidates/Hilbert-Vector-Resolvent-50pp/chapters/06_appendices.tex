@@ -1,0 +1,314 @@
+\PaperPage{45}{Appendix A.1 Verification evidence and its limits}
+The formal evidence refers to a fixed source baseline, not to every
+sentence in this expanded exposition. GitHub Actions run
+\href{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions/runs/40712534224}{40712534224}
+completed successfully at source commit
+\begin{center}
+\code{c6b95fd9e3d792270026da083bddddbc72bacb22}.
+\end{center}
+The preserved record reports source-identity checks, the full project
+build, four exact endpoint type checks, and a strict audit of 641
+selected declarations. The run's complete job log and final audit
+block were independently read when that checkpoint was recorded.
+The corresponding evidence files remain in the repository.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Property & Recorded value\\
+\midrule
+Lean toolchain & \code{leanprover/lean4:v4.33.0}\\
+Preserved Lean files & 118 (117 modules and the final audit)\\
+Audited declarations & 641\\
+Exact endpoint checks & Four, all passed\\
+Active compiler target & \code{GITHUB_CI}\\
+Local Lean execution for this manuscript & None\\
+\bottomrule
+\end{tabular}
+\end{center}
+The mathlib revision is pinned to
+\begin{center}
+\code{db584cd6d46c92f209a44c0f1c829460d327499d}.
+\end{center}
+The allowed axiom set is
+\code{propext}, \code{Classical.choice}, and \code{Quot.sound}.
+Each of the four principal endpoints has exactly this recorded set.
+The audit parser rejects missing or duplicate target entries and
+axioms outside the allowlist. This is evidence for the checked
+declarations and their dependencies, not a replacement for reading
+their types and understanding the meaning of their premises.
+
+A separate native checkpoint records a user-reported Windows Lean
+4.33.0 PASS. The original full native logs and native dependency
+revision were not independently supplied. The native and GitHub
+records are therefore retained separately; matching toolchain labels
+alone do not establish identical dependency revisions.
+
+The present expansion changes manuscript files only. It does not
+modify the frozen Lean sources, discharge $H00$, or add a formal
+implementation of the displayed complex $L^2$ operator model.
+The latter is a conventional mathematical realization whose source
+formalization remains a distinct extension. Historical comments in
+the unchanged modules describe their preparation state before the
+later PASS records; the preserved evidence identifies the subsequent
+verification baseline precisely.
+
+\PaperPage{46}{Appendix A.2 Exact endpoints and semantic assumptions}
+The four exported declarations lie in the namespace
+\code{RH_HilbertLimit.TwoRoutes}. With that namespace suppressed,
+their checked names and types are:
+\begin{quote}\small\ttfamily
+nativeRH\_of\_H00\_route\_one\par
+\quad : H00 $\to$ \_root\_.RiemannHypothesis\par\medskip
+H00\_iff\_nativeRH\_route\_one\par
+\quad : H00 $\leftrightarrow$ \_root\_.RiemannHypothesis\par\medskip
+nativeRH\_of\_H00\_route\_two\par
+\quad : H00 $\to$ \_root\_.RiemannHypothesis\par\medskip
+H00\_iff\_nativeRH\_route\_two\par
+\quad : H00 $\leftrightarrow$ \_root\_.RiemannHypothesis
+\end{quote}
+Here the conclusion is mathlib's literal global proposition, rather
+than a newly named project-local surrogate. The premise is the
+definition
+\begin{center}
+ \code{H00 := zeroBudgetCandidate.Admissible}.
+\end{center}
+Its expanded mathematical content is the zero-cancellation condition
+for every actual row. Since $C_n\ge0$ unconditionally, the zero-budget
+inequality $C_n\le0$ is equivalent to $C_n=0$ for every $n$.
+The direct finite identities then give
+\[
+ H00\ \Longleftrightarrow\ (\forall n,\ C_n=0)
+ \ \Longleftrightarrow\ (\forall n,\ V_n=1)
+ \ \Longleftrightarrow\ (\forall N,j\le N,\ w_{N,j}\ge0).
+\]
+These equivalences identify the hypothesis; they do not establish it
+for the actual sequence. In particular, the data pair $(0,0)$ being
+finite does not make its semantic admissibility a terminating check.
+
+The two forward constructions have a shared beginning and distinct
+closures. Route~1 takes constant variation to subexponential growth
+and invokes the constructed actual spectral closure. Route~2 takes
+row positivity to a probability measure, obtains the actual
+logarithmic-derivative germ, and invokes analytic zero exclusion.
+Both reverse implications use the retained theorem
+\code{H00_of_nativeRH}. Thus two equivalence names do not assert two
+independent proofs of every supporting lemma.
+
+For interpretation of other audited declarations, their hypotheses
+remain decisive. A theorem about a supplied
+\code{BKQRContractiveOrbit} proves consequences of that structure;
+it does not construct the structure for the actual Widder family.
+Similarly, a theorem whose premise is
+\code{ActualApproximationConvergence} does not remove that premise.
+The audit confirms proof terms for the stated propositions, while
+the manuscript's claim correspondence tracks which objects and
+assumptions those propositions describe.
+
+\PaperPage{47}{Appendix B.1 What a finite positive prefix can establish}
+Finite rows provide necessary tests for an infinite moment sequence.
+They do not, for an unrestricted sequence, force positivity of all
+later rows. The following elementary example makes the quantifiers
+explicit.
+
+\begin{proposition}\label{app:prefix}
+For every integer $K\ge0$, there is a real normalized sequence whose
+Bernstein rows of degrees $0,\ldots,K$ are nonnegative but whose row
+of degree $K+1$ has a negative entry.
+\end{proposition}
+\begin{proof}
+Set
+\[
+ u_0=1,\qquad u_1=\cdots=u_K=0,\qquad u_{K+1}=-1,
+\]
+and, for definiteness, set all later terms to zero. When $K=0$,
+the middle condition is empty. A row of degree $N$ only uses the
+terms $u_0,\ldots,u_N$. Hence for $N\le K$ its weights agree with
+those of the point mass $\delta_0$:
+\[
+ w_{N,0}=1,\qquad w_{N,j}=0\quad(1\le j\le N).
+\]
+Every such row is nonnegative and has variation one. In the next
+row, the last weight is
+\[
+ w_{K+1,K+1}=u_{K+1}=-1<0,
+\]
+which proves the assertion.
+\end{proof}
+The example also has $C_n=0$ for $n<K$, because those transitions
+join two rows of variation one. The next variation is strictly
+greater than one: row mass is still one but at least one weight is
+negative. The identity $C_K=(K+1)(V_{K+1}-V_K)$ therefore detects a
+strictly positive cancellation at the first unchecked transition.
+
+This obstruction is about arbitrary extensions of finite scalar data.
+It does not prove that no finite certificate can ever establish a
+universal property of a fixed arithmetic sequence. A successful
+certificate could include additional structure, an induction
+invariant, or a theorem controlling every remaining row. What the
+example excludes is the inference from a positive prefix alone,
+without such a propagation argument.
+
+For the actual $\xi$ sequence, a negative exact weight would refute
+$H00$, whereas any finite list of nonnegative weights is consistent
+with both the desired universal assertion and failure farther out.
+Numerical approximations introduce a further distinction: a displayed
+small number is not an exact sign proof unless its error is controlled.
+The present endpoints start from semantic $H00$ and do not supply a
+finite algorithm deciding it. This is why the finite-checker program
+in Part~5 remains an additional theorem target.
+
+\PaperPage{48}{Appendix B.2 Quantitative approximation of the resolvent}
+The moment construction also gives useful quantitative estimates once
+the representing measure is available. Define
+$\sigma_N=\sum_{j=0}^N w_{N,j}\delta_{j/N}$ for $N\ge1$.
+Using the moment formula in each Bernstein weight gives
+\[
+ \int f\,d\sigma_N
+ =\int_0^1 B_Nf(q)\,d\sigma(q),\qquad
+ B_Nf(q)=\sum_{j=0}^N\binom Nj q^j(1-q)^{N-j}f(j/N).
+\]
+For fixed $q$, this is the expectation of $f(X/N)$ with
+$X$ binomial of parameters $N,q$. If $f$ is complex-valued and
+$L$-Lipschitz on $[0,1]$, Cauchy--Schwarz and the binomial variance give
+\[
+ |B_Nf(q)-f(q)|
+ \le L\,\mathbb E|X/N-q|
+ \le L\sqrt{\frac{q(1-q)}N}\le\frac{L}{2\sqrt N}.
+\]
+Integrating proves the same upper bound for
+$|\int f\,d\sigma_N-\int f\,d\sigma|$. For continuous $f$,
+uniform approximation by Lipschitz functions yields weak convergence
+$\sigma_N\Rightarrow\sigma$. This supplies an ordinary limiting
+interpretation of the measure after its construction.
+
+\begin{proposition}\label{app:resolvent-rate}
+Let $K$ be a nonempty compact subset of
+$\mathbb C\setminus(-\infty,-1/\kappa]$. Put
+\[
+ d=\min_{z\in K,\,q\in[0,1]}|1+\kappa qz|>0,
+ \qquad M=\max_{z\in K}|z|.
+\]
+For $S_{\kappa,N}(z)=\kappa\int(1+\kappa qz)^{-1}\,d\sigma_N(q)$,
+\[
+ \sup_{z\in K}|S_{\kappa,N}(z)-S_\kappa(z)|
+ \le\frac{\kappa^2M}{2d^2\sqrt N}.
+\]
+\end{proposition}
+\begin{proof}
+For $f_z(q)=\kappa/(1+\kappa qz)$, the derivative with respect to
+the real variable $q$ has modulus at most $\kappa^2M/d^2$.
+The fundamental theorem of calculus makes this a uniform Lipschitz
+bound on the interval. Apply the preceding estimate for each $z$.
+\end{proof}
+Thus positive finite rows approximate the scalar resolvent uniformly
+on compact subsets of its common domain. The constants deteriorate
+near the slit because denominators can become small. This theorem
+does not identify the distinct weighted Widder coefficients: it
+concerns the measure resolvent built from the already specified
+moments. The estimate is a paper-level consequence of that measure
+representation, not an additional claim about the recorded Lean audit.
+
+\PaperPage{49}{References}
+\begingroup
+\renewcommand{\section}[2]{}%
+\begin{thebibliography}{9}
+\setlength{\itemsep}{9pt}
+\bibitem{conway}
+J.~B. Conway, \emph{A Course in Functional Analysis}, second edition,
+Graduate Texts in Mathematics~96, Springer-Verlag, New York, 1990.
+\href{https://doi.org/10.1007/978-1-4757-4383-8}{doi:10.1007/978-1-4757-4383-8}.
+
+\bibitem{hausdorff}
+F.~Hausdorff, Summationsmethoden und Momentfolgen.~I,
+\emph{Mathematische Zeitschrift} \textbf{9} (1921), 74--109.
+\href{https://doi.org/10.1007/BF01378337}{doi:10.1007/BF01378337}.
+
+\bibitem{lean4}
+L.~de Moura and S.~Ullrich, The Lean 4 theorem prover and programming
+language, in \emph{Automated Deduction---CADE 28}, Lecture Notes in
+Computer Science~12699, Springer, 2021, pp.~625--635.
+\href{https://doi.org/10.1007/978-3-030-79876-5_37}{doi:10.1007/978-3-030-79876-5\_37}.
+
+\bibitem{mathlib}
+The mathlib Community, The Lean mathematical library,
+in \emph{Proceedings of the 9th ACM SIGPLAN International Conference
+on Certified Programs and Proofs (CPP 2020)}, ACM, 2020, pp.~367--381.
+\href{https://doi.org/10.1145/3372885.3373824}{doi:10.1145/3372885.3373824}.
+
+\bibitem{rudin}
+W.~Rudin, \emph{Real and Complex Analysis}, third edition,
+McGraw-Hill, New York, 1987. ISBN~978-0-07-054234-1.
+
+\bibitem{titchmarsh}
+E.~C. Titchmarsh, \emph{The Theory of the Riemann Zeta-function},
+second edition, revised by D.~R. Heath-Brown,
+Clarendon Press, Oxford, 1986. ISBN~0-19-853369-1.
+
+\bibitem{source}
+\emph{Hilber-Vector-Resolvent-Theory}, project source repository,
+frozen construction package
+\code{RH_H00_TWO_ROUTES_LEAN_v0_2_3_construction}.
+Audited source commit \code{c6b95fd9e3d792270026da083bddddbc72bacb22}.
+\href{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory}{Repository and manuscript sources};
+\href{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory/actions/runs/40712534224}{GitHub CI run 40712534224}.
+Verification records dated 28 October 2026.
+\end{thebibliography}
+\endgroup
+\medskip
+The classical references provide background for the Hilbert-space,
+moment, and analytic constructions. The source reference identifies
+the exact project statements and their proof dependencies. The Lean
+and mathlib publications describe the proof infrastructure; the
+specific dependency versions used by this project are the pins in
+Appendix~A. No new bibliography entry is intended to replace a
+source-level audit of the actual conditional endpoints.
+
+\PaperPage{50}{Appendix C. Source concordance and reproducibility}
+The table locates the main mathematical stages. Paths in the middle
+column are relative to \code{RH_HilbertLimit/TwoRoutes/}, except where
+an explicit parent path is shown. The source baseline is the commit
+recorded in Appendix~A.
+
+\begin{center}\small
+\begin{tabular}{@{}p{0.24\linewidth}p{0.45\linewidth}p{0.23\linewidth}@{}}
+\toprule
+Manuscript topic & Source module or record & Role\\
+\midrule
+Hilbert defects & \code{Derivations/BKQR/}\newline\code{DefectGramSquare.lean} & Abstract real Gram interface\\[5pt]
+$H00$ and row positivity & \code{RouteOne.lean};\newline\code{ActualPositivePrefix.lean} & Actual conditional identities\\[5pt]
+Monomial limit & \code{BernsteinMomentLimit.lean} & General real sequences\\[5pt]
+Positive measure & \code{HausdorffMeasure.lean} & Constructed from positivity\\[5pt]
+Kernel holomorphy & \code{ResolventAnalytic.lean} & Local denominator control\\[5pt]
+Actual germ & \code{MeasureResolvent.lean} & Exact derivative identification\\[5pt]
+Continuation & \code{ActualResolventContinuation.lean} & Analytic defect argument\\[5pt]
+Pole closure & \code{ActualHerglotzClosure.lean} & Sign implies actual RH\\[5pt]
+Weighted frontier & \code{RouteTwoContractive.lean};\newline\code{ActualLimitBridge.lean} & Bounds and explicit open bridge\\[5pt]
+Endpoint types & \code{ci/EndpointTypes.lean} & Four exact type checks\\[5pt]
+Audit evidence & \code{evidence/}\newline\code{GITHUB_CI_AXIOM_AUDIT.json} & 641 declaration results\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The spectral route also uses the retained
+\code{RH_HilbertLimit/} modules. These include
+\code{AnalyticClosure.lean} and the actual calibration and extraction
+infrastructure. The finer
+introduction source map under \code{Paper-Candidates/} records the
+difference between the minimal real Gram interface and the concrete
+complex Hilbert-space realization used in this exposition.
+
+To rebuild this manuscript, run \code{python build.py} in its source
+directory with Python, \code{pdflatex}, and Poppler's \code{pdfinfo}
+available. The builder invokes only LaTeX, checks the expected
+subsection-to-page map, rejects overflow and unresolved references,
+and verifies the fifty-page output. Lean compilation remains assigned
+to the existing GitHub workflow. Rebuilding the PDF is not a new
+formal-verification checkpoint.
+
+The next mathematical extensions have separate acceptance criteria:
+construct the concrete operator model in Lean; prove the exact Widder
+identification if the longer route is pursued; and establish a
+universal admissibility argument before asserting an accepted
+certificate or unconditional RH. Each would change the theorem
+coverage and should carry its own source and verification record.

@@ -1,0 +1,451 @@
+\PaperPage{7}{1.1 Hilbert triples and conventions}
+\label{hilb:triples}
+The operator language begins with a complex Hilbert space $\mathcal H$,
+a bounded linear operator $T\colon\mathcal H\to\mathcal H$, and a
+distinguished vector $v$. Throughout, the inner product is
+conjugate-linear in its first argument and linear in its second:
+\[
+ \langle ax,by\rangle=\overline a\,b\langle x,y\rangle,
+ \qquad \|x\|^2=\langle x,x\rangle.
+\]
+This convention fixes the signs of the resolvent identities below. The
+zero vector gives an identically zero scalar function; normalization
+will usually mean $\|v\|=1$, but the elementary estimates retain the
+factor $\|v\|^2$ so that weighted vectors are included.
+
+\begin{definition}
+A \emph{contractive Hilbert-vector model} is a triple
+$(\mathcal H,T,v)$ with $\|T\|\le1$. It is \emph{positive} when $T$ is
+self-adjoint and $0\le T\le I$. Its scalar orbit coefficients are
+\[
+ c_n=\langle v,T^nv\rangle,\qquad n\ge0.
+\]
+\end{definition}
+Positivity in this definition is operator positivity, not positivity
+of individual matrix entries in a chosen basis. In particular, it is
+invariant under unitary change of coordinates. The construction also
+singles out a vector: the operator alone does not specify the scalar
+coefficients.
+
+The natural observable subspace is
+\[
+ \mathcal H_v=\overline{\operatorname{span}}
+       \{v,Tv,T^2v,\ldots\}.
+\]
+It is invariant under $T$ by boundedness. If $T=T^*$, then it is reducing.
+Indeed, if $x\perp\mathcal H_v$ and $y\in\mathcal H_v$, then
+$\langle y,Tx\rangle=\langle Ty,x\rangle=0$, since
+$Ty\in\mathcal H_v$. Thus $\mathcal H_v^\perp$ is invariant as well.
+The vector is called \emph{cyclic} if $\mathcal H_v=\mathcal H$.
+
+For self-adjoint $T$, every scalar moment is therefore already a
+moment of the restriction to $\mathcal H_v$:
+\[
+ \langle v,T^nv\rangle
+ =\langle v,(T|_{\mathcal H_v})^nv\rangle.
+\]
+The complement is invisible to these data. This observation will later
+prevent an unwarranted conclusion about the entire spectrum of an
+operator reconstructed from one scalar function. These Hilbert-space
+definitions are classical mathematical background; they are stronger
+than the minimal Gram-orbit interface used in the audited source.
+
+\PaperPage{8}{1.2 Coefficient bounds and the two defects}
+\label{hilb:defects}
+Let $(\mathcal H,T,v)$ be a contractive model. Iteration preserves the
+norm bound, so $\|T^nv\|\le\|v\|$ for every $n$. Combining this fact
+with Cauchy--Schwarz immediately bounds the scalar orbit:
+\[
+ |c_n|=|\langle v,T^nv\rangle|
+       \le\|v\|\,\|T^nv\|\le\|v\|^2.
+\]
+It is useful to retain the two reasons for this bound separately.
+Write $x=T^nv$, and define the contraction and Gram defects by
+\[
+ A=\|v\|^2(\|v\|^2-\|x\|^2),\qquad
+ B=\|v\|^2\|x\|^2-|\langle v,x\rangle|^2.
+\]
+Contractivity gives $A\ge0$, whereas Cauchy--Schwarz gives $B\ge0$.
+The following identity is purely algebraic.
+
+\begin{proposition}\label{hilb:defect-identity}
+For every $n\ge0$,
+\[
+ \|v\|^4-|c_n|^2=A+B.
+\]
+In particular, the coefficient defect is a sum of two nonnegative
+quantities. Equivalently, it is the Euclidean norm-square of
+$(\sqrt A,\sqrt B)\in\mathbb R^2$.
+\end{proposition}
+\begin{proof}
+Add the displayed definitions of $A$ and $B$. The two occurrences of
+$\|v\|^2\|x\|^2$ cancel. Nonnegativity justifies the square roots and
+the norm-square description.
+\end{proof}
+
+This decomposition separates two possible losses. The orbit may lose
+norm under iteration, producing a positive contraction defect. Even
+when its norm is preserved, the orbit vector may cease to be aligned
+with the distinguished vector, producing a positive Gram defect. No
+self-adjointness is needed for either statement.
+
+If $v\ne0$, equality $|c_n|=\|v\|^2$ occurs precisely when
+$T^nv=\lambda v$ for some scalar $\lambda$ with $|\lambda|=1$.
+To see this, equality in the coefficient bound forces both defects to
+vanish. Equality in Cauchy--Schwarz makes $x$ a scalar multiple of
+$v$, and equality of norms determines the modulus of that scalar.
+The converse follows by substitution.
+
+The source development isolates the real counterpart of this argument
+using a norm-square function and a squared Cauchy inequality
+\cite{source}. Such an interface is sufficient for the coefficient
+estimate. It does not, by itself, construct a Hilbert space or prove
+linearity of its orbit map.
+
+\PaperPage{9}{1.3 Neumann series and disk analyticity}
+\label{hilb:neumann}
+For $|z|<1$, the operator series
+\[
+ R_z=\sum_{n=0}^{\infty}z^nT^n
+\]
+converges in operator norm, because $\|z^nT^n\|\le|z|^n$. Multiplying
+its finite partial sums by $I-zT$ gives
+\[
+ (I-zT)\sum_{n=0}^{N}z^nT^n
+ =I-z^{N+1}T^{N+1}.
+\]
+The remainder tends to zero in norm. The same calculation on the
+other side proves $R_z=(I-zT)^{-1}$ and
+$\|R_z\|\le(1-|z|)^{-1}$.
+
+\begin{proposition}\label{hilb:disk-resolvent}
+The scalar generating function of a contractive model is holomorphic
+on the unit disk and satisfies
+\[
+ F(z)=\sum_{n=0}^{\infty}c_nz^n
+     =\langle v,(I-zT)^{-1}v\rangle,\qquad
+ |F(z)|\le\frac{\|v\|^2}{1-|z|}.
+\]
+\end{proposition}
+\begin{proof}
+The map $A\mapsto\langle v,Av\rangle$ is a continuous linear
+functional on bounded operators, of norm at most $\|v\|^2$.
+Apply it to the operator-norm convergent Neumann series.
+On each closed disk $|z|\le r<1$, the geometric estimates are uniform,
+so the series is holomorphic there and hence throughout the open disk.
+\end{proof}
+
+The argument also controls derivatives. Since $T$ commutes with
+$I-zT$, it commutes with its inverse. Differentiating
+$(I-zT)R_z=I$ gives $R_z'=R_zTR_z$. Induction consequently yields
+\[
+ F^{(k)}(z)=k!\,
+   \langle v,T^k(I-zT)^{-k-1}v\rangle,
+ \qquad
+ |F^{(k)}(z)|\le
+   \frac{k!\|v\|^2}{(1-|z|)^{k+1}}.
+\]
+In particular, $F^{(k)}(0)=k!c_k$. The coefficient sequence is
+therefore the actual Taylor sequence of this analytic function, not
+merely a formal expression assigned to the model.
+
+The same majorant gives a quantitative approximation by finite data:
+for $|z|\le r<1$,
+\[
+ \left|F(z)-\sum_{n=0}^Nc_nz^n\right|
+ \le\frac{\|v\|^2r^{N+1}}{1-r}.
+\]
+This estimate is uniform in the model once the vector norm is fixed.
+It controls truncation inside the disk, without supplying control
+across its boundary.
+
+The unit disk is a guaranteed domain, not necessarily the maximal
+one. For example, a strict contraction gives a larger Neumann disk,
+and spectral information can provide continuation far beyond it.
+The construction at this stage uses neither a positive measure nor
+an arithmetic calibration. Those additional structures will be needed
+to obtain a half-plane sign and an identity with a prescribed function.
+
+\PaperPage{10}{1.4 Positive contractions and complete differences}
+\label{hilb:positive}
+Assume now that $T=T^*$, $0\le T\le I$, and $\|v\|=1$.
+The order inequalities mean
+$0\le\langle x,Tx\rangle\le\|x\|^2$ for every $x$.
+The spectrum of $T$ lies in $[0,1]$. The continuous functional
+calculus for bounded self-adjoint operators preserves real
+nonnegative functions on that interval \cite{conway}.
+
+Put $u_n=\langle v,T^nv\rangle$. Positivity of $T^n$ and
+$I-T^n$ gives $0\le u_n\le1$, and $u_0=1$. More generally,
+the commuting operators $T$ and $I-T$ satisfy
+\[
+ \sum_{r=0}^{k}(-1)^r\binom kr u_{n+r}
+ =\langle v,T^n(I-T)^kv\rangle\ge0.
+\]
+The final inequality follows by applying functional calculus to
+$q^n(1-q)^k$, which is nonnegative for $0\le q\le1$.
+These finite-difference inequalities contain more information than
+the bound $|u_n|\le1$.
+
+\begin{proposition}\label{hilb:bernstein-operator}
+The Bernstein row associated with the moments of a positive model is
+a nonnegative row of mass one:
+\[
+ w_{N,j}=\binom Nj\langle v,T^j(I-T)^{N-j}v\rangle\ge0,
+ \qquad \sum_{j=0}^Nw_{N,j}=1.
+\]
+\end{proposition}
+\begin{proof}
+Each weight is nonnegative because its defining polynomial
+$\binom Nj q^j(1-q)^{N-j}$ is nonnegative on $[0,1]$.
+The binomial identity for the commuting pair $(T,I-T)$
+shows that the sum of the operators is $I$, and normalization
+then gives total mass one.
+\end{proof}
+
+The first two difference orders already have recognizable content:
+$u_n\ge u_{n+1}$ and $u_n-2u_{n+1}+u_{n+2}\ge0$.
+Thus positive models produce decreasing, discretely convex sequences.
+Higher orders impose further conditions; neither monotonicity nor
+convexity alone characterizes a Hausdorff moment sequence.
+
+The moments also give positive Hankel forms. For arbitrary complex
+scalars $a_0,\ldots,a_d$,
+\[
+ \sum_{i,j=0}^{d}\overline{a_i}a_j u_{i+j}
+ =\left\|\sum_{j=0}^{d}a_jT^jv\right\|^2\ge0.
+\]
+Here self-adjointness is used to identify
+$\langle T^iv,T^jv\rangle$ with $u_{i+j}$.
+The identities explain how vector positivity is visible through
+finite scalar tests. Their converse requires a representation
+argument: checking finitely many particular rows does not establish
+all orders, and a formal interface with positive fields does not
+prove that those fields can be supplied for the intended sequence.
+
+\PaperPage{11}{1.5 The concrete multiplication model}
+\label{hilb:multiplication}
+Let $\sigma$ be a Borel probability measure on $I=[0,1]$. Consider
+the complex Hilbert space
+\[
+ \mathcal H=L^2(I,\sigma;\mathbb C),\qquad
+ \langle f,g\rangle=\int_I\overline{f(q)}g(q)\,d\sigma(q).
+\]
+Functions here are equivalence classes modulo equality almost
+everywhere. Multiplication by the bounded coordinate function
+preserves that equivalence and defines a bounded linear operator:
+\[
+ (Tf)(q)=qf(q),\qquad v(q)=1.
+\]
+Since $|q|\le1$, one has $\|Tf\|_2\le\|f\|_2$.
+The constant function belongs to the space and has norm one.
+
+\begin{proposition}\label{hilb:measure-realization}
+The triple $(L^2(\sigma),T,1)$ is a positive Hilbert-vector model.
+For every $n\ge0$ it realizes the moments of $\sigma$:
+\[
+ \langle 1,T^n1\rangle=\int_Iq^n\,d\sigma(q).
+\]
+\end{proposition}
+\begin{proof}
+The coordinate $q$ is real, so
+$\langle Tf,g\rangle=\langle f,Tg\rangle$ for all $f,g$.
+A bounded operator defined on the whole space with this symmetry
+is self-adjoint. Moreover,
+$\langle f,Tf\rangle=\int q|f|^2\,d\sigma$ lies between zero
+and $\|f\|_2^2$. Induction gives $T^n1=q^n$, proving the
+moment formula.
+\end{proof}
+
+If $z\notin[1,\infty)$, the continuous function
+$q\mapsto1-zq$ has no zero on the compact interval $I$.
+Its reciprocal is therefore bounded. Multiplication by that
+reciprocal is a bounded two-sided inverse of $I-zT$, giving
+\[
+ \langle1,(I-zT)^{-1}1\rangle
+ =\int_I\frac{d\sigma(q)}{1-zq}.
+\]
+Thus the vector resolvent is exactly an integral transform, including
+at $z=0$. No choice of basis or eigenvector expansion is involved,
+and no density assumption on $\sigma$ is needed. Atomic, singular,
+and absolutely continuous measures are treated identically.
+
+On a compact subset of this slit domain, $|1-zq|$ has a
+positive lower bound uniform in both $z$ and $q$. Difference
+quotients and their limits are consequently dominated by an
+integrable constant. Differentiation under the integral is valid,
+proving holomorphy directly throughout that domain.
+
+This model is the concrete Hilbert-space interpretation of the
+probability measure constructed later from positive Bernstein rows.
+The audited project proves that measure construction and its scalar
+integral consequences. The present operator packaging is mathematical
+exposition; it is not an additional Lean construction already covered
+by the source audit.
+
+\PaperPage{12}{1.6 Polynomial density and uniqueness of the measure}
+\label{hilb:density}
+Two standard approximation principles make the multiplication model
+particularly precise. First, complex polynomials restricted to $I$
+are uniformly dense in $C(I,\mathbb C)$ by Stone--Weierstrass.
+Second, continuous functions are dense in $L^2(I,\sigma)$ for a
+finite Borel measure on this compact metric space \cite{rudin}.
+The latter follows from regularity: approximate indicators by
+continuous functions between a compact subset and an open
+superset, and then approximate simple functions.
+
+Since $\sigma(I)=1$, uniform approximation implies approximation
+in the Hilbert norm:
+\[
+ \|f-p\|_{L^2(\sigma)}\le\|f-p\|_\infty
+       \qquad(f\in C(I),\ p\text{ a polynomial}).
+\]
+It follows that the polynomial classes are dense in $L^2(\sigma)$.
+But $p(T)1=p(q)$, so
+\[
+ \overline{\operatorname{span}}\{1,T1,T^21,\ldots\}
+     =L^2(I,\sigma).
+\]
+The distinguished vector in the multiplication model is cyclic,
+even when the measure has atoms or is concentrated on a proper
+closed subset of the interval.
+
+\begin{proposition}\label{hilb:moment-uniqueness}
+A Borel probability measure on $[0,1]$ is uniquely determined by
+all its monomial moments.
+\end{proposition}
+\begin{proof}
+Suppose $\sigma$ and $\tau$ have the same moments. Linearity gives
+equal integrals for every polynomial. If $p_k\to f$ uniformly, then
+\[
+ \left|\int f\,d\sigma-\int p_k\,d\sigma\right|
+ \le\|f-p_k\|_\infty,
+\]
+and the same bound holds for $\tau$. The two integrals therefore
+agree for every continuous $f$. Uniqueness in the Riesz
+representation theorem implies $\sigma=\tau$.
+\end{proof}
+
+All moments are essential in this statement. A finite collection
+determines integrals only on a finite-dimensional polynomial
+space and generally permits many representing measures.
+For instance, the unit mass at $1/2$ and normalized Lebesgue
+measure on $[0,1]$ have the same zeroth and first moments.
+Their second moments are $1/4$ and $1/3$, respectively. Even
+exact agreement at those first two orders leaves different
+resolvents at the next Taylor coefficient.
+The eventual construction of the actual measure thus has two
+distinct features: existence follows from all-order positivity,
+while exact moment identification fixes its scalar resolvent
+uniquely. Neither fact supplies a terminating decision procedure
+for the all-order positivity condition.
+
+\PaperPage{13}{1.7 Spectral measures and the visible operator}
+\label{hilb:visible}
+For a bounded self-adjoint positive contraction $T$, the spectral
+theorem provides a projection-valued measure $E$ supported in
+$[0,1]$. A unit vector $v$ turns it into a scalar probability measure:
+\[
+ \sigma_v(B)=\langle v,E(B)v\rangle=\|E(B)v\|^2.
+\]
+The spectral calculus then gives, for continuous $f$,
+\[
+ \langle v,f(T)v\rangle=\int_{[0,1]} f(q)\,d\sigma_v(q).
+\]
+In particular, the moments and resolvent are those of $\sigma_v$.
+This recovers the integral description from an abstract positive
+model; the preceding multiplication construction provides the
+converse direction.
+
+The cyclic restriction is determined up to unitary equivalence.
+Indeed, define on polynomials
+\[
+ U\colon p\longmapsto p(T)v.
+\]
+The moment identities imply
+$\|p(T)v\|^2=\int|p(q)|^2\,d\sigma_v(q)$.
+Thus $U$ respects the null classes in $L^2(\sigma_v)$ and is
+isometric on the polynomial subspace. Density extends it to a
+unitary map from $L^2(\sigma_v)$ onto $\mathcal H_v$.
+The identity $U(qp)=T\,U(p)$ on polynomials extends by
+boundedness, so $U$ intertwines multiplication by $q$ with
+$T|_{\mathcal H_v}$.
+
+There is no corresponding determination of the unobserved
+orthogonal complement. For any other positive contraction $A$,
+the enlarged model
+\[
+ (\mathcal H\oplus\mathcal K,\ T\oplus A,\ v\oplus0)
+\]
+has exactly the same scalar moments and resolvent as the original
+one. The spectrum of $A$ may add points not present in the
+cyclic restriction. Consequently a scalar pole or support
+calculation must be interpreted relative to the represented
+vector, not automatically as a statement about an arbitrary
+ambient operator.
+
+This distinction matters when using operator language in a zero
+problem. Constructing some self-adjoint operator is not enough:
+one must specify the distinguished vector, prove the exact
+moment identities, and identify the associated analytic function.
+The actual-function calibration in the RH application performs
+that final identification at the scalar level. It is not
+replaced by the existence of the abstract spectral representation.
+
+\PaperPage{14}{1.8 Elementary models and limits of the assumptions}
+\label{hilb:examples}
+Explicit examples distinguish contractivity, positivity, and
+actual-function identification without introducing analytic
+complications.
+
+\begin{example}[A single spectral atom]
+On $\mathbb C$, let $T=qI$, $v=1$, and $0\le q\le1$. Then
+\[
+ u_n=q^n,\qquad F(z)=\frac1{1-qz},\qquad
+ w_{N,j}=\binom Nj q^j(1-q)^{N-j}.
+\]
+The corresponding measure is $\delta_q$. At $q=0$ the
+resolvent is constant; at $q=1$ it has a pole at $z=1$.
+Thus the guaranteed unit disk need not be the maximal domain.
+\end{example}
+
+\begin{example}[Two atoms]
+Let $T=\operatorname{diag}(q_1,q_2)$ on $\mathbb C^2$ and
+$v=(\sqrt t,\sqrt{1-t})$, where $q_1,q_2,t\in[0,1]$.
+Then
+\[
+ u_n=tq_1^n+(1-t)q_2^n,\qquad
+ F(z)=\frac{t}{1-q_1z}+\frac{1-t}{1-q_2z}.
+\]
+The scalar measure is $t\delta_{q_1}+(1-t)\delta_{q_2}$.
+If $t=1$, the second coordinate is invisible to $F$, even
+when $q_2\ne q_1$.
+For distinct $q_1,q_2$ and $0<t<1$, however, $v$ and $Tv$
+are linearly independent: their coordinate determinant is
+$\sqrt{t(1-t)}(q_2-q_1)\ne0$. Hence $v$ is cyclic in this
+case. Both atoms are visible, illustrating directly why positive
+weights and distinct support points enter the cyclic reconstruction.
+\end{example}
+
+A self-adjoint contraction need not be positive. For $T=-I$
+and $v=1$, the coefficients are $c_n=(-1)^n$ and
+$F(z)=(1+z)^{-1}$. The coefficient bound and disk analyticity
+hold, but $c_1<0$, so these are not moments of a positive
+measure on $[0,1]$. The positivity assumption cannot be
+recovered from the uniform coefficient estimate.
+
+Self-adjointness also matters for the reconstruction statement.
+Let $S$ be the unilateral shift on $\ell^2(\mathbb N)$ and
+$v=e_0$. The orbit is orthonormal, giving
+\[
+ \langle e_0,S^ne_0\rangle=
+ \begin{cases}1,&n=0,\\0,&n>0.\end{cases}
+ \qquad F(z)=1\quad(|z|<1).
+\]
+The vector is cyclic, yet this is the same scalar generating
+function as the zero operator on $\mathbb C$. The two
+operators are not unitarily equivalent. Scalar orbit moments
+of a general contraction do not determine mixed orbit inner
+products. The positive self-adjoint setting supplies exactly
+that extra structure; the actual arithmetic application still
+requires its separate calibration even after positivity is known.

@@ -1,0 +1,494 @@
+\PaperPage{23}{3.1 The scalar resolvent and its universal domain}
+\label{res:domain}
+Throughout this chapter, $\sigma$ is a finite positive Borel measure on
+$I=[0,1]$, $M=\sigma(I)$, and $\kappa>0$. Probability normalization is useful
+for the application, but the analytic arguments require only finiteness.
+The scalar object attached to these data is
+\[
+ S_\kappa(z)=\kappa\int_I\frac{1}{1+\kappa qz}\,d\sigma(q).
+\]
+The factor $\kappa$ and the plus sign in the denominator are part of our
+convention. They determine both the Taylor coefficients and the direction
+of the imaginary-part inequality. Changing either convention requires
+changing the later formulas accordingly.
+
+\begin{proposition}[Universal denominator domain]
+The set on which every denominator is nonzero is exactly
+\[
+ D_\kappa:=\{z\in\mathbb C:\ 1+\kappa qz\ne0\text{ for all }q\in I\}
+       =\mathbb C\setminus(-\infty,-1/\kappa].
+\]
+In particular, it contains the origin and both open half-planes.
+\end{proposition}
+\begin{proof}
+At $q=0$ the denominator equals one. For $q>0$, its only zero is
+\[
+ z=-\frac{1}{\kappa q}\le-\frac1\kappa.
+\]
+Conversely, if $x\le-1/\kappa$, the number $q=-1/(\kappa x)$ belongs to
+$(0,1]$ and makes that denominator zero. These two implications give the
+claimed equality. For fixed $z\in D_\kappa$, the integrand is continuous
+on the compact interval, hence bounded and integrable against $\sigma$.
+\end{proof}
+
+The adjective universal is essential. The displayed slit is determined by
+all possible parameters in the interval, not by the support of one chosen
+measure. For the point mass at $a\in(0,1]$, for example,
+\[
+ S_\kappa(z)=\frac{\kappa}{1+\kappa az},
+ \qquad \sigma=\delta_a,
+\]
+which extends meromorphically through every other point of the slit.
+For $\sigma=\delta_0$ the transform is the constant $\kappa$ and is entire.
+Nevertheless, every excluded point is a genuine pole for some point mass.
+Thus no larger common domain can guarantee a holomorphic transform for
+all positive measures on $I$.
+
+This distinction prevents a support bound from being mistaken for an
+assertion about the exact singularities of the resulting function. We
+will establish holomorphy on $D_\kappa$ without assuming the existence,
+absence, or location of zeros of any entire function to which the
+transform may later be compared.
+All integrals here are ordinary complex integrals, equivalently the
+integrals of the real and imaginary parts. No density with respect to
+Lebesgue measure is required: discrete, continuous, and mixed measures
+are treated by the same definition.
+
+\PaperPage{24}{3.2 Compact denominator control and continuity}
+\label{res:compact-control}
+Pointwise nonvanishing alone does not justify an interchange of a limit
+and an integral. What makes the present construction tractable is the
+compactness of the parameter interval. It gives a positive lower bound
+which persists throughout a neighborhood of the complex variable.
+
+\begin{lemma}[A uniform local bound]
+For every $z_0\in D_\kappa$, there are $c>0$ and $r>0$ such that
+\[
+ |1+\kappa qz|\ge c
+ \quad(q\in I,\ |z-z_0|<r).
+\]
+\end{lemma}
+\begin{proof}
+The continuous positive function $q\mapsto|1+\kappa qz_0|$ attains a
+strictly positive minimum $a$. Since $q\le1$, the reverse triangle
+inequality gives
+\[
+ |1+\kappa qz|\ge a-\kappa|z-z_0|.
+\]
+Take $c=a/2$ and $r=a/(2\kappa)$. The same estimate also proves that this
+ball lies in $D_\kappa$, so the domain is open.
+\end{proof}
+
+More generally, if $K$ is a nonempty compact subset of $D_\kappa$,
+continuity on $K\times I$ gives
+\[
+ a_K:=\min_{z\in K,\,q\in I}|1+\kappa qz|>0,
+ \qquad \sup_{z\in K}|S_\kappa(z)|\le\frac{\kappa M}{a_K}.
+\]
+The first assertion uses positivity at every pair: compactness then
+excludes a sequence of denominators tending to zero. There is no need
+to estimate the distance to each point of the slit separately.
+
+For continuity, choose a neighborhood with the common bound $c$ and
+subtract the two kernels before integrating. The elementary identity
+\[
+ \frac1{1+\kappa qz}-\frac1{1+\kappa qw}
+ =\frac{\kappa q(w-z)}{(1+\kappa qz)(1+\kappa qw)}
+\]
+implies the local Lipschitz estimate
+\[
+ |S_\kappa(z)-S_\kappa(w)|\le\frac{\kappa^2M}{c^2}|z-w|.
+\]
+Here both points lie in the chosen neighborhood. This proves continuity
+directly and supplies an explicit modulus there. Equivalently, dominated
+convergence applies because the kernels are bounded by $c^{-1}$ and the
+constant function is integrable for a finite measure.
+
+The same mechanism will handle higher derivatives. Powers of the
+coordinate remain bounded by one, while powers of the denominator are
+controlled by this single lower bound. The resulting majorants depend
+on the derivative order and the neighborhood, but not on the integration
+variable. This uniformity is the substantive analytic input in the
+compact-kernel argument formalized in the source development.
+It also controls perturbations of the measure. If $\tau$ is another
+finite positive measure and its transform is denoted $S_{\kappa,\tau}$,
+integration against the total variation of the signed difference gives
+\[
+ \sup_{z\in K}|S_{\kappa,\sigma}(z)-S_{\kappa,\tau}(z)|
+ \le\frac{\kappa}{a_K}\,|\sigma-\tau|(I).
+\]
+Thus convergence in total variation implies uniform convergence on
+every compact subset of the common denominator domain.
+
+\PaperPage{25}{3.3 Differentiation under the integral}
+\label{res:differentiation}
+Introduce the kernel tower and its integral by
+\[
+ K_n(z,q)=\frac{q^n}{(1+\kappa qz)^{n+1}},
+ \qquad A_n(z)=\int_I K_n(z,q)\,d\sigma(q),\qquad n\ge0.
+\]
+For each fixed parameter, ordinary complex differentiation gives
+\[
+ \partial_zK_n(z,q)=-(n+1)\kappa K_{n+1}(z,q).
+\]
+The issue is to integrate this identity without relying on a purely
+formal differentiation rule. Fix $z_0\in D_\kappa$ and a ball on which
+the denominator has the lower bound $c>0$ from the preceding lemma.
+On that ball the relevant estimates are
+\[
+ |K_n(z,q)|\le c^{-n-1},\qquad
+ |\partial_zK_n(z,q)|\le(n+1)\kappa c^{-n-2}.
+\]
+Both majorants are integrable because $M<\infty$. Measurability follows
+from continuity in $q$; it is not an additional assumption on the
+measure beyond its Borel structure.
+
+\begin{proposition}[Derivative of the kernel integral]
+Every $A_n$ is holomorphic on $D_\kappa$, and
+\[
+ A_n'(z)=-(n+1)\kappa A_{n+1}(z).
+\]
+\end{proposition}
+\begin{proof}
+For nonzero complex $h$ sufficiently small, the segment from $z_0$ to
+$z_0+h$ stays in the chosen ball. Apply the real fundamental theorem of
+calculus to the smooth function of $t\in[0,1]$ obtained by restricting
+the rational kernel to this segment. It yields
+\[
+ \frac{K_n(z_0+h,q)-K_n(z_0,q)}h
+ =\int_0^1\partial_zK_n(z_0+th,q)\,dt.
+\]
+Consequently the difference quotient is bounded in modulus by the
+constant derivative majorant, uniformly in $q$ and in small $h$.
+Pointwise in $q$ it converges to $\partial_zK_n(z_0,q)$. Dominated
+convergence therefore moves this limit through the $\sigma$ integral,
+proving complex differentiability and the stated derivative formula at
+$z_0$. Since $z_0$ was arbitrary and the domain is open, $A_n$ is
+holomorphic there.
+\end{proof}
+
+This proof accommodates arbitrary directions of complex increments.
+It does not invoke a real mean-value theorem for complex-valued
+functions. It also explains why the derivative bound must hold on a
+neighborhood, rather than merely at the point where differentiation is
+performed. Repeating the proposition gives derivatives of every order
+and, by the usual complex-analytic theorem, convergent local Taylor
+expansions. These are the analytic germs needed for comparison with
+an actual logarithmic derivative.
+Atomic measures require no special exception: integration simply
+includes their point evaluations, and the same constant bounds apply.
+Nor does the proof need the measure to be a probability measure.
+Its total mass enters only through the integrals of the majorants,
+which are finite multiples of $M$.
+
+\PaperPage{26}{3.4 The derivative tower and identification of germs}
+\label{res:germ}
+Write $u_n=\int_Iq^n\,d\sigma(q)$ for the moments of the given measure.
+Since $S_\kappa=\kappa A_0$, induction using the preceding derivative
+formula proves
+\[
+ S_\kappa^{(n)}(z)
+ =(-1)^n n!\,\kappa^{n+1}
+   \int_I\frac{q^n}{(1+\kappa qz)^{n+1}}\,d\sigma(q).
+\]
+Indeed, differentiation of the formula at order $n$ multiplies the
+integral by $-(n+1)\kappa$ and increases its index by one, producing
+exactly the coefficient at order $n+1$. Evaluation at the origin gives
+\[
+ S_\kappa^{(n)}(0)=(-1)^n n!\,\kappa^{n+1}u_n.
+\]
+There is also a direct convergence check: for $|\kappa z|<1$, the
+geometric series of the kernel converges uniformly in $q\in I$.
+Its terms are bounded by the summable series $|\kappa z|^n$, so
+\[
+ S_\kappa(z)=\sum_{n=0}^{\infty}(-1)^n\kappa^{n+1}u_nz^n,
+ \qquad |z|<1/\kappa.
+\]
+This radius is a guaranteed lower bound; a particular measure may give
+a larger radius.
+
+\begin{proposition}[An analytic identification criterion]
+If $R$ is holomorphic near zero and its derivatives there are
+$R^{(n)}(0)=(-1)^n n!\kappa^{n+1}u_n$ for every $n$, then $R=S_\kappa$
+on some neighborhood of zero.
+\end{proposition}
+\begin{proof}
+Choose a disk on which the Taylor expansion of $R$ converges to $R$,
+and intersect it with $|z|<1/\kappa$. Equality of the derivatives gives
+equality term by term of the two convergent Taylor series on this
+smaller disk, hence equality of their sums.
+\end{proof}
+
+For the actual application, set $\kappa=\texttt{actualKappa}$.
+The fixed function $\Theta$ has
+$\Theta(0)\ne0$, so $R=\Theta'/\Theta$ is holomorphic near zero. The
+source's exact normalization and its retained moment-reality theorem
+provide the identity
+\[
+ R^{(n)}(0)=(-1)^n n!\,\kappa^{n+1}u_n^{\mathrm{act}}.
+\]
+Thus a positive measure whose moments equal the actual normalized
+moments identifies the actual germ. The representability assertion is
+a mathematical hypothesis to be supplied by the preceding positivity
+argument; it is not obtained by defining a new sequence from an
+arbitrary measure. Likewise, agreement of finitely many moments gives
+only finitely many matching derivatives. The conclusion here requires
+all orders and analyticity, and therefore does not follow from a
+truncated computation or a merely formal coefficient list.
+For comparison, a finite truncation does have a rigorous error bound.
+Since $0\le u_n\le M$, the geometric tail estimate yields
+\[
+ \left|S_\kappa(z)-\sum_{n=0}^N(-1)^n\kappa^{n+1}u_nz^n\right|
+ \le\frac{\kappa M(\kappa|z|)^{N+1}}{1-\kappa|z|}.
+\]
+This bound controls the represented transform locally, but does not
+replace the exact all-orders comparison with the prescribed function.
+
+\PaperPage{27}{3.5 The imaginary-part identity in two representations}
+\label{res:imaginary-part}
+Let $z=x+iy$ with $y>0$. Conjugating the denominator gives the
+pointwise identity
+\[
+ \operatorname{Im}\frac{\kappa}{1+\kappa qz}
+ =-\frac{\kappa^2qy}{|1+\kappa qz|^2}.
+\]
+Taking imaginary parts commutes with integration because it is a
+continuous real-linear map and the kernel is integrable. Consequently
+\[
+ \operatorname{Im}S_\kappa(z)
+ =-\kappa^2y\int_I\frac{q}{|1+\kappa qz|^2}\,d\sigma(q)\le0.
+\]
+The sign follows from positivity of the measure and of the coordinate.
+It is strict precisely when $\sigma((0,1])>0$: in that case the
+nonnegative integrand is positive on a set of positive measure. A
+measure concentrated at zero instead gives a real constant transform.
+Thus the nonpositive formulation includes all admissible measures.
+
+The Hilbert-space representation explains the same calculation
+geometrically. On $H=L^2(I,\sigma;\mathbb C)$ take $T=M_q$ and $v=1$.
+We use inner products conjugate-linear in the first argument and linear
+in the second. Multiplication by the reciprocal denominator is bounded
+on $D_\kappa$, giving
+\[
+ S_\kappa(z)=\kappa\langle v,(I+\kappa zT)^{-1}v\rangle,
+ \qquad \|v\|^2=M.
+\]
+The following algebra applies equally to any bounded positive
+selfadjoint contraction, whenever the displayed inverse exists.
+Put $h=(I+\kappa zT)^{-1}v$; then $v=h+\kappa zTh$, and
+\[
+ \langle v,h\rangle
+ =\|h\|^2+\kappa\overline z\langle Th,h\rangle,
+ \qquad \langle Th,h\rangle=\langle h,Th\rangle\ge0.
+\]
+Multiplication by $\kappa$ and extraction of the imaginary part yield
+\[
+ \operatorname{Im}S_\kappa(z)
+ =-\kappa^2y\langle h,Th\rangle.
+\]
+In the multiplication model, the quadratic form on the right is
+exactly the integral in the scalar identity. The conjugate on $z$ is
+forced by the inner-product convention; omitting it reverses the sign.
+
+This is an anti-Herglotz convention: the upper half-plane is mapped
+into the closed lower half-plane. A resolvent written with $I-zT$
+instead has the opposite sign. The concrete operator calculation is
+mathematical exposition of the measure model. Its validity does not
+by itself assert that every corresponding Hilbert-space packaging is
+an exported theorem of the accompanying Lean development.
+There is a complementary symmetry identity:
+\[
+ S_\kappa(\overline z)=\overline{S_\kappa(z)}.
+\]
+Indeed, the parameters and the measure are real, so conjugation can
+be moved through the integral. This gives the corresponding nonnegative
+imaginary-part inequality in the lower half-plane. Both sign statements
+are consequences of one positive representation, with no assumption
+about zeros of a separate entire function.
+
+\PaperPage{28}{3.6 Quantitative bounds and endpoint masses}
+\label{res:bounds}
+The denominator estimates give useful controls without prescribing the
+singular behavior along the excluded slit. For $|z|\le r<1/\kappa$,
+the reverse triangle inequality and the derivative tower give
+\[
+ |S_\kappa^{(n)}(z)|
+ \le\frac{n!\,\kappa^{n+1}M}{(1-\kappa r)^{n+1}},\qquad n\ge0.
+\]
+On the nonnegative real axis all denominators are positive. In
+particular, the transform is completely monotone there:
+\[
+ (-1)^nS_\kappa^{(n)}(x)
+ =n!\,\kappa^{n+1}\int_I\frac{q^n}{(1+\kappa qx)^{n+1}}\,d\sigma(q)
+ \ge0,\qquad x\ge0.
+\]
+For $n=0$ this also gives $S_\kappa(x)\le\kappa M$; if $M>0$ the
+transform is strictly positive. The first derivative is nonpositive,
+although strict decrease fails when all mass is at zero.
+
+Let $a_0=\sigma(\{0\})$ and $a_1=\sigma(\{1\})$. Splitting the measure
+into its endpoint atoms and its restriction to the open interval gives
+the exact decomposition
+\[
+ S_\kappa(z)=\kappa a_0+\frac{\kappa a_1}{1+\kappa z}
+       +\kappa\int_{(0,1)}\frac{d\sigma(q)}{1+\kappa qz}.
+\]
+At positive real infinity, the kernel is bounded by one and converges
+pointwise to the indicator of $\{0\}$. Dominated convergence proves
+\[
+ \lim_{x\to+\infty}S_\kappa(x)=\kappa a_0.
+\]
+No convergence rate follows merely from finiteness: mass may accumulate
+arbitrarily close to zero.
+
+There is also a precise one-sided statement at the other endpoint.
+For $0<\kappa\varepsilon\le1$, the quantity
+$\kappa\varepsilon/(1-q+\kappa q\varepsilon)$ lies between zero and
+one, because its denominator is at least $\kappa\varepsilon$.
+It tends to zero for $q<1$ and equals one for $q=1$. Hence
+\[
+ \lim_{\varepsilon\downarrow0}
+ \varepsilon S_\kappa(-1/\kappa+\varepsilon)=a_1.
+\]
+This follows by dominated convergence along real points in $D_\kappa$.
+It identifies the endpoint atom without asserting meromorphic
+continuation across that endpoint. If additional mass accumulates at
+one, the remaining integral need not be holomorphic in any full
+neighborhood of $-1/\kappa$. Accordingly, the exact atomic summand and
+the proved one-sided limit must not be promoted to an unsupported
+claim that the entire transform has an isolated pole there.
+The disk bound is sharp uniformly over all measures: mass $M$ at
+$q=1$ attains equality at the negative real point $z=-r$.
+Likewise, the integral formula shows that every alternating derivative
+of positive order is strictly positive on the nonnegative real axis
+exactly when some mass lies away from zero. These observations identify
+the degenerate cases without imposing additional regularity assumptions
+on the measure.
+
+\PaperPage{29}{3.7 Continuing an analytic defect from an origin germ}
+\label{res:continuation}
+An identity of logarithmic derivatives near zero must be propagated
+without presupposing that the entire function has no zeros elsewhere.
+The appropriate object for the identity theorem is a holomorphic
+defect, defined without dividing by that function. Set
+\[
+ \mathbb H=\{z\in\mathbb C:\operatorname{Im}z>0\}.
+\]
+\begin{theorem}[Continuation of a differential identity]
+Let $F$ be entire and let $S$ be holomorphic on $\mathbb H$.
+Suppose that for some $\varepsilon>0$ one has
+$F'(z)=S(z)F(z)$ whenever $z\in\mathbb H$ and $|z|<\varepsilon$.
+Then this identity holds throughout $\mathbb H$.
+\end{theorem}
+\begin{proof}
+The function
+\[
+ D(z)=F'(z)-S(z)F(z)
+\]
+is holomorphic on $\mathbb H$. Although zero is not in this open
+half-plane, the hypothesized germ supplies an interior seed. Namely,
+\[
+ z_* = i\varepsilon/2\in\mathbb H\cap B(0,\varepsilon).
+\]
+A sufficiently small open disk about $z_*$ lies in this intersection,
+and $D$ vanishes on that disk. The upper half-plane is convex, hence
+connected. The identity theorem therefore gives $D=0$ on all of
+$\mathbb H$, which is the required differential identity.
+\end{proof}
+
+To apply the theorem, suppose $F(0)\ne0$ and its logarithmic derivative
+agrees near zero with a function $S$ holomorphic both there and on
+$\mathbb H$. Continuity allows the germ neighborhood to be shrunk so
+that $F$ has no zeros in it. Multiplication by $F$ then gives
+\[
+ \frac{F'}F=S\quad\hbox{near }0
+ \quad\Longrightarrow\quad F'=SF\quad\hbox{on }\mathbb H.
+\]
+Only after continuation do we divide at individual points where the
+denominator is known to be nonzero:
+\[
+ F(z)\ne0,\ z\in\mathbb H
+ \quad\Longrightarrow\quad \frac{F'(z)}{F(z)}=S(z).
+\]
+Thus any imaginary-part bound for $S$ transfers to the logarithmic
+derivative at precisely the points needed for pole exclusion.
+
+For the measure resolvent, holomorphy on $\mathbb H$ follows from
+$\mathbb H\subset D_\kappa$. For the actual entire function, the
+previous germ criterion supplies the local equality when its moments
+are represented by $\sigma$. The argument keeps these two inputs
+separate: positivity constructs and controls $S$, while analyticity
+and exact moment agreement identify the germ. Global zero-freeness is
+not one of the inputs to this continuation step.
+The defect identity itself remains meaningful at a hypothetical zero.
+At such a point it states $F'=0$, which by itself would only exclude
+a simple zero. The stronger conclusion comes from the identity on a
+whole neighborhood and the local behavior of logarithmic derivatives,
+examined next.
+
+\PaperPage{30}{3.8 The pole probe and conjugate-zero symmetry}
+\label{res:pole-probe}
+The sign constraint has a local consequence for any nontrivial entire
+function. Its proof uses the positive integral multiplicity of a
+holomorphic zero, independently of how the sign constraint was obtained.
+
+\begin{theorem}[Upper-half-plane pole obstruction]
+Let $F$ be entire and not identically zero. If
+\[
+ \operatorname{Im}\frac{F'(z)}{F(z)}\le0
+ \quad\text{for every }z\in\mathbb H\text{ with }F(z)\ne0,
+\]
+then $F$ has no zeros in $\mathbb H$.
+\end{theorem}
+\begin{proof}
+Suppose $\rho\in\mathbb H$ is a zero. Local factorization gives a
+positive integer $m$, a disk about $\rho$, and a holomorphic function
+$g$ without zeros on that disk such that
+\[
+ F(z)=(z-\rho)^m g(z),\qquad
+ \frac{F'(z)}{F(z)}=\frac{m}{z-\rho}+B(z),\quad B=\frac{g'}g,
+\]
+where the quotient identity holds away from $\rho$. On a smaller
+closed disk, continuity of $B$ gives a finite bound
+$|\operatorname{Im}B|\le K$ with $K\ge0$. Choose $\varepsilon>0$
+small enough that $\rho-i\varepsilon$ lies in this smaller disk,
+$\varepsilon<\operatorname{Im}\rho$, and $\varepsilon<m/(K+1)$.
+The probe point is in $\mathbb H$ and is not a zero, because the
+factor $g$ does not vanish. At that point,
+\[
+ \operatorname{Im}\frac{F'(\rho-i\varepsilon)}{F(\rho-i\varepsilon)}
+ =\frac{m}{\varepsilon}+\operatorname{Im}B(\rho-i\varepsilon)
+ \ge\frac{m}{\varepsilon}-K>0.
+\]
+This contradicts the assumed sign inequality.
+\end{proof}
+
+The downward direction is decisive: the imaginary part of
+$m/(-i\varepsilon)$ is positive. An upward probe would give the
+opposite sign and would not establish this contradiction. The local
+factorization also ensures that the tested quotient is defined;
+there is no appeal to a value at the putative pole itself.
+
+If the zeros are invariant under conjugation, the lower half-plane
+is excluded as well. Indeed,
+\[
+ F(\rho)=0\Longrightarrow F(\overline\rho)=0,
+ \qquad \operatorname{Im}\rho<0
+ \Longrightarrow\operatorname{Im}\overline\rho>0.
+\]
+A sufficient condition is Schwarz symmetry
+$F(\overline z)=\overline{F(z)}$, although only the implication for
+zeros is needed. Combining this symmetry with the theorem leaves
+real zeros as the only possibility. Applied after the analytic-defect
+continuation, this is the general mechanism by which a positive
+measure representation constrains the zeros of the actual entire
+function. The next chapter specifies the actual-function bindings
+needed to turn that constraint into the repository's stated endpoint.
+The limitation to nonreal zeros is necessary. For example, if $a$ is
+real, $F(z)=z-a$ satisfies the sign hypothesis because
+\[
+ \operatorname{Im}\frac1{z-a}
+ =-\frac{\operatorname{Im}z}{|z-a|^2}<0\qquad(z\in\mathbb H),
+\]
+yet has a real zero at $a$. The theorem therefore imposes exactly
+the stated location constraint.

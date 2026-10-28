@@ -1,0 +1,371 @@
+\PaperPage{39}{5.1 Normalized weights and contraction multipliers}
+\label{front:normalized}
+
+Fix a probability measure $\sigma$ on $[0,1]$, a scale $\kappa>0$, and an
+anchor $a>0$. In the arithmetic application, these are the actual scale and
+the Hausdorff measure supplied under $H_{00}$. The constructions on this
+page also make sense for any such measure; their elementary inequalities
+do not identify its moments with a prescribed analytic function. Define
+\begin{equation}
+ w_a(q)=\frac{4\kappa a}{(1+\kappa aq)^2},\qquad
+ \lambda_a(q)=q w_a(q)=\frac{4\kappa aq}{(1+\kappa aq)^2}.
+\end{equation}
+These continuous functions separate the positive density from the variable
+which will act by multiplication. This distinction matters: the weight
+need not be bounded by one, whereas the multiplier always is.
+
+\begin{proposition}\label{front:kernel-range}
+For every $q\in[0,1]$,
+\begin{equation}
+ 0<w_a(q)\leq 4\kappa a,\qquad 0\leq\lambda_a(q)\leq1.
+\end{equation}
+Moreover, $\lambda_a(q)=1$ if and only if $\kappa aq=1$.
+\end{proposition}
+\begin{proof}
+Set $t=\kappa aq\geq0$. The denominator $(1+t)^2$ is positive and
+at least one, proving the weight bounds. The multiplier is nonnegative,
+and its upper bound and equality condition follow from the exact identity
+\begin{equation}
+ 1-\lambda_a(q)=\frac{(1-t)^2}{(1+t)^2}.
+\end{equation}
+Thus equality is possible on the support interval only when
+$\kappa a\geq1$, and then only at $q=(\kappa a)^{-1}$.
+\end{proof}
+
+For every integer $n\geq0$, multiplication by the nonnegative weight
+therefore gives the pointwise domination
+\begin{equation}
+ 0\leq w_a(q)\lambda_a(q)^n\leq w_a(q)\leq4\kappa a.
+\end{equation}
+This bound is uniform in the order $n$ and in $q$. It needs neither a
+density for $\sigma$ nor the exclusion of endpoint atoms. In particular,
+the zero endpoint has the explicit values
+\begin{equation}
+ w_a(0)=4\kappa a,\qquad \lambda_a(0)=0,\qquad
+ w_a(0)\lambda_a(0)^n=0\quad(n\geq1).
+\end{equation}
+An atom at zero contributes to the zeroth coefficient and disappears at
+every positive order. Keeping that contribution is necessary when comparing
+the base energy with later moments. Conversely, strict positivity of the
+weight implies that its integral against a probability measure is strictly
+positive. Thus the base vector constructed below cannot vanish, even when
+the entire measure is concentrated at an endpoint. If $\kappa a<1$, compactness even gives
+$\sup_q\lambda_a(q)<1$; however, the unit bound is the statement valid
+uniformly over all positive anchors. The basic kernel inequalities are
+audited in \texttt{RouteTwoContractive} and \texttt{ActualPositivePrefix};
+the equality case and the following Hilbert interpretation are paper proofs
+\cite{source}.
+
+\PaperPage{40}{5.2 A concrete weighted-vector realization}
+\label{front:l2}
+
+Work in the complex Hilbert space $\mathcal H=L^2([0,1],\sigma)$, with
+inner product linear in its second argument. Put
+\begin{equation}
+ v_a=\sqrt{w_a},\qquad (T_af)(q)=\lambda_a(q)f(q),\qquad
+ \widetilde\mu_n(a)=\int_{[0,1]}w_a(q)\lambda_a(q)^n\,d\sigma(q).
+\end{equation}
+The tilde distinguishes these measure coefficients from the actual Widder
+tower. Since $w_a\leq4\kappa a$ and $\sigma$ has mass one, $v_a$ belongs
+to $\mathcal H$. Multiplication respects equality almost everywhere, so
+$T_a$ is well defined on the equivalence classes defining $L^2$.
+
+\begin{proposition}\label{front:concrete-orbit}
+The operator $T_a$ is a bounded positive self-adjoint contraction, and
+\begin{equation}
+ \widetilde\mu_n(a)=\langle v_a,T_a^n v_a\rangle,\qquad
+ 0\leq\widetilde\mu_n(a)\leq\widetilde\mu_0(a)\leq4\kappa a.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The range bound on $\lambda_a$ gives
+\begin{equation}
+ \|T_af\|^2=\int\lambda_a^2|f|^2\,d\sigma\leq\|f\|^2,
+ \qquad \langle f,T_af\rangle=\int\lambda_a|f|^2\,d\sigma\geq0.
+\end{equation}
+Because $\lambda_a$ is real, moving it between the two inner-product
+arguments proves self-adjointness. Induction gives $T_a^nf=\lambda_a^nf$.
+Substitution of $v_a$ proves the coefficient identity, and integration of
+the preceding page's pointwise bounds proves all inequalities.
+\end{proof}
+
+The coefficient estimate also follows from a decomposition that survives
+in much weaker geometry. For $v=v_a$ and $x=T_a^nv_a$, write
+\begin{align}
+ \|v\|^4-|\langle v,x\rangle|^2
+ &=\underbrace{\|v\|^2(\|v\|^2-\|x\|^2)}_{D_{\rm c}}\nonumber\\
+ &\quad+\underbrace{\|v\|^2\|x\|^2-|\langle v,x\rangle|^2}_{D_{\rm g}}.
+\end{align}
+Contractivity makes $D_{\rm c}$ nonnegative; Cauchy--Schwarz does the same
+for $D_{\rm g}$. Thus the defect is the squared Euclidean norm of
+$(\sqrt{D_{\rm c}},\sqrt{D_{\rm g}})$. No spectral theorem is needed.
+
+The integral formula supplies more than individual coefficient bounds.
+For any polynomial $P(t)=\sum_{j=0}^d c_jt^j$,
+\begin{equation}
+ \sum_{i,j=0}^d\overline{c_i}c_j\widetilde\mu_{i+j}(a)
+ =\int w_a|P(\lambda_a)|^2\,d\sigma\geq0.
+\end{equation}
+Replacing the weight by $w_a(1-\lambda_a)$ similarly proves positivity
+of the matrix of successive moment differences. Both assertions follow
+by expanding a finite sum under the integral. They describe additional
+structure of this particular realization, beyond the single-coefficient
+estimate required at each order by the abstract orbit argument.
+
+The audited \texttt{RealGramGeometry} and \texttt{BKQRContractiveOrbit}
+interfaces retain precisely enough scalar inequalities for the real
+version of this argument. Their carrier has no required vector-space
+structure, and their map $T$ is merely a function with a norm-square
+inequality. In particular, those interfaces do not assert linearity,
+self-adjointness, completeness, or existence of this $L^2$ model. The
+audited defect-square theorem applies to a supplied realization; the
+concrete realization above is an additional mathematical construction
+\cite{source}.
+
+\PaperPage{41}{5.3 The coefficient resolvent on the unit disk}
+\label{front:disk}
+
+The concrete contraction makes a generating function available before any
+identification with the arithmetic Widder tower. For a complex parameter
+$h$ with $|h|<1$, the operator series converges in norm and gives
+\begin{equation}
+ (I-hT_a)^{-1}=\sum_{n=0}^{\infty}h^nT_a^n,\qquad
+ \|(I-hT_a)^{-1}\|\leq\frac1{1-|h|}.
+\end{equation}
+Indeed, the operator norm of its tail is bounded by a geometric tail,
+and multiplication by $I-hT_a$ telescopes. The same inverse is
+multiplication by $(1-h\lambda_a)^{-1}$, since
+$|1-h\lambda_a(q)|\geq1-|h|$ everywhere. Consequently
+\begin{equation}
+ G_a(h):=\langle v_a,(I-hT_a)^{-1}v_a\rangle
+ =\int\frac{w_a(q)}{1-h\lambda_a(q)}\,d\sigma(q)
+ =\sum_{n=0}^{\infty}\widetilde\mu_n(a)h^n.
+\end{equation}
+
+\begin{proposition}\label{front:disk-estimates}
+The function $G_a$ is holomorphic on the unit disk. For $0\leq r<1$
+and $|h|\leq r$,
+\begin{align}
+ |G_a(h)|&\leq\frac{\widetilde\mu_0(a)}{1-r},\nonumber\\
+ \left|G_a(h)-\sum_{n=0}^{N}\widetilde\mu_n(a)h^n\right|
+ &\leq\frac{\widetilde\mu_0(a)r^{N+1}}{1-r}.
+\end{align}
+For every integer $k\geq0$, its derivatives satisfy
+\begin{equation}
+ G_a^{(k)}(h)=k!\int
+ \frac{w_a\lambda_a^k}{(1-h\lambda_a)^{k+1}}\,d\sigma,
+ \qquad |G_a^{(k)}(h)|\leq
+ \frac{k!\widetilde\mu_0(a)}{(1-r)^{k+1}}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The coefficient bound from the preceding page supplies a summable
+geometric majorant on every closed subdisk. Uniform convergence of
+holomorphic partial sums proves holomorphy and the stated remainder
+estimate. To differentiate the integral, choose $s$ with $r<s<1$.
+Each differentiated integrand on $|h|\leq s$ is bounded by
+$k!w_a/(1-s)^{k+1}$, an integrable function. Dominated differentiation
+therefore applies. Evaluating the resulting integrand on $|h|\leq r$
+gives the sharper displayed bound.
+\end{proof}
+
+These estimates are uniform for anchors in any compact positive interval
+$[\alpha,\beta]$, because $\widetilde\mu_0(a)\leq4\kappa\beta$.
+They establish a stable analytic object with controlled truncation error.
+They give no boundary convergence assertion at $|h|=1$, where an atom
+with $\lambda_a=1$ contributes a term proportional to $(1-h)^{-1}$.
+If $\lambda_a\leq\rho<1$ almost everywhere, the same proof instead
+extends the series to $|h|<\rho^{-1}$ when $\rho>0$. When $\rho=0$,
+the function is constant. Thus the unit disk is a uniform guarantee,
+not a claim that every model has radius exactly one. Coefficient
+extraction in that disk gives
+\begin{equation}
+ G_a^{(n)}(0)=n!\,\widetilde\mu_n(a).
+\end{equation}
+This recovers the represented moments uniquely from the constructed
+analytic function and fixes their normalization without an arbitrary
+scalar factor. Finally, $h$ is the coefficient-series
+variable; it is not automatically the variable in an actual angular
+observable. Such an interpretation requires a separately proved
+coefficient identity, to which we now turn.
+
+\PaperPage{42}{5.4 The explicit actual-coefficient obligation}
+\label{front:actual-limit}
+
+The archived actual tower is defined from the literal logarithmic
+derivative, rather than from a measure. Write $R(a)$ for
+\texttt{actualRealLogDerivative} and $\mu_n^{\rm act}(a)$ for
+\texttt{actualWidderMoment}. Its definitions are
+\begin{equation}
+ B(a)=4a\frac{d}{da}\bigl(aR(a)\bigr),\qquad
+ \mu_0^{\rm act}=B,\qquad
+ \mu_{n+1}^{\rm act}=\mathcal W_n\mu_n^{\rm act},
+\end{equation}
+where, with $m=n+1$, the specified differential operator is
+\begin{equation}
+ (\mathcal W_nf)(a)=\frac{2}{m(2m+1)}
+ \left(m^2f(a)-af'(a)-a^2f''(a)\right).
+\end{equation}
+These definitions must be retained when stating a representation theorem.
+Replacing their right-hand sides by positive integrals would change the
+object requiring identification.
+
+Here $\kappa$ is the actual positive scale. Let $\sigma_N$ denote the finite Bernstein measure of the actual
+normalized origin moments, using the repository's grid convention.
+Under $H_{00}$ it is a probability measure. The finite quantity called
+\texttt{actualKernelApproximation} is
+\begin{equation}
+ A_{N,n}(a)=\int w_a(q)\lambda_a(q)^n\,d\sigma_N(q).
+\end{equation}
+The named proposition \texttt{ActualApproximationConvergence} is exactly
+the all-order, all-positive-anchor assertion
+\begin{equation}\label{front:open-convergence}
+ \forall a>0\;\forall n\in\mathbb N,\qquad
+ \lim_{N\to\infty}A_{N,n}(a)=\mu_n^{\rm act}(a).
+\end{equation}
+The source exposes this as a hypothesis; it supplies no inhabitant.
+For comparison, weak convergence $\sigma_N\to\sigma$ identifies the
+same limit with $\widetilde\mu_n(a)$, because the kernel is continuous
+on the compact support interval. Thus identifying the actual differential
+tower, rather than merely constructing a measure, is the decisive step.
+Uniform bounds on the values of the finite approximants do not, by
+themselves, justify passage of first or second derivatives through a
+limit. Any argument using the defining recursion must establish the
+appropriate regularity and differentiated convergence separately.
+
+\begin{proposition}\label{front:conditional-actual-bound}
+Assume $H_{00}$ and \eqref{front:open-convergence}. Then, for $a>0$,
+\begin{equation}
+ 0\leq\mu_n^{\rm act}(a)\leq\mu_0^{\rm act}(a),\qquad
+ \sum_{n=0}^{\infty}|\mu_n^{\rm act}(a)|r^n<\infty
+ \quad(0\leq r<1).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The finite bounds $0\leq A_{N,n}(a)\leq A_{N,0}(a)$ hold at every
+depth. Passing both sides to their assumed limits preserves order.
+The resulting coefficient bound gives the geometric majorant
+$\mu_0^{\rm act}(a)\sum_n r^n$.
+\end{proof}
+
+These conditional consequences are audited in \texttt{ActualLimitBridge}
+\cite{source}. They do not discharge the original longer angular/Widder
+identification program. The completed measure-resolvent route uses exact
+origin moments and an analytic defect directly; it reaches its conditional
+$H_{00}\!\Rightarrow\!\mathrm{RH}$ endpoint without this additional
+coefficient obligation. The distinction prevents a completed route from
+being mistaken for a proof of every proposed intermediate construction.
+
+\PaperPage{43}{5.5 Finite data and universal admissibility}
+\label{front:finite}
+
+A finite pair of integers can name a mathematical condition that is not
+itself a finite computation. The repository's cancellation budget is
+precisely such a pair. With $C_n$ the actual row cancellation and $V_n$
+the actual variation, its data and validity are
+\begin{equation}
+ W=(N_0,K)\in\mathbb N^2,\qquad
+ \operatorname{Adm}(W):\Longleftrightarrow
+ \forall n\geq N_0,\ C_n\leq K V_n.
+\end{equation}
+The word ``finite'' describes the data fields, whereas admissibility
+quantifies over an infinite tail. In particular, nonnegativity of $C_n$
+makes the distinguished zero budget equivalent to
+\begin{equation}
+ H_{00}=\operatorname{Adm}(0,0)
+ \quad\Longleftrightarrow\quad\forall n\geq0,\ C_n=0.
+\end{equation}
+The proved semantic witness theorem is
+\begin{equation}
+ \bigl(\exists W\in\mathbb N^2,\ \operatorname{Adm}(W)\bigr)
+ \quad\Longleftrightarrow\quad\mathrm{RH}.
+\end{equation}
+Its forward implication uses the cancellation identity and eventual
+growth bounds; its reverse implication supplies the zero budget under
+RH. Neither direction replaces universal admissibility by evaluation
+of a Boolean program \cite{source}.
+
+The separate finite-certificate objective asks for an explicitly defined
+type of finite raw data and a terminating checker satisfying
+\begin{equation}\label{front:checker-target}
+ \bigl(\exists W:\mathrm{FiniteWitness},\
+       \mathrm{check}(W)=\mathrm{true}\bigr)
+ \quad\Longleftrightarrow\quad\mathrm{RH}.
+\end{equation}
+Soundness and completeness are logically distinct. A sufficient soundness
+theorem would extract an admissible cancellation budget from each
+acceptance. Composing this extraction with the semantic theorem would
+give RH. Completeness would still require a separate proof that RH
+implies the existence of accepted finite data. Neither checker theorem,
+nor an unconditional accepted witness, is supplied here.
+
+Finite row computations can establish finitely many inequalities. To
+infer an infinite tail, a checker needs an additional proved mechanism,
+such as a certified recurrence with an invariant or a verified symbolic
+bound whose hypotheses its finite input establishes. This observation is
+a specification requirement, not an impossibility claim. A certificate
+may encode the finite reason for a universally valid argument, rather
+than list every instance of its conclusion. The precise arithmetic
+meaning of each encoded expression and the exact actual sequence must
+remain part of soundness. Merely placing a proof of the universal
+predicate inside a structure would provide mathematical evidence, but
+would not by itself define the requested raw-data format and Boolean
+acceptance procedure.
+
+\PaperPage{44}{5.6 Conservative formalization targets}
+\label{front:targets}
+
+The next formalization tasks can be stated without enlarging the proved
+endpoint. First, starting from the probability measure already obtained
+under $H_{00}$, construct the complex $L^2$ space, the class of
+$\sqrt{w_a}$, and multiplication by $\lambda_a$. The target theorem is
+the concrete package
+\begin{equation}
+ a>0\ \Longrightarrow\
+ 0\leq T_a=T_a^*,\quad\|T_a\|\leq1,\quad
+ \langle v_a,T_a^nv_a\rangle=\widetilde\mu_n(a).
+\end{equation}
+Here operator positivity means positivity of every quadratic form.
+Measurability, square integrability, descent to almost-everywhere
+equivalence classes, and boundedness must be proved explicitly. The
+resolvent statement then has the conservative form
+\begin{equation}
+ |h|<1\ \Longrightarrow\
+ \langle v_a,(I-hT_a)^{-1}v_a\rangle
+ =\int\frac{w_a}{1-h\lambda_a}\,d\sigma.
+\end{equation}
+Neither theorem mentions the actual Widder tower.
+
+Second, connect this construction to the audited real Gram interface.
+One may use real-valued $L^2$ functions for the orbit argument, or take
+the real part of the complex inner product on the underlying real
+space. The required squared Cauchy inequality then follows from complex
+Cauchy--Schwarz. There is also a domain issue: the archived orbit
+interface quantifies over every real anchor, while these kernel
+inequalities assume $a>0$. A positive-anchor reindexing, or an explicitly
+defined zero extension of the model family, must resolve that mismatch.
+Such an extension says nothing about actual coefficients at other anchors.
+
+Third, if the longer Widder route is pursued, the additional target is
+\begin{equation}
+ H_{00}\ \Longrightarrow\
+ \forall a>0\;\forall n,\quad
+ \mu_n^{\rm act}(a)=\widetilde\mu_n(a).
+\end{equation}
+A proof must relate the actual logarithmic derivative to the measure
+formula and justify the required differentiations and recursion at every
+order. Positivity of the model alone cannot replace those identities.
+
+Finally, for a proposed finite checker, define its syntax and evaluation
+before seeking the two separate theorem targets
+\begin{equation}
+ \mathrm{check}(W)=\mathrm{true}\Rightarrow\mathrm{RH},\qquad
+ \mathrm{RH}\Rightarrow\exists W,\ \mathrm{check}(W)=\mathrm{true}.
+\end{equation}
+An accepted certificate would then have exactly the meaning proved by
+soundness. These are development targets, not additional audited results.
+The paper-level constructions on pages 39--41 do not modify the frozen
+Lean sources or their audit boundary at
+\texttt{ZETA\_HYPERBOLIC\_ANCHOR\_5}. The distinction between a
+mathematical proof presented here and a newly checked Lean declaration
+is maintained throughout.

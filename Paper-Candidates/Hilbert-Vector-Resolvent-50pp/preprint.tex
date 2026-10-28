@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,left=25mm,right=25mm,top=24mm,bottom=24mm,headheight=14pt]{geometry}
+\usepackage{microtype,booktabs,array,enumitem,fancyhdr}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{pdftitle={Hilbert-Vector-Resolvent Theory: Positive Moments and Two Conditional Routes to the Riemann Hypothesis},pdfsubject={Preprint, draft 0.1; fifty-page expanded exposition},pdfkeywords={Hilbert space, Hausdorff moment problem, Bernstein weights, resolvent, Riemann hypothesis, Lean}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Hup}{\mathbb H}
+\newcommand{\dd}{\,\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\spec}{spec}
+\newcommand{\code}[1]{{\small\texttt{\detokenize{#1}}}}
+\newcommand{\PaperPage}[2]{\clearpage\typeout{HVRPAGE|#1|\thepage}\pdfbookmark[1]{#2}{p#1}\label{page:#1}\subsection*{#2}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Hilbert--Vector--Resolvent Theory}
+\fancyhead[R]{\small Preprint \textperiodcentered\ Draft 0.1}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\parindent}{1.1em}
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\emergencystretch}{1.5em}
+\setlist{itemsep=3pt,topsep=5pt,leftmargin=*}
+\raggedbottom
+\begin{document}
+\input{chapters/00_introduction}
+\input{chapters/01_hilbert}
+\input{chapters/02_bernstein}
+\input{chapters/03_resolvent}
+\input{chapters/04_actual}
+\input{chapters/05_frontier}
+\input{chapters/06_appendices}
+\end{document}

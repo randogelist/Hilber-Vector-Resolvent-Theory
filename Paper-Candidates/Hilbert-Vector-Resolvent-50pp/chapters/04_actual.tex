@@ -1,0 +1,442 @@
+% Actual analytic application, pages 31--38.
+% Source exposition only; no new formal declarations are claimed.
+\PaperPage{31}{4.1 The actual Riemann xi function}
+\label{act:xi}
+The application requires a fixed analytic function, including its values at
+the apparent singularities of the usual completion. Write $\Lambda_0$ for
+Mathlib's entire pole-subtracted completion, named
+\texttt{completedRiemannZeta\textsubscript{0}} in the mathematical
+description. The source definition is exactly
+\begin{equation}\label{act:xi-normalization}
+ \xi(s)=\frac{1+s(s-1)\Lambda_0(s)}{2},\qquad s\in\mathbb C.
+\end{equation}
+This formula defines an entire function without introducing removable
+values by convention. At the two exceptional arguments it immediately gives
+\begin{equation}
+ \xi(0)=\xi(1)=\tfrac12.
+\end{equation}
+If $\Lambda$ denotes the meromorphic completed zeta function, the retained
+comparison theorem identifies the familiar expression on its valid domain:
+\begin{equation}
+ \xi(s)=\frac{s(s-1)}2\Lambda(s)\qquad(s\ne0,1).
+\end{equation}
+Keeping these domains explicit prevents a totalized division operation in
+the formal language from being mistaken for analytic evaluation at a pole.
+It also fixes the normalization used later for the logarithmic derivative.
+
+\begin{proposition}[Retained literal RH binding]\label{act:rh-binding}
+For this particular $\xi$, Mathlib's proposition
+\texttt{RiemannHypothesis} is equivalent to
+\begin{equation}\label{act:xi-rh}
+ \forall s\in\mathbb C,\qquad
+ \xi(s)=0\ \Longrightarrow\ \operatorname{Re}s=\tfrac12.
+\end{equation}
+\end{proposition}
+The source proves this equivalence by matching the zeros of $\xi$ with
+the nontrivial zeros in Mathlib's definition. The latter excludes the
+negative even integers and the exceptional argument $1$. The factors in
+the completion are checked at the relevant arguments; the nonvanishing
+theorems also rule out extraneous zeros. Thus the endpoint concerns the
+ordinary Riemann hypothesis, rather than a proposition chosen to resemble
+it or a model zero predicate.
+
+This binding is a retained theorem from \texttt{ActualXi.lean}, and the
+entire normalization comes from \texttt{AWPIRH/XiCore.lean}~\cite{source}.
+We do not reprove the completion and nonvanishing infrastructure here.
+Subsequent implications always return to this same proposition. In
+particular, changing a moment convention or constructing an abstract
+positive operator cannot silently change the analytic function to which
+the conclusion applies. The role of the following pages is to exhibit
+the exact connections that make such a return legitimate.
+An overall nonzero constant would leave the logarithmic derivative
+unchanged, but retaining the exact normalization makes the source
+correspondence unambiguous throughout.
+
+\PaperPage{32}{4.2 Entire descent through the centered square}
+\label{act:descent}
+The reflection equation of the actual completion places the center of
+symmetry at one half. Introduce the centered function $F$ and the descended
+function $\Theta$ by
+\begin{equation}
+ \xi(1-s)=\xi(s),\qquad F(w)=\xi(\tfrac12+w),\qquad F(-w)=F(w),
+\end{equation}
+\begin{equation}\label{act:theta-definition}
+ \Theta(z)=F(\sqrt z),\qquad \Theta(w^2)=F(w).
+\end{equation}
+Here the square root in the definition is a chosen pointwise square root.
+The second identity is independent of that choice: the two roots differ
+only by sign, and $F$ is even. Neither this observation nor the notation
+asserts that a global holomorphic square root exists.
+
+\begin{proposition}[Retained entire descent]\label{act:theta-entire}
+The function $\Theta$ is entire, satisfies
+\eqref{act:theta-definition}, and has $\Theta(0)\ne0$.
+\end{proposition}
+For completeness, the analytic mechanism can be described locally. Near
+a nonzero point one selects a holomorphic square root after normalizing
+the argument into a neighborhood of $1$. Evenness identifies the resulting
+composition with the pointwise definition. At zero, continuity and the
+removable-singularity theorem complete the extension. Equivalently, an
+even Taylor expansion descends by replacing $w^{2n}$ with $z^n$.
+The source implements the local-root and removable-singularity route in
+\texttt{ThetaEntire.lean}; origin nonvanishing is supplied separately.
+
+The actual-function development also supplies conjugation symmetry:
+\begin{equation}\label{act:theta-conjugation}
+ \Theta(\overline z)=\overline{\Theta(z)},\qquad
+ \Theta(z)=0\ \Longrightarrow\ \Theta(\overline z)=0.
+\end{equation}
+Its implications differ from those of evenness. Evenness identifies the
+two centered xi arguments over a single square; conjugation pairs the
+upper and lower half-plane zeros of the descended function. Neither
+property alone places all zeros on a line.
+
+The exact geometric translation is
+\begin{equation}\label{act:theta-rh}
+ \mathrm{RH}\quad\Longleftrightarrow\quad
+ \bigl[\Theta(z)=0\ \Longrightarrow\ z\in(-\infty,0]\bigr].
+\end{equation}
+Indeed, a centered critical-line point has the form $it$, whose square
+is $-t^2$. Conversely, a square is real and nonpositive precisely when
+its square root has zero real part. Applying the centered-square identity
+in both directions proves the translation, using the literal RH binding
+already fixed. Origin nonvanishing subsequently removes the endpoint zero
+from the actual divisor.
+Away from that endpoint, the square map has nonzero derivative. Local
+zero orders are therefore preserved when descending either member of
+an opposite pair. Pairing those members avoids counting the same
+descended zero twice.
+
+\PaperPage{33}{4.3 Exact moments and their positive normalization}
+\label{act:moments}
+Origin nonvanishing gives a disk on which the actual logarithmic derivative
+is holomorphic. Define the complex moments before taking real parts:
+\begin{equation}\label{act:moment-definition}
+ R(z)=\frac{\Theta'(z)}{\Theta(z)},\qquad
+ a_n=\frac{(-1)^n}{n!}R^{(n)}(0),\qquad m_n=\operatorname{Re}a_n.
+\end{equation}
+The real coordinate in this definition is convenient for Bernstein rows,
+but does not discard an unaccounted imaginary part. The retained reality
+theorem proves $a_n=\overline{a_n}$ at every order. Schwarz reflection of
+$\Theta$ passes to its derivative, quotient, and iterated derivatives;
+evaluation at the real point zero therefore yields
+\begin{equation}\label{act:moment-reality}
+ a_n=m_n\in\mathbb R\qquad(n\ge0).
+\end{equation}
+This argument uses neither RH nor a preliminary assertion that the
+canonical nodes are real. It is also independent of the later all-order
+power-sum theorem. These distinctions are essential when the moments
+are used to prove a zero-location criterion.
+
+Write $A_i$ for the canonical complex scales of the paired actual
+divisor, with multiplicity. The source supplies the absolutely convergent
+first trace and its positivity:
+\begin{equation}\label{act:kappa-trace}
+ \kappa:=m_0=\sum_i\operatorname{Re}(A_i^{-1})>0.
+\end{equation}
+The proof uses the actual product, unconditional low-height zero exclusion,
+and nonempty divisor support. Specifically, the scale geometry gives
+$\operatorname{Re}(A_i^{-1})>0$ for every index. Summability permits comparison
+with one strictly positive term, proving strict positivity of the total.
+It does not assume that every scale is positive real; that stronger
+conclusion would already encode the desired zero geometry.
+
+The normalized moments and their derivative calibration are consequently
+\begin{equation}\label{act:normalized-moments}
+ u_n=\frac{m_n}{\kappa^{n+1}},\qquad u_0=1,\qquad
+ R^{(n)}(0)=(-1)^n n!\kappa^{n+1}u_n.
+\end{equation}
+All divisions here are justified by the established strict positivity.
+The sequence $u$ is now fixed by the actual analytic function, rather
+than selected to satisfy a moment criterion. The accompanying modules
+\texttt{ActualMomentReality.lean} and
+\texttt{ActualCalibrationProgress.lean} supply the retained inputs~\cite{source}.
+They discharge reality and normalization before either forward route
+assumes $H_{00}$. The remaining question is whether this particular real
+sequence has positive Bernstein rows at every order.
+Reality itself supplies no such positivity: a real sequence can have
+negative moments or negative finite differences. The alternating sign
+convention fixes precisely which differences the later criterion tests.
+
+\PaperPage{34}{4.4 Canonical nodes and exact power sums}
+\label{act:calibration}
+The paired divisor turns the moment sequence into spectral data without
+presupposing a positive measure. With the complex scales $A_i$ from the
+preceding page, define
+\begin{equation}\label{act:nodes}
+ q_i=(\kappa A_i)^{-1},\qquad
+ \alpha_i=-A_i=-\frac1{\kappa q_i}.
+\end{equation}
+The canonical index retains repeated occurrences, so zero multiplicities
+are preserved. Its calibration includes both inclusion and exhaustion:
+\begin{equation}\label{act:zero-calibration}
+ q_i\ne0,\quad \Theta(\alpha_i)=0,\qquad
+ \Theta(z)=0\ \Longrightarrow\ \exists i\ (z=\alpha_i).
+\end{equation}
+Exhaustion is indispensable. A family consisting only of favorable zeros
+could establish neither the spectral criterion nor the return to RH.
+The source obtains it from the entire actual divisor and its opposite-pair
+indexing, not from a finite list of numerically located zeros.
+
+\begin{theorem}[Retained canonical power sums]\label{act:power-sums}
+The actual nodes satisfy
+\begin{equation}\label{act:power-sum-formula}
+ \sum_i|q_i|<\infty,\qquad
+ u_n=\sum_i q_i^{n+1}\quad(n\ge0),\qquad \sum_iq_i=1.
+\end{equation}
+The sums are convergent complex sums; their stated values are real.
+\end{theorem}
+The final mass identity is the case $n=0$. It does not imply positivity
+of individual nodes, since cancellation remains possible in a complex
+sum. Absolute summability, however, bounds each node and controls every
+higher power, supplying the necessary convergence statements.
+
+Here is the analytic content behind the all-order identification. Put
+$b_i=A_i^{-1}$ and $M=1+\sum_i|b_i|$. On a common neighborhood of zero,
+\begin{equation}
+ |z|M<\tfrac12\quad\Longrightarrow\quad
+ |1+zb_i|>\tfrac12,\qquad
+ \left|\frac{b_i}{1+zb_i}\right|\le2|b_i|.
+\end{equation}
+The same summable family, multiplied by a constant depending on the
+derivative order, majorizes every resolvent power. Locally uniform product
+convergence identifies the logarithmic derivative with the resolvent sum;
+holomorphic derivative interchange then produces all power sums.
+Reality and the exact $\kappa$ normalization finish the calculation.
+
+The module \texttt{CanonicalPowerSums.lean} supplies this construction;
+\texttt{AnalyticClosure.lean} packages its fields as
+\texttt{actualCanonicalCalibration}. Thus calibration is constructed
+analytic data at the final endpoints. It remains an infinite mathematical
+object, and its existence is neither a finite certificate nor a proof of
+$H_{00}$.
+Derivative interchange is justified separately at each finite order on
+the same open neighborhood. Its majorant may depend on that order;
+no uniform bound over all derivative orders is asserted or needed
+for these identities.
+
+\PaperPage{35}{4.5 Ellipse geometry and the spectral radius}
+\label{act:radius}
+For a complex node $q$, the quantity $|q|+|1-q|$ measures its position
+relative to the two real foci zero and one. It is at least one by the
+triangle inequality. Equality requires the two summands to have compatible
+directions, giving the elementary characterization
+\begin{equation}\label{act:segment-geometry}
+ E(q):=|q|+|1-q|\ge1,\qquad
+ E(q)=1\ \Longleftrightarrow\ q\in[0,1].
+\end{equation}
+The interval is regarded as a subset of $\mathbb C$. In particular,
+real nodes outside the interval and genuinely nonreal nodes both give
+strictly larger values. This geometry detects more than the imaginary
+part alone.
+For a fixed value greater than one, the level set is an ellipse with
+those two foci. Thus the radius describes the largest ellipse reached
+by the calibrated nodes. It is a radius for this affine Bernstein
+geometry, not the usual supremum of the node moduli. Replacing it
+by that simpler supremum would lose the contribution from the
+factor involving one minus the node.
+
+Define the radius of the actual calibrated family by
+\begin{equation}\label{act:spectral-radius}
+ \rho=\sup\bigl(\{1\}\cup\{E(q_i):i\in J\}\bigr).
+\end{equation}
+The inserted value one makes the lower bound explicit. Absolute
+summability makes the family bounded, since
+$E(q_i)\le1+2|q_i|$. Consequently the supremum is finite, and
+\begin{equation}\label{act:radius-one}
+ \rho=1\quad\Longleftrightarrow\quad \forall i\ (q_i\in[0,1]).
+\end{equation}
+For the actual calibration, this is exactly RH. If the nodes lie in the
+interval, nonvanishing makes them positive; every calibrated zero
+$-1/(\kappa q_i)$ is then negative real. Exhaustion and
+\eqref{act:theta-rh} give RH. Conversely, RH places all descended zeros
+on the negative axis and therefore makes each node positive real.
+The identity $\sum_iq_i=1$ bounds each by one.
+
+The connection with row variation is visible in the exact generating
+polynomial. For $|x|\le1$, absolute summability justifies the formula
+\begin{equation}\label{act:row-generating}
+ P_N(x):=\sum_{j=0}^Nw_{N,j}x^j
+       =\sum_iq_i\bigl(1-q_i+xq_i\bigr)^N,
+ \qquad |P_N(x)|\le V_N.
+\end{equation}
+Taking absolute values before summing produces the useful bound
+\begin{equation}\label{act:variation-upper}
+ 1\le V_N\le\sum_i|q_i|E(q_i)^N
+                  \le\left(\sum_i|q_i|\right)\rho^N.
+\end{equation}
+This proves the upper exponential rate immediately. Establishing the
+matching lower rate requires a separate argument, because complex
+contributions to the generating polynomial can cancel. The next page
+states precisely the retained theorem that resolves this issue.
+
+\PaperPage{36}{4.6 The retained ordinary spectral limit}
+\label{act:root-limit}
+\begin{theorem}[Retained actual spectral closure]\label{act:spectral-limit}
+For the actual normalized sequence and its canonical nodes,
+\begin{equation}\label{act:ordinary-root-limit}
+ \lim_{N\to\infty}V_N^{1/N}=\rho.
+\end{equation}
+This is an ordinary limit along positive integers.
+\end{theorem}
+The source constructs the required dominant extraction from the
+calibration and then applies its spectral limit theorem. We retain that
+result here; the following description identifies its obligations without
+claiming to reproduce the full extraction proof. The case $\rho=1$ follows
+directly from \eqref{act:variation-upper}. Suppose therefore that $\rho>1$.
+
+Summability forces the nodes to approach zero outside finite sets, so
+their ellipse radii approach one there. A maximizing node can therefore
+be isolated in a finite region. Choosing a unit complex phase $x$ aligns
+its two affine contributions. At this phase the row polynomial admits
+the constructed decomposition
+\begin{equation}\label{act:dominant-decomposition}
+ P_N(x)=\sum_{\ell=1}^{d}c_\ell\lambda_\ell^N+T_N,
+ \qquad |x|=1,\quad |\lambda_\ell|=\rho.
+\end{equation}
+The rates are distinct after grouping repeated nodes; at least one
+coefficient is nonzero. Equal nodes have coefficients equal to their
+positive integer multiplicity times the node, so grouping cannot erase
+every dominant coefficient. The complement has a uniform strict bound:
+\begin{equation}\label{act:tail-bound}
+ |T_N|\le C r^N,\qquad 1\le r<\rho.
+\end{equation}
+This complement includes both the infinite tail and the finite nodes
+whose affine rate is smaller than the maximum.
+
+Distinct dominant phases can cancel at particular indices. The argument
+therefore uses finite Vandermonde estimates over blocks of consecutive
+indices, rather than asserting a pointwise lower bound for every
+exponential sum. The strict tail estimate makes the remainder negligible.
+The inequalities $|P_N(x)|\le V_N$ and monotonicity of $V_N$ transfer the
+block lower estimates to the ordinary root limit. Those are the steps
+for which the retained spectral infrastructure is needed.
+
+Combining the limit with \eqref{act:radius-one} yields
+\begin{equation}\label{act:subexp-rh}
+ \bigl[\forall\varepsilon>0\ \exists A>0\ \forall N\ge0,
+       \ V_N\le Ae^{\varepsilon N}\bigr]
+       \quad\Longleftrightarrow\quad\mathrm{RH}.
+\end{equation}
+The exact source declarations are
+\texttt{canonical\_actual\_root\_tendsto\_constructed} and
+\texttt{canonical\_actual\_subexponential\_iff\_nativeRH} in
+\texttt{AnalyticClosure.lean}~\cite{source}.
+For the forward implication in this last criterion, each exponential
+bound forces the limit to be at most its exponential base. Letting
+that base decrease to one gives the required radius.
+
+\PaperPage{37}{4.7 The first route and the shared converse}
+\label{act:route-one}
+The first route now combines finite cancellation algebra with the
+retained actual spectral criterion. Recall that $H_{00}$ is semantic
+admissibility of the existing cutoff-zero, coefficient-zero budget. Its
+meaning includes every order; the finite notation for the candidate
+does not restrict that quantifier. For the actual rows, the identities
+proved earlier give
+\begin{equation}\label{act:h00-chain}
+ H_{00}\ \Longrightarrow\ C_n=0\ (n\ge0)
+ \ \Longrightarrow\ V_{n+1}=V_n\ (n\ge0).
+\end{equation}
+The second implication follows from
+$C_n=(n+1)(V_{n+1}-V_n)$ and the positivity of $n+1$.
+Starting with the unconditional normalization $V_0=1$, induction yields
+\begin{equation}
+ H_{00}\quad\Longrightarrow\quad V_n=1\qquad(n\ge0).
+\end{equation}
+For each $\varepsilon>0$, choosing $A=1$ supplies the required
+subexponential estimate:
+\begin{equation}
+ V_n=1\le e^{\varepsilon n}\qquad(n\ge0).
+\end{equation}
+Equation~\eqref{act:subexp-rh} therefore proves the first implication
+$H_{00}\Rightarrow\mathrm{RH}$. Its mathematical content beyond finite
+row algebra is exactly the constructed actual spectral closure. No
+separate extraction or calibration hypothesis remains in the endpoint.
+The proof also identifies the logical order: row positivity is available
+directly from zero cancellation before the spectral implication is
+invoked. The second route may therefore reuse that positivity without
+assuming the first route's conclusion.
+
+The reverse implication is shared by both routes. Assume RH. The actual
+calibration and radius geometry place each $q_i$ in $[0,1]$. Substituting
+the power sums into the finite Bernstein difference formula gives
+\begin{equation}\label{act:positive-spectral-weights}
+ w_{N,j}=\binom Nj\sum_iq_i^{j+1}(1-q_i)^{N-j}\ge0,
+ \qquad 0\le j\le N.
+\end{equation}
+Absolute summability justifies exchanging the infinite node sum with
+the finite difference sum. Each resulting term is nonnegative. The row
+mass identity then gives $V_N=1$, hence zero cancellation and $H_{00}$.
+
+We have consequently obtained the equivalence
+\begin{equation}\label{act:first-equivalence}
+ H_{00}\quad\Longleftrightarrow\quad\mathrm{RH}.
+\end{equation}
+The common reverse construction is exposed in the source as
+\texttt{H00\_of\_nativeRH}. The equivalence does not discharge its
+left-hand assertion: it characterizes RH by another universal statement.
+In particular, checking any fixed collection of rows cannot supply the
+induction hypothesis used above for all later degrees. A further theorem
+would be needed to propagate finite data to every cancellation order.
+This unresolved issue is separate from the validity of the two
+conditional implications.
+
+\PaperPage{38}{4.8 The second route and the actual RH endpoint}
+\label{act:route-two}
+The second forward construction applies the preceding measure--resolvent
+argument to the actual moments. From $H_{00}$, finite row algebra gives
+positive normalized Bernstein rows. The Hausdorff construction produces
+a probability measure $\sigma$ on $[0,1]$, whose moments are exactly $u_n$.
+Its transform is
+\begin{equation}\label{act:actual-resolvent}
+ S(z)=\kappa\int_{[0,1]}\frac{d\sigma(q)}{1+\kappa qz},
+ \qquad \operatorname{Im}S(z)\le0\quad(\operatorname{Im}z>0).
+\end{equation}
+The actual derivative calibration \eqref{act:normalized-moments} identifies
+the analytic germs of $S$ and $R$ at zero. Continuing the holomorphic
+defect, rather than dividing at possible zeros, gives
+\begin{equation}\label{act:actual-defect}
+ \Theta'-S\Theta=0\quad\hbox{on the upper half-plane}.
+\end{equation}
+An upper-half-plane zero $a$ of multiplicity $m\ge1$ would have
+$R(z)=m/(z-a)+B(z)$ with $B$ holomorphic nearby. At $z=a-i\varepsilon$
+the principal part has imaginary part $m/\varepsilon>0$, contradicting
+the sign after the bounded remainder is absorbed. Conjugate-zero symmetry
+then makes every $\Theta$-zero real.
+
+For an actual xi zero $s=\sigma_0+it$, centered-square descent therefore
+implies
+\begin{equation}\label{act:height-return}
+ 0=\operatorname{Im}(s-\tfrac12)^2
+   =2(\sigma_0-\tfrac12)t,
+ \qquad |t|>1.
+\end{equation}
+The last inequality is a retained unconditional zero-height theorem.
+It forces $\sigma_0=1/2$, and Proposition~\ref{act:rh-binding} gives literal
+RH. This closure needs no separate exclusion of positive-real
+$\Theta$-zeros. Every analytic input is either constructed from $H_{00}$
+or supplied for the fixed actual functions.
+In particular, the measure is not posited independently of the input
+sequence. Exact moment identification constructs the origin germ, and
+origin nonvanishing suffices there. The continuation step is formulated
+with an analytic defect precisely so that hypothetical zeros elsewhere
+do not become unmentioned assumptions in the proof.
+
+In namespace \texttt{RH\_HilbertLimit.TwoRoutes}, the four exact exported
+declarations are
+\begin{center}\small
+\begin{tabular}{@{}l@{}}
+\texttt{nativeRH\_of\_H00\_route\_one}\\
+\texttt{H00\_iff\_nativeRH\_route\_one}\\
+\texttt{nativeRH\_of\_H00\_route\_two}\\
+\texttt{H00\_iff\_nativeRH\_route\_two}.
+\end{tabular}
+\end{center}
+Their types are respectively $H00\to\texttt{RiemannHypothesis}$ and
+$H00\leftrightarrow\texttt{RiemannHypothesis}$ for each route; the
+formalization appendix records their verification context. The second
+forward proof does not call the first RH endpoint, although both share
+foundations and the reverse implication. The explanatory $L^2$ operator
+model introduces no additional audited Lean result. Neither endpoint
+proves $H_{00}$ unconditionally or constructs a terminating RH checker.

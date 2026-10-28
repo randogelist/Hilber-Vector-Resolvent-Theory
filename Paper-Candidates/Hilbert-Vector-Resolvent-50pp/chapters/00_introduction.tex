@@ -1,0 +1,318 @@
+\thispagestyle{plain}
+\typeout{HVRPAGE|1|\thepage}
+\pdfbookmark[0]{Title and abstract}{title}
+\begin{center}
+{\LARGE\bfseries Hilbert--Vector--Resolvent Theory\par}
+\vspace{8pt}
+{\large Positive Moments and Two Conditional Routes\par
+to the Riemann Hypothesis\par}
+\vspace{10pt}
+Preprint \textperiodcentered\ Expanded draft 0.1\par
+28 October 2026
+\end{center}
+\vspace{5pt}
+\begin{abstract}
+We develop an introductory framework connecting scalar coefficients,
+distinguished vectors in Hilbert space, positive moment measures, and
+analytic resolvents. For a positive contraction $T$ and a unit vector
+$v$, the moments $\langle v,T^nv\rangle$ have nonnegative Bernstein
+weights; conversely, normalized Bernstein positivity produces a
+probability measure on $[0,1]$ and a concrete multiplication-operator
+model. The associated scaled resolvent is holomorphic on a slit plane
+and has nonpositive imaginary part in the upper half-plane. We give
+the finite algebra, moment-limit construction, and analytic
+continuation argument underlying this correspondence.
+
+The arithmetic application concerns the actual normalized moments
+of the centered Riemann $\xi$-function. Their universal zero-cancellation
+condition, denoted $H00$, yields two conditional routes to the literal
+Riemann hypothesis: one through spectral growth of Bernstein variation,
+and one through a positive measure and its resolvent. The existing Lean
+development proves both implications and the corresponding equivalences;
+the present text supplies a broader mathematical exposition and a source
+concordance. The concrete Hilbert-space packaging is presented as
+classical mathematics, separately from the declarations already audited.
+The hypothesis $H00$ itself remains unproved. Neither an unconditional
+proof of the Riemann hypothesis nor a finite accepted certificate is
+asserted.
+\end{abstract}
+
+\noindent\textbf{Keywords.} Hilbert space; positive contraction;
+Hausdorff moments; Bernstein weights; scalar resolvent; Riemann
+hypothesis; formal verification.
+
+\medskip
+\noindent\textbf{Scope of this draft.}
+``Hilbert--Vector--Resolvent theory'' is the organizing name used here
+for the project. The elementary operator and moment correspondences
+belong to classical analysis. The purpose is to state the project's
+objects and proof dependencies precisely, to explain the two existing
+conditional constructions, and to isolate the exact remaining
+identification and admissibility problems. No priority claim for the
+classical correspondences is intended.
+
+\medskip
+\noindent\textbf{Source baseline.}
+The mathematical source and verification record are available in the
+\href{https://github.com/randogelist/Hilber-Vector-Resolvent-Theory}{project repository}.
+The frozen project anchor is \code{ZETA_HYPERBOLIC_ANCHOR_5}.
+
+\PaperPage{2}{Contents and reading guide}
+\begin{tabular}{@{}p{0.82\linewidth}r@{}}
+\toprule
+\textbf{Part} & \textbf{Pages}\\
+\midrule
+Abstract, notation, principal claims, and introduction & 1--6\\[5pt]
+1. Hilbert-vector models & 7--14\\
+\quad Coefficients, defects, positivity, cyclicity, examples & \\
+2. Bernstein positivity and the moment measure & 15--22\\
+\quad Finite identities, shifted moments, positive functionals & \\
+3. Scalar resolvents and analytic zero exclusion & 23--30\\
+\quad Slit domain, derivatives, signs, continuation, poles & \\
+4. Actual $\xi$-moments and the two RH routes & 31--38\\
+\quad Normalization, spectral growth, common converse & \\
+5. Weighted models and the unfinished frontier & 39--44\\
+\quad Kernel models, exact identification, finite certificates & \\
+Appendix A. Verification evidence and exact endpoints & 45--46\\
+Appendix B. Finite prefixes and weak convergence & 47--48\\
+References & 49\\
+Appendix C. Source concordance and reproducibility & 50\\
+\bottomrule
+\end{tabular}
+
+\medskip
+The mathematical narrative runs from general objects to the actual
+arithmetic application. Part~1 fixes the meaning of a Hilbert-vector
+model and explains why one vector sees a cyclic subspace rather than
+an arbitrary ambient operator. Part~2 works directly with real
+sequences. It derives positivity from finite identities before passing
+to an infinite moment measure. Part~3 studies the analytic function
+determined by that measure, with all sign conventions fixed explicitly.
+
+Part~4 specializes the construction to the actual centered
+$\xi$-function. Its retained spectral infrastructure is stated with its
+role and provenance; the shorter resolvent route is then assembled
+from the preceding arguments. Part~5 returns to the broader program
+and states the missing equality needed to connect the weighted model
+to the archived Widder family. The appendices separate compiler
+evidence from mathematical interpretation and record useful limits of
+finite testing.
+
+Readers interested primarily in the conditional RH result can begin
+with the statement on page~4 and Part~4, consulting Parts~2 and~3 for
+the second route. Readers interested in a rigorous general introduction
+can read Parts~1--3 independently of the arithmetic application.
+The bibliography supplies classical background; the source concordance
+gives the more granular project-level correspondence.
+
+Each numbered subsection is a self-contained stage of the argument.
+Proofs use standard Hilbert-space, measure-theoretic, and complex-analytic
+results where named. When a substantial theorem is imported from the
+retained formal development, it is identified as such rather than
+represented as an elementary consequence of the surrounding exposition.
+
+\PaperPage{3}{Notation and conventions}
+\begin{tabular}{@{}p{0.21\linewidth}p{0.73\linewidth}@{}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$\mathcal H,T,v$ & Complex Hilbert space, bounded operator, distinguished vector.\\[4pt]
+$\langle x,y\rangle$ & Inner product conjugate-linear in $x$, linear in $y$.\\[4pt]
+$u_n$ & Real normalized moment; $u_0=1$ when positivity is used.\\[4pt]
+$w_{N,j}$ & Bernstein weight of degree $N$, for $0\le j\le N$.\\[4pt]
+$V_N,C_N$ & Row variation and row cancellation, respectively.\\[4pt]
+$\sigma$ & Borel probability measure on $[0,1]$.\\[4pt]
+$\kappa$ & Positive scaling parameter; actual trace moment in Part~4.\\[4pt]
+$S_\kappa$ & $\kappa\int_{[0,1]}(1+\kappa qz)^{-1}\,d\sigma(q)$.\\[4pt]
+$\mathbb H$ & Upper half-plane $\{z\in\mathbb C:\operatorname{Im}z>0\}$.\\[4pt]
+$\xi,\Theta$ & Entire Riemann $\xi$ and its even centered descent.\\[4pt]
+$R$ & The germ $\Theta'/\Theta$ at the origin.\\[4pt]
+$H00$ & Semantic admissibility of the actual zero-budget candidate.\\
+\bottomrule
+\end{tabular}
+
+\medskip
+All sequence indices start at zero. The binomial coefficient is the
+ordinary integer binomial coefficient. Finite sums over an empty set
+are zero. The grid point at degree zero is set to $q_{0,0}=0$; for
+$N>0$, the grid is $q_{N,j}=j/N$. This convention avoids interpreting
+$0/0$ when defining Bernstein averages.
+
+For a bounded self-adjoint operator, $0\le T\le I$ means that
+$\langle x,Tx\rangle$ and $\langle x,(I-T)x\rangle$ are nonnegative
+for every $x$. The term \emph{positive contraction} includes both
+self-adjointness and these inequalities. A bare contraction need not
+have real or positive scalar coefficients.
+
+The two scalar resolvent conventions must be kept distinct:
+\[
+ F(z)=\langle v,(I-zT)^{-1}v\rangle,\qquad
+ S_\kappa(z)=\kappa\langle v,(I+\kappa zT)^{-1}v\rangle.
+\]
+For a positive model, $F$ has nonnegative imaginary part on
+$\mathbb H$, while $S_\kappa$ has nonpositive imaginary part there.
+The inequalities need not be strict; the measure $\delta_0$ gives a
+constant resolvent. ``Anti-Herglotz'' will mean the latter nonpositive
+sign condition, with the convention always displayed when used.
+
+An equality of germs means equality throughout some neighborhood of
+the stated point. Holomorphy on a domain does not assert that this
+domain is maximal. In particular, the universal slit used for
+$S_\kappa$ is a common domain guaranteed for every probability measure
+on $[0,1]$, not the singular set of every particular example.
+
+\PaperPage{4}{Principal claims and their logical scope}
+The analytic framework has a general equivalence independent of the
+zeta function. It is a classical form of the compact moment problem.
+\begin{theorem}[Positive-model correspondence]\label{intro:correspondence}
+Let $(u_n)_{n\ge0}$ be real and $u_0=1$. The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item Every Bernstein weight $w_{N,j}$ defined on page~15 is nonnegative.
+\item There is a Borel probability measure $\sigma$ on $[0,1]$ such that
+$u_n=\int q^n\,d\sigma(q)$ for all $n$.
+\item There is a positive contraction $T$ on a complex Hilbert space
+and a unit vector $v$ with $u_n=\langle v,T^nv\rangle$.
+\end{enumerate}
+The measure in (ii) is unique. One may choose the cyclic model
+$\mathcal H=L^2(\sigma)$, $T=M_q$, $v=1$.
+\end{theorem}
+The implication (i)$\Rightarrow$(ii) is developed in Part~2;
+(ii)$\Rightarrow$(iii) is the multiplication construction in Part~1;
+and (iii)$\Rightarrow$(i) follows from the positive operators
+$T^j(I-T)^{N-j}$. Uniqueness follows from polynomial density.
+
+\begin{theorem}[Retained actual conditional endpoints]\label{intro:actual}
+For the actual normalized $\xi$-moment sequence defined in Part~4,
+the semantic condition $H00$ is equivalent to the literal Riemann
+hypothesis. The retained development provides two forward
+constructions of $H00\Rightarrow\mathrm{RH}$ and a common converse.
+\end{theorem}
+Here $H00$ is a universal assertion about all Bernstein rows. Its
+finite candidate data are $(0,0)$, but its admissibility is not a
+finite computation. The first route uses the spectral growth theorem
+for row variation. The second constructs the measure, identifies the
+actual logarithmic-derivative germ, and excludes nonreal zeros.
+Precise endpoint types and their audit record appear in Appendix~A.
+
+There are three distinct levels of claim in this manuscript.
+The finite identities and actual conditional endpoints have source
+counterparts covered by the existing audit. The full complex Hilbert
+realization and some general explanatory lemmas are proved here as
+ordinary mathematics, without a claim of new Lean coverage. Finally,
+unconditional $H00$, checker soundness and completeness, and the
+archived Widder identification remain goals. None is promoted to a
+theorem by the existence of a model with similarly named coefficients.
+
+This separation is mathematically consequential. A positive measure
+for an arbitrary sequence gives a resolvent for that sequence. To
+derive a statement about $\xi$, the sequence must be the actual Taylor
+data of its logarithmic derivative. That identification is the link
+which makes the second route an arithmetic argument.
+
+\PaperPage{5}{Introduction: from scalar data to an operator model}
+A sequence often enters analysis in several apparently different
+forms: as the derivatives of a germ, as moments of a measure, or as
+matrix coefficients of an operator orbit. The useful question is not
+whether one can assign these descriptions formally, but which
+identities and inequalities make them describe the same object.
+The framework of this preprint begins with the chain
+\[
+ u_n=\int_0^1 q^n\,d\sigma(q)
+     =\langle 1,M_q^n1\rangle_{L^2(\sigma)}.
+\]
+The moment measure supplies positivity and compact support. The
+operator supplies norm estimates and geometric defects. The resolvent
+packages all moments into a single analytic function. Each description
+therefore exposes a different part of the same structure.
+
+The finite entry point is the Bernstein basis
+$\binom Nj q^j(1-q)^{N-j}$. If a normalized sequence acts positively
+on every member of this basis, its row weights form probability
+distributions on increasingly fine grids. The finite coarsening
+identity measures how total variation changes from one row to the
+next. Vanishing cancellation is precisely the condition that all
+these signed rows are already positive. The passage to a measure then
+requires an actual limit argument; row positivity alone is not a
+license to interchange arbitrary infinite operations.
+
+Once the measure exists, its compact support controls denominators:
+\[
+ S_\kappa(z)=\kappa\int_0^1\frac{d\sigma(q)}{1+\kappa qz},
+ \qquad z\notin(-\infty,-1/\kappa].
+\]
+The imaginary part of the integrand has a fixed sign in the upper
+half-plane. This sign becomes a zero-exclusion mechanism only after
+the resolvent is identified with the logarithmic derivative of an
+entire function. At a zero of positive multiplicity, that logarithmic
+derivative has a pole with a positive integer residue. A local
+downward approach to the pole contradicts the resolvent sign.
+
+The actual $\xi$ application is an instance of this mechanism with
+carefully normalized Taylor data. It also admits a different route
+through exponential growth of Bernstein variation. The coexistence
+of the two routes is useful: one makes the geometry of the canonical
+zeros visible, while the other makes the positive measure and analytic
+sign visible. Their common unresolved premise is the same exact
+universal admissibility statement.
+
+The introduction therefore aims at a disciplined synthesis. Classical
+Hilbert and moment theory provide the language; the repository gives
+specific actual constructions and audited endpoints; the remaining
+program is expressed as explicit assertions whose proofs can be
+sought independently.
+
+\PaperPage{6}{Representation, identification, and the proof architecture}
+Three operations organize the discussion. \emph{Representation}
+constructs an object realizing given data. \emph{Identification}
+proves that these data equal those of a prescribed analytic function.
+\emph{Closure} converts the resulting analytic information into a
+statement about zeros. Confusing any two of these operations can hide
+a missing hypothesis.
+
+For representation, Parts~1 and~2 connect four descriptions:
+\[
+ \begin{gathered}
+ \text{nonnegative Bernstein rows}
+ \ \Longleftrightarrow\ \text{positive moment measure on }[0,1],\\
+ \text{positive moment measure}
+ \ \Longleftrightarrow\ \text{cyclic positive-contraction model}.
+ \end{gathered}
+\]
+The second equivalence is understood up to unitary equivalence of
+cyclic models. It is not a uniqueness assertion for all possible
+ambient spaces containing an unobserved orthogonal summand.
+The resulting resolvent has prescribed Taylor coefficients and a
+half-plane sign, independently of any arithmetic interpretation.
+
+For identification, let $\Theta(0)\ne0$ and assume that the actual
+derivatives satisfy
+\[
+ \left(\frac{\Theta'}{\Theta}\right)^{(n)}(0)
+   =(-1)^n n!\kappa^{n+1}u_n.
+\]
+The same formula holds for $S_\kappa^{(n)}(0)$. Analyticity makes
+the two germs equal. Their equality is propagated using the holomorphic
+defect $\Theta'-S_\kappa\Theta$ on the upper half-plane; dividing by
+$\Theta$ before excluding its zeros would require unnecessary care.
+For closure, the positive-multiplicity pole of $\Theta'/\Theta$ is
+incompatible with the anti-Herglotz sign. Conjugation symmetry then
+handles the lower half-plane.
+
+The first arithmetic route uses a different intermediate invariant:
+\[
+ H00\Longrightarrow V_N=1\ (\forall N)
+ \Longrightarrow \text{subexponential variation}
+ \Longrightarrow\mathrm{RH}.
+\]
+The last implication uses the retained actual spectral extraction
+theorem. The second route replaces that forward spectral-growth step
+by the positive-measure construction and analytic closure. It shares
+normalization, direct positivity lemmas, and the converse from RH.
+
+The classical background is the compact Hausdorff moment problem,
+the spectral theory of bounded self-adjoint operators, and elementary
+complex analysis \cite{hausdorff,conway,rudin}. The arithmetic
+normalization is compatible with the classical $\xi$-function
+\cite{titchmarsh}. Formal proof infrastructure is supplied by Lean
+and mathlib \cite{lean4,mathlib}; the project's precise theorem scope
+is fixed by its source and audit records \cite{source}.

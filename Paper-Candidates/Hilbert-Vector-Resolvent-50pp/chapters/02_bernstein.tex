@@ -1,0 +1,523 @@
+\PaperPage{15}{2.1 Bernstein rows and mass}
+\label{bern:rows}
+
+For this chapter let $u=(u_k)_{k\ge0}$ be an arbitrary real sequence.
+Normalization and positivity will be imposed explicitly when needed.
+Associate to $u$ the polynomial moment functional
+\[
+ \mathcal M_u\!\left(\sum_{k=0}^d c_kx^k\right)
+       =\sum_{k=0}^d c_ku_k,
+ \qquad B_{N,j}(x)=\binom Njx^j(1-x)^{N-j}.
+\]
+This functional is defined by finite algebra; no representing measure,
+continuity assertion, or growth restriction on $u$ is implicit. Applying
+it to the Bernstein basis gives the weights
+\begin{equation}\label{bern:weights}
+ w^u_{N,j}=\mathcal M_u(B_{N,j})
+ =\binom Nj\sum_{r=0}^{N-j}(-1)^r\binom{N-j}{r}u_{j+r},
+ \qquad 0\le j\le N.
+\end{equation}
+The superscript will be suppressed when the sequence is fixed. Each
+row depends on only $u_0,\ldots,u_N$. Thus every particular weight is
+finite data, even though positivity of all rows is an infinite family
+of conditions.
+
+With the forward-difference convention $\Delta u_j=u_{j+1}-u_j$,
+the inner sum is $(-1)^{N-j}\Delta^{N-j}u_j$. Since the binomial
+factor is strictly positive at every in-range index, positivity of
+all Bernstein rows is equivalent to nonnegativity of every alternating
+finite difference. The row formulation retains the binomial weights
+because they organize both conservation of mass and the compatibility
+between successive degrees. These two identities will control the
+normalization of the eventual representing measure.
+
+\begin{proposition}[Conservation of row mass]\label{bern:mass}
+For every real sequence and every $N\ge0$,
+\[
+ \sum_{j=0}^Nw^u_{N,j}=u_0.
+\]
+\end{proposition}
+\begin{proof}
+The binomial theorem gives the polynomial identity
+$\sum_jB_{N,j}(x)=(x+(1-x))^N=1$. Apply the linear functional
+$\mathcal M_u$. Equivalently, expansion of the defining finite sum
+shows that the coefficient of $u_k$ is
+\[
+ \sum_{j=0}^k\binom Nj(-1)^{k-j}\binom{N-j}{k-j}
+ =\binom Nk\sum_{j=0}^k\binom kj(-1)^{k-j}
+ =\begin{cases}1,&k=0,\\0,&1\le k\le N.\end{cases}
+\]
+Here the product of binomial coefficients counts the same successive
+choices in two orders. All rearrangements are finite, including when
+$N=0$.
+\end{proof}
+
+The first rows make the sign convention transparent:
+\[
+ \begin{gathered}
+ (w_{0,0})=(u_0),\qquad
+ (w_{1,0},w_{1,1})=(u_0-u_1,u_1),\\
+ (w_{2,0},w_{2,1},w_{2,2})=(u_0-2u_1+u_2,2u_1-2u_2,u_2).
+ \end{gathered}
+\]
+If a positive measure already represents $u$, these are integrals of
+nonnegative polynomials. Our later construction reverses that implication:
+the signs of these finite expressions will produce the measure.
+Conservation of mass is the normalization mechanism for that reversal.
+In particular, when $u_0=1$, every row has signed mass one regardless
+of its individual signs. Its absolute mass can nevertheless exceed one;
+that excess, rather than the signed mass, detects cancellation.
+
+\PaperPage{16}{2.2 Exact coarsening and increasing variation}
+\label{bern:coarsening-page}
+
+The Bernstein bases at successive degrees satisfy a compatibility
+relation. It provides a direct comparison of row variation without
+assuming that any weights are positive. For $0\le j\le n$, the two
+binomial identities
+\[
+ (n+1-j)\binom{n+1}{j}=(n+1)\binom nj,
+ \qquad
+ (j+1)\binom{n+1}{j+1}=(n+1)\binom nj
+\]
+give an identity between polynomials. Factoring out
+$\binom njx^j(1-x)^{n-j}$ from its right-hand side leaves
+$(n+1)((1-x)+x)$. Consequently,
+\begin{equation}\label{bern:poly-coarsen}
+ (n+1)B_{n,j}
+ =(n+1-j)B_{n+1,j}+(j+1)B_{n+1,j+1}.
+\end{equation}
+The endpoint cases $j=0,n$ require no separate convention. Applying
+$\mathcal M_u$ proves the exact weighted relation
+\begin{equation}\label{bern:coarsen}
+ (n+1)w_{n,j}
+ =(n+1-j)w_{n+1,j}+(j+1)w_{n+1,j+1}.
+\end{equation}
+The coefficients become nonnegative after division by $n+1$.
+They describe how adjacent entries of a finer row contribute to one
+coarser entry. They need not sum to one within that pair: the relevant
+conservation law is obtained by summing contributions from the whole
+finer row.
+
+\begin{proposition}[Monotonicity of variation]\label{bern:variation}
+Define $V_N=\sum_{j=0}^N|w_{N,j}|$. Then
+\[
+ |u_0|\le V_N\le V_{N+1}\qquad(N\ge0),
+ \qquad V_0=|u_0|.
+\]
+\end{proposition}
+\begin{proof}
+The first inequality is the triangle inequality applied to row mass.
+Taking absolute values in~\eqref{bern:coarsen} and summing gives
+\[
+ (n+1)V_n\le
+ \sum_{j=0}^n\bigl((n+1-j)|w_{n+1,j}|
+                  +(j+1)|w_{n+1,j+1}|\bigr)
+ =(n+1)V_{n+1}.
+\]
+For an interior finer-row index $k$, the two coefficients are
+$n+1-k$ and $k$, whose sum is $n+1$. The indices $0$ and $n+1$
+each occur once, again with coefficient $n+1$. Division by this
+positive integer proves monotonicity.
+\end{proof}
+
+Equation~\eqref{bern:coarsen} also shows that positivity propagates
+downward in degree: if every entry of row $n+1$ is nonnegative,
+then so is every entry of row $n$. Iteration gives positivity of
+every earlier row from positivity of one later row. This is a
+finite implication, with the direction fixed by the coarsening
+identity. It supplies no positivity information about rows of higher
+degree than those already controlled.
+
+This proof identifies the only possible source of strict growth:
+the triangle inequality at an adjacent pair. There is no loss from
+reindexing or from normalization. The next page records that loss
+exactly, rather than estimating it. This exactness is useful because
+a zero bound will force equality at every finite step.
+
+\PaperPage{17}{2.3 Triangle defects and the cancellation identity}
+\label{bern:cancellation-page}
+
+Fix a row transition $n\to n+1$. For $0\le j\le n$, set
+\[
+ a_{n,j}=(n+1-j)w_{n+1,j},\qquad
+ b_{n,j}=(j+1)w_{n+1,j+1},\qquad
+ D_{n,j}=|a_{n,j}|+|b_{n,j}|-|a_{n,j}+b_{n,j}|.
+\]
+The quantity $D_{n,j}$ is a nonnegative real number. For real scalars,
+it vanishes exactly when $a_{n,j}b_{n,j}\ge0$, including either scalar
+being zero. Indeed, if the signs agree, absolute value is additive;
+if the signs differ, the defect is twice the smaller absolute value.
+Thus the terminology ``cancellation'' has a literal algebraic meaning.
+Define the total defect of the transition by
+\[
+ C_n=\sum_{j=0}^nD_{n,j}\ge0.
+\]
+
+\begin{proposition}[Exact variation increment]\label{bern:increment}
+Every real sequence satisfies
+\begin{equation}\label{bern:increment-eq}
+ C_n=(n+1)(V_{n+1}-V_n).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Equation~\eqref{bern:coarsen} implies
+$|a_{n,j}+b_{n,j}|=(n+1)|w_{n,j}|$.
+The coefficient count in the preceding proof gives
+$\sum_j(|a_{n,j}|+|b_{n,j}|)=(n+1)V_{n+1}$.
+Subtract the sum of the former identities from the latter identity.
+Every sum is finite, so this is an equality with no convergence issue.
+\end{proof}
+
+Two useful consequences retain the full information of the defect:
+\[
+ C_n=0\ \Longleftrightarrow\ V_{n+1}=V_n,
+ \qquad
+ V_N=|u_0|+\sum_{n=0}^{N-1}\frac{C_n}{n+1}.
+\]
+The second identity follows by telescoping, with an empty sum when
+$N=0$. It separates the initial absolute mass from the accumulation of
+local cancellation. In particular, a bound on the weighted sum of
+defects bounds total variation; an assertion that all defects vanish
+fixes total variation exactly.
+
+When $u_0=1$, another exact expression is
+\[
+ V_N-1=2\sum_{j=0}^N\max\{-w_{N,j},0\}.
+\]
+To prove it, subtract row mass from absolute mass and use
+$|t|-t=2\max\{-t,0\}$ term by term. This makes the distinction
+between signed mass and negative mass explicit. One zero transition
+does not assert positivity of every row. Positivity at all degrees
+will follow from zero defects at all transitions together with the
+initial positive mass.
+
+For example, the normalized initial moments $u_0=1$, $u_1=u_2=-1$
+give rows $(2,-1)$ and $(2,0,-1)$. Both have variation three, so
+$C_1=0$ despite their negative entries. The earlier transition has
+$C_0=2$. This example isolates why all transitions, including the
+transition out of the degree-zero row, occur in the zero-budget
+hypothesis.
+
+The source definitions
+\texttt{cancellationDefect} and \texttt{rowCancellation} encode these
+same weighted triangle defects~\cite{source}.
+
+\PaperPage{18}{2.4 The zero budget and its equivalent forms}
+\label{bern:zero-budget-page}
+
+For a normalized real sequence, a cancellation budget is a pair of
+natural numbers $W=(N_0,b)$. Its semantic admissibility means
+\[
+ \operatorname{Adm}_u(N_0,b)\quad\Longleftrightarrow\quad
+ \forall n\ge N_0,\ C_n\le bV_n.
+\]
+Write $H_{00}(u)$ for $\operatorname{Adm}_u(0,0)$. This notation
+temporarily makes the sequence explicit. In the actual application,
+$H_{00}$ without an argument always refers to the fixed normalized
+logarithmic-derivative moments specified in Part~4.
+
+\begin{theorem}[Finite identities behind the zero budget]\label{bern:h00}
+If $u_0=1$, then the following four assertions are equivalent:
+\begin{equation}\label{bern:h00-equivalences}
+ \begin{aligned}
+ H_{00}(u)
+ &\ \Longleftrightarrow\ \forall n\ge0,\ C_n=0\\
+ &\ \Longleftrightarrow\ \forall N\ge0,\ V_N=1\\
+ &\ \Longleftrightarrow\ \forall N\ge0\ \forall j\le N,\ w_{N,j}\ge0.
+ \end{aligned}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Admissibility gives $C_n\le0$ at every index; nonnegativity of defects
+turns this inequality into equality. Conversely, zero defects satisfy
+the budget. By~\eqref{bern:increment-eq}, zero defects are equivalent
+to equal successive variations. Since $V_0=|u_0|=1$, induction gives
+$V_N=1$ at every degree. Constant variation conversely makes every
+increment vanish.
+
+For a fixed row, conservation of mass yields
+\[
+ V_N-1=\sum_{j=0}^N\bigl(|w_{N,j}|-w_{N,j}\bigr).
+\]
+Each summand is nonnegative. A finite sum of such terms is zero
+exactly when every term is zero, and $|t|-t=0$ exactly when $t\ge0$.
+This proves both remaining directions, row by row.
+\end{proof}
+
+The role of normalization is precise. It supplies a positive initial
+mass and identifies minimal variation with one. If $u_0=c>0$, the
+same argument replaces one by $c$. For the actual sequence,
+normalization $u_0=1$ is already a retained theorem, so no additional
+normalization hypothesis is attached to the actual implication.
+
+The pair $(0,0)$ has a finite description, but its admissibility is
+the universally quantified assertion displayed above. Checking any
+fixed collection of rows proves only the corresponding finite
+collection of inequalities. The theorem therefore gives equivalent
+forms of the common hypothesis, not its unconditional proof.
+At degree one, positivity says $0\le u_1\le1$; at degree two,
+it additionally says $0\le u_2\le u_1$ and $u_2\ge2u_1-1$.
+These are useful necessary conditions on the first moments, obtained
+without analytic machinery. The full condition requires every such
+finite-difference inequality at every order, so these low-degree
+constraints do not replace its quantifiers.
+The actual specializations are present in \texttt{RouteOne.lean},
+including \texttt{H00\_iff\_all\_variation\_one} and
+\texttt{H00\_iff\_actual\_weights\_nonnegative}~\cite{source}.
+
+\PaperPage{19}{2.5 Finite averages and the shifted-moment recurrence}
+\label{bern:recurrence-page}
+
+For a function on the compact interval define the finite Bernstein
+average using the explicit degree-zero convention
+\[
+ q_{N,j}=\frac jN\quad(N\ge1),\qquad q_{0,0}=0,
+ \qquad A_N^u(f)=\sum_{j=0}^Nw^u_{N,j}f(q_{N,j}).
+\]
+Thus $A_0^u(f)=u_0f(0)$; a constant monomial always means the
+constant function one, including its value at zero. No sign hypothesis
+is imposed in this definition. Let $u^+_r=u_{r+1}$ be the shifted
+sequence. Directly from~\eqref{bern:weights},
+\begin{equation}\label{bern:shift}
+ (j+1)w^u_{N+1,j+1}=(N+1)w^{u^+}_{N,j}
+ \qquad(0\le j\le N).
+\end{equation}
+Indeed, the inner finite differences on the two sides are identical,
+and their outer coefficients agree by
+$(j+1)\binom{N+1}{j+1}=(N+1)\binom Nj$.
+
+For a positive-degree monomial the $j=0$ contribution at degree
+$N+1$ vanishes. Reindexing all remaining terms and using
+\eqref{bern:shift} to absorb one power of the grid coordinate gives
+\begin{equation}\label{bern:monomial-shift}
+ A_{N+1}^u(x^{k+1})=
+ \sum_{j=0}^Nw^{u^+}_{N,j}
+       \left(\frac{j+1}{N+1}\right)^k.
+\end{equation}
+This formula also holds at $N=0$. To express its right-hand side
+through averages at degree $N$, assume now $N\ge1$ and use
+\[
+ \frac{j+1}{N+1}=\frac{N}{N+1}\frac jN+\frac1{N+1},
+ \qquad
+ T_{N,k,i}=\binom ki\left(\frac N{N+1}\right)^i
+                    \left(\frac1{N+1}\right)^{k-i}.
+\]
+The ordinary binomial theorem, followed by interchange of two finite
+sums, proves the recurrence
+\begin{equation}\label{bern:recurrence}
+ A_{N+1}^u(x^{k+1})=
+       \sum_{i=0}^kT_{N,k,i}A_N^{u^+}(x^i)
+       \qquad(N\ge1).
+\end{equation}
+Its degree is lower on the right, but its moment sequence is shifted.
+This matters for the induction on the next page: the inductive
+statement must quantify over all sequences, not just a single fixed
+one. The transition coefficients depend only on $N,k,i$. Although
+they are nonnegative and sum to one, the averages multiplying them
+can have either sign. Their convergence will come from induction,
+without a bound on the variation of the original sequence.
+There is also a useful exact first-moment check on the reindexing.
+Putting $k=0$ in~\eqref{bern:monomial-shift} reduces its right-hand
+side to the mass of a row for $u^+$, namely $u_1$. Thus every
+positive-degree grid recovers the first moment exactly, even when
+some of its weights are negative. The exceptional grid at degree
+zero has average zero on $x$, and does not affect any limiting
+statement. Stating that exception explicitly avoids silently applying
+an affine-grid calculation with a zero denominator.
+
+\PaperPage{20}{2.6 Monomial convergence without positivity}
+\label{bern:convergence-page}
+
+\begin{theorem}[Algebraic moment recovery]\label{bern:moment-limit}
+For every real sequence $u$ and every integer $k\ge0$,
+\begin{equation}\label{bern:limit}
+ \lim_{N\to\infty}A_N^u(x^k)=u_k.
+\end{equation}
+\end{theorem}
+\begin{proof}
+We use strong induction on $k$, keeping the sequence universally
+quantified. At degree zero, row mass gives the exact identity
+\[
+ A_N^u(1)=\sum_{j=0}^Nw^u_{N,j}=u_0
+ \qquad\text{for every }N\ge0.
+\]
+Suppose the assertion holds in every degree at most $k$, for every
+real sequence. In particular, it holds for the shifted sequence
+$u^+$. The elementary scalar limits $N/(N+1)\to1$ and
+$1/(N+1)\to0$ imply, for each $0\le i\le k$,
+\[
+ T_{N,k,i}\longrightarrow
+ \begin{cases}1,&i=k,\\0,&i<k,\end{cases}
+ \qquad A_N^{u^+}(x^i)\longrightarrow u_{i+1}.
+\]
+For $i<k$ the exponent $k-i$ is positive; for $i=k$ it is zero
+and the binomial coefficient is one. Taking limits in the finite
+sum~\eqref{bern:recurrence} therefore gives
+\[
+ A_{N+1}^u(x^{k+1})\longrightarrow
+       \sum_{i=0}^k\mathbf1_{\{i=k\}}u_{i+1}=u_{k+1}.
+\]
+The recurrence is valid for every $N\ge1$, which is sufficient for
+this limit. Removing the fixed index shift preserves convergence,
+and proves the claim at degree $k+1$.
+\end{proof}
+
+The proof does not assume normalization, bounded moments, or
+nonnegative weights. It does not exchange an infinite series with
+a limit: for each fixed degree there are finitely many transition
+terms. It also does not assert convergence for every continuous
+test function when the weights have unrestricted signs. Such an
+extension needs uniform control of the functionals, which positivity
+will provide below.
+
+Linearity immediately extends the conclusion to every polynomial:
+\[
+ p(x)=\sum_{k=0}^dc_kx^k
+ \quad\Longrightarrow\quad
+ A_N^u(p)\longrightarrow\sum_{k=0}^dc_ku_k=\mathcal M_u(p).
+\]
+As elementary checks, the recurrence gives
+$A_N^u(x)=u_1$ for $N\ge1$ and
+$A_N^u(x^2)=N^{-1}u_1+(1-N^{-1})u_2$ for $N\ge1$.
+These are consistent both with degree one and with the limiting
+second moment.
+
+The absence of growth assumptions is possible because a fixed
+polynomial degree probes only finitely many initial moments. The
+recurrence reduces that degree while shifting the sequence, and the
+induction terminates at row mass. It does not provide estimates
+uniform in the polynomial degree. Consequently, using this theorem
+inside an infinite power-series argument requires an additional
+summability or domination argument; that step is kept separate in
+the later resolvent analysis.
+
+The general induction is the argument encoded by
+\texttt{bernsteinAverage\_monomial\_tendsto} in
+\texttt{BernsteinMomentLimit.lean}~\cite{source}.
+
+\PaperPage{21}{2.7 A single ultrafilter and a positive functional}
+\label{bern:functional-page}
+
+Assume henceforth $u_0=1$ and $w^u_{N,j}\ge0$ for all admissible
+indices. Each row is now a probability vector. On the real Banach
+space $C([0,1])$, the finite averages obey
+\[
+ \begin{gathered}
+ A_N^u(\alpha f+\beta g)=\alpha A_N^u(f)+\beta A_N^u(g),\\
+ A_N^u(1)=1,\qquad f\ge0\Longrightarrow A_N^u(f)\ge0.
+ \end{gathered}
+\]
+Moreover, positivity and mass one imply the common norm bound
+\begin{equation}\label{bern:uniform-bound}
+ |A_N^u(f)|\le\sum_{j=0}^Nw^u_{N,j}|f(q_{N,j})|
+             \le\|f\|_\infty.
+\end{equation}
+Choose one free ultrafilter $\mathcal U$ on $\mathbb N$ containing
+every cofinite set, and use this same choice for every test function.
+For each $f$, the sequence of averages lies in the compact interval
+$[-\|f\|_\infty,\|f\|_\infty]$. Compactness gives an ultrafilter
+limit, and the Hausdorff property of the real line makes it unique.
+Define
+\[
+ L_u(f)=\lim_{N\to\mathcal U}A_N^u(f).
+\]
+The use of a single ultrafilter is essential to this construction:
+it lets addition and scalar multiplication pass to limits in a
+common limiting process. An arbitrary, separately selected cluster
+point for each function would not by itself establish linearity.
+
+\begin{proposition}\label{bern:positive-functional}
+The map $L_u:C([0,1])\to\mathbb R$ is a positive bounded linear
+functional with $L_u(1)=1$ and operator norm one.
+\end{proposition}
+\begin{proof}
+The finite linear identities pass to $\mathcal U$-limits because
+addition and scalar multiplication are continuous. The closed sets
+$[0,\infty)$ and $[-\|f\|_\infty,\|f\|_\infty]$ preserve,
+respectively, positivity and the bound~\eqref{bern:uniform-bound}.
+The constant sequence $A_N^u(1)=1$ gives $L_u(1)=1$. Therefore
+$\|L_u\|\le1$, while evaluation on the unit vector $1$ gives the
+reverse inequality.
+\end{proof}
+
+Because $\mathcal U$ contains every cofinite set, each ordinary
+convergent sequence has the same ultrafilter limit. The preceding
+page therefore yields
+\[
+ L_u(x^k)=u_k\qquad(k\ge0).
+\]
+The source uses \texttt{Filter.hyperfilter} for the common choice.
+
+Its \texttt{hausdorffPositiveFunctional} is constructed from these limits. This is an
+existence construction using classical choice; it supplies a coherent
+functional before any representing measure is introduced.
+It is useful to distinguish the two compactness inputs. Compactness of
+$[0,1]$ makes each continuous test function bounded; the
+resulting compact interval of real values supplies the ultralimit.
+No subsequence indexed simultaneously for an uncountable set of
+test functions is selected. The single ultrafilter provides that
+simultaneous consistency through preservation of finite algebraic
+operations.
+
+\PaperPage{22}{2.8 The Hausdorff measure and uniqueness}
+\label{bern:measure-page}
+
+\begin{theorem}[Probability representation]\label{bern:measure}
+If $u_0=1$ and every Bernstein weight of $u$ is nonnegative, there
+is a unique Borel probability measure $\sigma$ on $[0,1]$ satisfying
+\begin{equation}\label{bern:measure-moments}
+ u_k=\int_{[0,1]}q^k\,d\sigma(q)\qquad(k\ge0).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The real Riesz representation theorem on the compact Hausdorff
+space $[0,1]$ applies to the positive functional $L_u$. It gives a
+regular Borel measure with
+\[
+ L_u(f)=\int f\,d\sigma\quad(f\in C([0,1])),
+ \qquad \sigma([0,1])=L_u(1)=1.
+\]
+Taking monomials and using $L_u(x^k)=u_k$ proves the moment
+identities. For uniqueness, let $\sigma$ and $\tau$ be two Borel
+probability measures with these moments. Their integrals agree on
+polynomials by linearity. Polynomial density in $C([0,1])$ implies
+that for each continuous $f$ and $\varepsilon>0$ there is a
+polynomial $p$ with $\|f-p\|_\infty<\varepsilon$. Hence
+\[
+ \left|\int f\,d\sigma-\int f\,d\tau\right|
+ \le\int|f-p|\,d\sigma+\int|f-p|\,d\tau<2\varepsilon.
+\]
+The continuous integrals therefore agree. Finite Borel measures on
+this compact metric space are regular, and uniqueness in Riesz
+representation gives $\sigma=\tau$.
+\end{proof}
+
+The converse is immediate but useful: any probability measure with
+the displayed moments gives
+\[
+ w^u_{N,j}=\int B_{N,j}(q)\,d\sigma(q)\ge0.
+\]
+Thus normalized Bernstein positivity is exactly the compact-interval
+moment condition. Uniqueness also removes any dependence of the
+resulting measure on the free ultrafilter selected in the construction.
+In fact the entire sequence of averages converges weakly to this
+measure: polynomial approximation and~\eqref{bern:uniform-bound}
+give $A_N^u(f)\to\int f\,d\sigma$ for every continuous $f$, by
+bounding the two approximation errors and then taking the polynomial
+limit.
+This also proves directly that the limiting functional is intrinsic
+to the moments: any bounded linear functional agreeing with it on
+all monomials agrees on polynomials and then, by continuity, on all
+continuous functions. The compact support is crucial to this density
+argument. Moment uniqueness on a noncompact interval would require
+additional hypotheses and is not being inferred here.
+
+For the actual moments, Theorem~\ref{bern:h00} supplies positivity
+from the same hypothesis $H_{00}$. The source construction
+\texttt{actualHausdorffMeasure} and its moment theorem implement this
+conditional measure step in \texttt{HausdorffMeasure.lean}~\cite{source}.
+The uniqueness and weak convergence arguments just given are
+mathematical exposition; their inclusion here does not claim a new,
+separately audited Lean declaration. No unconditional proof of
+$H_{00}$ has entered the construction.
