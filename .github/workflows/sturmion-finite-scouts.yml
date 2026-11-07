@@ -54,20 +54,7 @@ jobs:
           cp ci/STURMIONFiniteControls.lean.source "$RUNNER_TEMP/STURMIONFiniteControls.lean"
           lean "$RUNNER_TEMP/STURMIONFiniteControls.lean" 2>&1 | tee ci-results/finite-lean-audit.log
           test "$(grep -c 'depends on axioms:' ci-results/finite-lean-audit.log)" -eq 2
-          if grep -E 'sorryAx' ci-results/finite-lean-audit.log || (grep -E 'depends on axioms:' ci-results/finite-lean-audit.log | grep -Ev 'axioms: \[(propext|Classical.choice|Quot.sound)(, (propext|Classical.choice|Quot.sound))*\]
-            echo "LEAN_SCOUT_AUDIT=REQUIRES_REVIEW" >&2
-            exit 1
-          fi
-          echo "LEAN_SCOUT_BOOLEAN_CONTROLS=PASS" | tee ci-results/lean-scout-result.txt
-          echo "ACTUAL_XI_CALIBRATION=NOT_PROVED" | tee -a ci-results/lean-scout-result.txt
-      - name: Upload Boolean proof audit
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: sturmion-boolean-control-${{ github.sha }}
-          path: ci-results/
-          if-no-files-found: warn
-); then
+          if grep -E 'sorryAx' ci-results/finite-lean-audit.log || (grep -E 'depends on axioms:' ci-results/finite-lean-audit.log | grep -vF 'axioms: [propext]'); then
             echo "LEAN_SCOUT_AUDIT=REQUIRES_REVIEW" >&2
             exit 1
           fi
